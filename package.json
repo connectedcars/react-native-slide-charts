@@ -1,6 +1,6 @@
 {
   "name": "react-native-slide-charts",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "React Native slide charts uses d3 and react-native-gesture-handler to create interactive charts.",
   "main": "src/Charts.ts",
   "types": "src/react-native-slide-charts.d.ts",
@@ -38,7 +38,7 @@
   "peerDependencies": {
     "react": "*",
     "react-native": "*",
-    "react-native-svg": "^11.0.1",
+    "react-native-svg": "^9.13.3",
     "react-native-gesture-handler": "^1.5.3",
     "react-native-haptic-feedback": "^1.8.2"
   },
@@ -52,7 +52,7 @@
     "@typescript-eslint/eslint-plugin": "^2.16.0",
     "@react-native-community/eslint-config": "^0.0.6",
     "@typescript-eslint/parser": "^2.16.0",
-    "eslint": "^6.8.0",
+    "eslint": "^5.16.0",
     "eslint-config-prettier": "^6.9.0",
     "eslint-plugin-prettier": "^3.1.2",
     "eslint-plugin-react": "^7.18.0",
