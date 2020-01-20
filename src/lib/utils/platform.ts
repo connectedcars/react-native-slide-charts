@@ -1,7 +1,5 @@
 import { Platform, Dimensions } from 'react-native'
-import ReactNativeHapticFeedback, {
-  HapticFeedbackTypes,
-} from 'react-native-haptic-feedback'
+import Haptics from 'expo-haptics'
 
 export const isAndroid = () => {
   return Platform.OS === 'android'
@@ -24,10 +22,8 @@ export const hapticFeedbackOptions = {
   ignoreAndroidSystemSettings: false,
 }
 
-export const reactNativeHapticFeedbackIOS = (
-  impactType: HapticFeedbackTypes
-) => {
+export const reactNativeHapticSelectionIOS = () => {
   if (isIOS()) {
-    ReactNativeHapticFeedback.trigger(impactType, hapticFeedbackOptions)
+    Haptics.selectionAsync()
   }
 }

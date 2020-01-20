@@ -45,7 +45,7 @@
     "react-native": "*",
     "react-native-svg": "^11.0.1",
     "react-native-gesture-handler": "^1.5.3",
-    "react-native-haptic-feedback": "^1.8.2"
+    "expo-haptics": "^8.0.0"
   },
   "devDependencies": {
     "@babel/core": "^7.7.7",

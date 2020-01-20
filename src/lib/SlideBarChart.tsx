@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { View, StyleSheet, Animated, TextInput, TouchableWithoutFeedback } from 'react-native'
-import { isAndroid, vw, reactNativeHapticFeedbackIOS } from './utils/platform'
+import { isAndroid, vw, reactNativeHapticSelectionIOS } from './utils/platform'
 import ToolTip from './components/toolTip/ToolTip'
 import { scaleTime, scaleLinear, ScaleTime, ScaleLinear } from 'd3-scale'
 import Cursor from './components/Cursor/Cursor'
@@ -312,7 +312,7 @@ class SlideBarChart extends Component<SlideBarChartComponentProps, State> {
       return
     }
     if (isTouch && hapticFeedback) {
-      reactNativeHapticFeedbackIOS('selection')
+      reactNativeHapticSelectionIOS()
     }
     this.setState({ selectedBarNumber: this.selectedBarNumber })
     const barWidthForToolTip = barWidth ??
