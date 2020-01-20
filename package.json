@@ -5,7 +5,7 @@
   "main": "src/Charts.ts",
   "types": "src/react-native-slide-charts.d.ts",
   "scripts": {
-    "test": "test"
+    "test": "echo \"No test specified\""
   },
   "keywords": [
     "chart",
