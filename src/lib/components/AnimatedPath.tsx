@@ -3,7 +3,6 @@ import { Animated } from 'react-native'
 import { Path, PathProps } from 'react-native-svg'
 
 class AnimatedPath extends Component<PathProps> {
-
   pathRef = React.createRef<any>()
 
   setNativeProps = (nativeProps: Object) => {
@@ -26,12 +25,7 @@ class AnimatedPath extends Component<PathProps> {
   }
 
   render() {
-    return (
-      <Path
-        ref={this.pathRef}
-        {...this.props}
-      />
-    )
+    return <Path ref={this.pathRef} {...this.props} />
   }
 }
 

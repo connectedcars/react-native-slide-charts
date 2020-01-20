@@ -1,7 +1,10 @@
 import { StyleProp, ViewStyle, Animated } from 'react-native'
 import * as shape from 'd3-shape'
 import { GradientProps } from '../components/chartComponents/charts/utils/types'
-import { XAxisProps, YAxisProps } from '../components/chartComponents/axis/utils/types'
+import {
+  XAxisProps,
+  YAxisProps,
+} from '../components/chartComponents/axis/utils/types'
 import { ToolTipProps } from '../components/toolTip/utils/types'
 import { CursorProps } from '../components/Cursor/utils/types'
 
@@ -62,7 +65,9 @@ type SharedChartDefaultProps = {
 }
 
 type SharedBarChartProps = {
-  renderYAxisHorizontalLineGradient?: (props: GradientProps & { count: number }) => JSX.Element | null
+  renderYAxisHorizontalLineGradient?: (
+    props: GradientProps & { count: number }
+  ) => JSX.Element | null
   barFillColor?: string
   barWidth?: number
   hideSelection?: boolean
@@ -81,7 +86,9 @@ export type SlideBarChartDefaultProps = SharedChartDefaultProps & {
   renderSelectedFillGradient: (props: GradientProps) => JSX.Element | null
 }
 
-export type SlideBarChartComponentProps = SlideBarChartDefaultProps & SharedChartComponentProps & SharedBarChartProps
+export type SlideBarChartComponentProps = SlideBarChartDefaultProps &
+  SharedChartComponentProps &
+  SharedBarChartProps
 
 export type SlideAreaChartProps = SharedChartProps & {
   curveType?: shape.CurveFactory | shape.CurveFactoryLineOnly

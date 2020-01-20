@@ -1,7 +1,8 @@
 export default function SVGPathYFromX(path: any, x: number): number {
-
   // Path can be null from svg-path-properties
-  if (path == null) { return 0 }
+  if (path == null) {
+    return 0
+  }
 
   /**
    * If we only essentially have one position, including the same
@@ -10,7 +11,9 @@ export default function SVGPathYFromX(path: any, x: number): number {
    * length causes a crash.
    */
   const pathLength = path.getTotalLength()
-  if (pathLength === 0) { return 0 }
+  if (pathLength === 0) {
+    return 0
+  }
 
   /**
    * We can narrow the search by starting the search at the

@@ -27,10 +27,13 @@ class CursorIndicator extends Component<CursorIndicatorProps> {
       height: cursorRadius * 2,
       borderRadius: cursorRadius,
       borderColor,
-      backgroundColor
+      backgroundColor,
     }
     return (
-      <Animated.View ref={this.indicator} style={[styles.cursor, cursorStyle]} />
+      <Animated.View
+        ref={this.indicator}
+        style={[styles.cursor, cursorStyle]}
+      />
     )
   }
 }

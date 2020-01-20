@@ -1,8 +1,10 @@
 {
-  "jsxBracketSameLine": true,
+  "jsxBracketSameLine": false,
   "semi": false,
-  "trailingComma": "all",
+  "trailingComma": "es5",
   "singleQuote": true,
   "tabWidth": 2,
-  "bracketSpacing": true
+  "bracketSpacing": true,
+  "jsxSingleQuote": true,
+  "react/jsx-wrap-multilines": true
 }

@@ -4,10 +4,9 @@ import CursorLine from './CursorLine'
 import { CursorProps } from './utils/types'
 
 class Cursor extends Component<CursorProps> {
-
   static defaultProps = {
     cursorLine: true,
-    displayCursor: true
+    displayCursor: true,
   }
 
   cursorIndicator = React.createRef<CursorIndicator>()
@@ -30,7 +29,12 @@ class Cursor extends Component<CursorProps> {
   }
 
   renderCursorMarker() {
-    const { cursorColor, cursorBorderColor, renderCursorMarker, cursorMarkerWidth } = this.props
+    const {
+      cursorColor,
+      cursorBorderColor,
+      renderCursorMarker,
+      cursorMarkerWidth,
+    } = this.props
 
     // Custom cursor marker
     if (renderCursorMarker) {
@@ -49,14 +53,18 @@ class Cursor extends Component<CursorProps> {
 
   render() {
     const { cursorColor, cursorWidth, cursorLine, displayCursor } = this.props
-    if (!displayCursor) { return null }
+    if (!displayCursor) {
+      return null
+    }
     return (
       <>
-        {cursorLine && <CursorLine
-          ref={this.cursorLine}
-          width={cursorWidth}
-          backgroundColor={cursorColor}
-        />}
+        {cursorLine && (
+          <CursorLine
+            ref={this.cursorLine}
+            width={cursorWidth}
+            backgroundColor={cursorColor}
+          />
+        )}
         {this.renderCursorMarker()}
       </>
     )

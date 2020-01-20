@@ -35,7 +35,9 @@ export type YAxisProps = YAxisPartialProps & {
   axisMarkerStyle?: TSpanProps & { color: string }
   axisAverageMarkerStyle?: TSpanProps & { color: string }
   renderVerticalLineGradient?: (props: GradientProps) => JSX.Element | null
-  renderHorizontalLineGradient?: (props: GradientProps & { count: number }) => JSX.Element | null
+  renderHorizontalLineGradient?: (
+    props: GradientProps & { count: number }
+  ) => JSX.Element | null
   horizontalLineWidth?: number
   showBaseLine?: boolean
   labelTopPadding?: number
@@ -53,7 +55,9 @@ export type YAxisDefaultProps = {
   axisMarkerStyle: TSpanProps & { color: string }
   axisAverageMarkerStyle: TSpanProps & { color: string }
   renderVerticalLineGradient: (props: GradientProps) => JSX.Element | null
-  renderHorizontalLineGradient: (props: GradientProps & { count: number }) => JSX.Element | null
+  renderHorizontalLineGradient: (
+    props: GradientProps & { count: number }
+  ) => JSX.Element | null
   averageLineColor: string
   verticalLineWidth: number
   horizontalLineWidth: number
@@ -113,7 +117,9 @@ export type XAxisDefaultProps = {
   labelBottomOffset: number
 }
 
-export type XAxisComponentProps = XAxisDefaultProps & XAxisPartialProps & AxisProps
+export type XAxisComponentProps = XAxisDefaultProps &
+  XAxisPartialProps &
+  AxisProps
 
 export type XAxisMarkerProps = {
   x: number

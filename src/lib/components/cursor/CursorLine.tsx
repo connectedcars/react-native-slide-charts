@@ -23,7 +23,10 @@ class CursorLine extends Component<CursorLineProps> {
   render() {
     const { width, backgroundColor } = this.props
     return (
-      <Animated.View ref={this.line} style={[styles.line, { width, backgroundColor }]} />
+      <Animated.View
+        ref={this.line}
+        style={[styles.line, { width, backgroundColor }]}
+      />
     )
   }
 }

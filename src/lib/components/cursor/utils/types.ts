@@ -4,7 +4,9 @@ export type CursorProps = {
   cursorWidth: number
   cursorColor?: string
   cursorBorderColor?: string
-  renderCursorMarker?: (props: CursorProps & { ref: React.RefObject<any> }) => React.ReactNode | null
+  renderCursorMarker?: (
+    props: CursorProps & { ref: React.RefObject<any> }
+  ) => React.ReactNode | null
   cursorLine?: boolean
   displayCursor?: boolean
 }

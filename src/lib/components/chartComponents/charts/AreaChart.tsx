@@ -5,23 +5,35 @@ import XAxis from '../axis/XAxis'
 import AnimatedPath from '../../AnimatedPath'
 import { AreaChartProps } from './utils/types'
 
-
 class AreaChart extends Component<AreaChartProps> {
-
   animatedPathRef = React.createRef<any>()
   animatedFillRef = React.createRef<any>()
 
   // Directly manipulate the line of the area and line to allow for non state based animation
   setNativeLineProps(line: string) {
     const {
-      height, axisHeight, data, scaleX, axisWidth, width, paddingBottom, paddingLeft, paddingRight
+      height,
+      axisHeight,
+      data,
+      scaleX,
+      axisWidth,
+      width,
+      paddingBottom,
+      paddingLeft,
+      paddingRight,
     } = this.props
     const startX = data.length > 1 ? scaleX(data[0].x) : axisWidth + paddingLeft
-    const stopX = data.length > 1 ? scaleX(data[data.length - 1].x) : width - paddingRight
-    if (this.animatedPathRef.current != null && this.animatedFillRef.current != null) {
+    const stopX =
+      data.length > 1 ? scaleX(data[data.length - 1].x) : width - paddingRight
+    if (
+      this.animatedPathRef.current != null &&
+      this.animatedFillRef.current != null
+    ) {
       const topOfLine = height - axisHeight - paddingBottom
       this.animatedPathRef.current.setNativeProps({ d: line })
-      this.animatedFillRef.current.setNativeProps({ d: `${line} L ${stopX} ${topOfLine} L ${startX} ${topOfLine}` })
+      this.animatedFillRef.current.setNativeProps({
+        d: `${line} L ${stopX} ${topOfLine} L ${startX} ${topOfLine}`,
+      })
     }
   }
 
@@ -49,13 +61,12 @@ class AreaChart extends Component<AreaChartProps> {
     } = this.props
 
     const startX = data.length > 1 ? scaleX(data[0].x) : axisWidth + paddingLeft
-    const stopX = data.length > 1 ? scaleX(data[data.length - 1].x) : width - paddingRight
+    const stopX =
+      data.length > 1 ? scaleX(data[data.length - 1].x) : width - paddingRight
 
     return (
       <Svg {...{ width, height }}>
-        <Defs>
-          {renderFillGradient({ id: 'gradient' })}
-        </Defs>
+        <Defs>{renderFillGradient({ id: 'gradient' })}</Defs>
         <YAxis
           data={data}
           scaleX={scaleX}
@@ -86,7 +97,9 @@ class AreaChart extends Component<AreaChartProps> {
         />
         <AnimatedPath
           ref={this.animatedFillRef}
-          d={`${line} L ${stopX} ${scaleY(yRange[0])} L ${startX} ${scaleY(yRange[0])}`}
+          d={`${line} L ${stopX} ${scaleY(yRange[0])} L ${startX} ${scaleY(
+            yRange[0]
+          )}`}
           fill={graphFillColor || 'url(#gradient)'}
         />
         <AnimatedPath

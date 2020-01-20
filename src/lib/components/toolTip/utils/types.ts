@@ -18,7 +18,9 @@ export type ToolTipProps = ToolTipPartialProps & {
   borderRadius?: number
   fontSize?: number
   textStyles?: TextStyle[]
-  toolTipTextRenderers?: Array<(toolTipTextRenderersInput: ToolTipTextRenderersInput) => { text: string }>
+  toolTipTextRenderers?: Array<
+    (toolTipTextRenderersInput: ToolTipTextRenderersInput) => { text: string }
+  >
   backgroundColor?: string
   displayTriangle?: boolean
   lockTriangleCenter?: boolean
@@ -29,7 +31,9 @@ export type ToolTipDefaultProps = {
   borderRadius: number
   fontSize: number
   textStyles: TextStyle[]
-  toolTipTextRenderers: Array<(toolTipTextRenderersInput: ToolTipTextRenderersInput) => { text: string }>
+  toolTipTextRenderers: Array<
+    (toolTipTextRenderersInput: ToolTipTextRenderersInput) => { text: string }
+  >
   backgroundColor: string
   displayTriangle: boolean
   lockTriangleCenter: boolean
