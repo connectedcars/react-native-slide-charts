@@ -1,6 +1,6 @@
 {
   "name": "react-native-slide-charts",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "React Native slide charts uses d3 and react-native-gesture-handler to create interactive charts.",
   "homepage": "https://github.com/connectedcars/react-native-slide-charts",
   "repository": {
