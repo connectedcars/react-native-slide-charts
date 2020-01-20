@@ -17,11 +17,6 @@ export const vw = (
   return rounded ? Math.round(value) : value
 }
 
-export const hapticFeedbackOptions = {
-  enableVibrateFallback: false,
-  ignoreAndroidSystemSettings: false,
-}
-
 export const reactNativeHapticSelectionIOS = () => {
   if (isIOS()) {
     Haptics.selectionAsync()
