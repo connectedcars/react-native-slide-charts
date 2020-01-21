@@ -11,15 +11,13 @@
 
 ### Bar Chart
 
+![](./screenshots/BarChart.gif)
+
 ### Area Chart
 
-TODO: Gifs
-
----
+![](./screenshots/AreaChart.gif)
 
 ## Installation
-
----
 
 ```console
 $ npm install react-native-slide-charts --save
@@ -45,8 +43,4 @@ $ yarn add react-native-slide-charts
 
 Make sure the version of the native module packages chosen works with the `react-native` version of the project. Manually linking the projects may be required depending on the version and platform.
 
----
-
 ## Usage
-
----
