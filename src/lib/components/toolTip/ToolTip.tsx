@@ -50,9 +50,11 @@ class ToolTip extends Component<ToolTipComponentProps, State> {
   ) => {
     this.realPercentage = realPercentage
     this.toolTipPosition = { x, y, cursorMarkerHeight, standoff }
-    const { borderRadius } = this.props
+    const { borderRadius, lockTriangleCenter } = this.props
     const width = this.props.width ?? this.state.width
-    const labelPosition = x - (width / 10) - borderRadius - ((width - (width / 5) - (2 * borderRadius)) * realPercentage)
+    const labelPosition = lockTriangleCenter ?
+      x - (width / 2) :
+      x - (width / 10) - borderRadius - ((width - (width / 5) - (2 * borderRadius)) * realPercentage)
     if (this.toolTip.current != null) {
       this.toolTip.current.setNativeProps({
         top: y - cursorMarkerHeight / 2 - (this.state.height + width / 5) - standoff,
@@ -71,9 +73,11 @@ class ToolTip extends Component<ToolTipComponentProps, State> {
 
   // Set toolTip X position only
   setNativeToolTipPositionPropX = (x: number, realPercentage: number) => {
-    const { borderRadius } = this.props
+    const { borderRadius, lockTriangleCenter } = this.props
     const width = this.props.width ?? this.state.width
-    const labelPosition = x - (width / 10) - borderRadius - ((width - (width / 5) - (2 * borderRadius)) * realPercentage)
+    const labelPosition = lockTriangleCenter ?
+      x - (width / 2) :
+      x - (width / 10) - borderRadius - ((width - (width / 5) - (2 * borderRadius)) * realPercentage)
     if (this.toolTip.current != null) {
       this.toolTip.current.setNativeProps({ left: labelPosition })
     }

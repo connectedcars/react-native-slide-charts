@@ -25,6 +25,7 @@ type SharedChartComponentProps = {
   showIndicatorCallback?: (opacity: number) => void
   onPress?: () => void
   style?: StyleProp<ViewStyle>
+  scrollable?: boolean
 }
 
 type SharedChartProps = SharedChartComponentProps & {

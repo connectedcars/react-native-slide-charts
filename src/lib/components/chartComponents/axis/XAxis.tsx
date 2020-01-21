@@ -66,7 +66,7 @@ class XAxis extends Component<XAxisComponentProps> {
       axisLabelAlignment, scaleY, yRange, labelTopPadding, axisLabelStyle, height, labelBottomOffset,
       axisLabel, data, width, scaleX, axisMarkerLabels, axisWidth, paddingLeft, paddingRight
     } = this.props
-    const stopX = data.length > 0 ? scaleX(data[data.length - 1].x) : width - paddingRight
+    const stopX = data.length > 1 ? scaleX(data[data.length - 1].x) : width - paddingRight
 
     // Align label at start, end, or center of graph
     const labelAnchor = axisLabelAlignment === XAxisLabelAlignment.right ? 'end' :

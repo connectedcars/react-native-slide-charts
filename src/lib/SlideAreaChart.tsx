@@ -356,7 +356,7 @@ class SlideAreaChart extends Component<SlideAreaChartComponentProps, State> {
   }
 
   renderTouchable() {
-    const { onPress, axisWidth, shouldCancelWhenOutside, paddingLeft, paddingRight } = this.props
+    const { onPress, axisWidth, shouldCancelWhenOutside, paddingLeft, paddingRight, scrollable } = this.props
     const { x } = this.state
 
     /**
@@ -394,7 +394,7 @@ class SlideAreaChart extends Component<SlideAreaChartComponentProps, State> {
           shouldCancelWhenOutside={shouldCancelWhenOutside}
           minPointers={0}
           activeOffsetX={[-3, 3]}
-          failOffsetY={[-6, 6]}
+          failOffsetY={scrollable ? [-6, 6] : undefined}
           onGestureEvent={Animated.event([{ nativeEvent: { x } }], { useNativeDriver: true })}
 
           /**
