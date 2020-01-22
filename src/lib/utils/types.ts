@@ -66,9 +66,7 @@ type SharedChartDefaultProps = {
 }
 
 type SharedBarChartProps = {
-  renderYAxisHorizontalLineGradient?: (
-    props: GradientProps & { count: number }
-  ) => JSX.Element | null
+  barSelectedColor?: string
   barFillColor?: string
   barWidth?: number
   hideSelection?: boolean
