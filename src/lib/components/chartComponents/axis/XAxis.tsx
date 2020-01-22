@@ -21,13 +21,15 @@ class XAxis extends Component<XAxisComponentProps> {
 
   // Only update axis if the data, height, or width changes
   shouldComponentUpdate(nextProps: XAxisComponentProps) {
-    const { data, axisMarkerLabels, width, height } = this.props
+    const { data, axisMarkerLabels, width, height, axisHeight, axisWidth } = this.props
     if (
       data.length !== nextProps.data.length
       || JSON.stringify(data) !== JSON.stringify(nextProps.data)
       || JSON.stringify(axisMarkerLabels) !== JSON.stringify(nextProps.axisMarkerLabels)
       || width !== nextProps.width
       || height !== nextProps.height
+      || axisHeight !== nextProps.axisHeight
+      || axisWidth !== nextProps.axisWidth
     ) {
       return true
     }

@@ -58,12 +58,14 @@ class YAxis extends Component<YAxisComponentProps> {
 
   // Only update axis if the data or width changes
   shouldComponentUpdate(nextProps: YAxisComponentProps) {
-    const { data, width, height } = this.props
+    const { data, width, height, axisHeight, axisWidth } = this.props
     if (
       data.length !== nextProps.data.length
       || JSON.stringify(data) !== JSON.stringify(nextProps.data)
       || width !== nextProps.width
       || height !== nextProps.height
+      || axisHeight !== nextProps.axisHeight
+      || axisWidth !== nextProps.axisWidth
     ) {
       return true
     }
