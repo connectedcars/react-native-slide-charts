@@ -25,7 +25,7 @@ class SlideAreaChart extends Component<SlideAreaChartComponentProps, State> {
 
   static defaultProps: SlideAreaChartDefaultProps = {
     data: [],
-    xScale: 'time',
+    xScale: 'linear',
     cursorProps: {
       cursorMarkerHeight: 24,
       cursorMarkerWidth: 24,
@@ -34,7 +34,7 @@ class SlideAreaChart extends Component<SlideAreaChartComponentProps, State> {
     renderFillGradient: defaultAreaChartFillGradient,
     graphLineColor: '#0081EB',
     graphLineWidth: 3,
-    graphPaddingTop: 16,
+    chartPaddingTop: 16,
     paddingTop: 8,
     paddingBottom: 0,
     paddingLeft: 8,
@@ -573,7 +573,7 @@ class SlideAreaChart extends Component<SlideAreaChartComponentProps, State> {
       paddingBottom,
       paddingLeft,
       paddingRight,
-      graphPaddingTop,
+      chartPaddingTop,
       onPress,
     } = this.props
 
@@ -592,7 +592,7 @@ class SlideAreaChart extends Component<SlideAreaChartComponentProps, State> {
         .range([axisWidth + paddingLeft, width - paddingRight])
     this.scaleY = scaleLinear()
       .domain([yRangeCalculated[0], yRangeCalculated[1]])
-      .range([height - axisHeight - paddingBottom, paddingTop + graphPaddingTop])
+      .range([height - axisHeight - paddingBottom, paddingTop + chartPaddingTop])
 
     const startLine = animated ?
       this.calculateStartLine() :

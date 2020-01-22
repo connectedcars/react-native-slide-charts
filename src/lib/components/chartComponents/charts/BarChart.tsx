@@ -10,7 +10,7 @@ import { BarChartProps } from './utils/types'
 
 type State = {
   y: Animated.Value
-  data: Array<{ x: number | Date, y: number }>
+  data: Array<{ x: number | Date; y: number }>
 }
 
 class BarChart extends Component<BarChartProps, State> {

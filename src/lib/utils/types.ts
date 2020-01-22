@@ -32,7 +32,7 @@ type SharedChartProps = SharedChartComponentProps & {
   xScale?: 'time' | 'linear'
   axisWidth?: number
   axisHeight?: number
-  graphPaddingTop?: number
+  chartPaddingTop?: number
   paddingTop?: number
   paddingBottom?: number
   paddingLeft?: number
@@ -52,7 +52,7 @@ type SharedChartDefaultProps = {
   width: number
   axisWidth: number
   axisHeight: number
-  graphPaddingTop: number
+  chartPaddingTop: number
   paddingTop: number
   paddingBottom: number
   paddingLeft: number

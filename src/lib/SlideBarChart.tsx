@@ -27,8 +27,8 @@ class SlideBarChart extends Component<SlideBarChartComponentProps, State> {
 
   static defaultProps: SlideBarChartDefaultProps = {
     data: [],
-    xScale: 'time',
-    graphPaddingTop: 16,
+    xScale: 'linear',
+    chartPaddingTop: 16,
     paddingTop: 8,
     paddingBottom: 0,
     paddingLeft: 8,
@@ -168,10 +168,10 @@ class SlideBarChart extends Component<SlideBarChartComponentProps, State> {
 
   // Animates the re-rendering of the graph vertically only
   animateGraphReRender = (value: number) => {
-    const { height, paddingTop, axisHeight, paddingBottom, graphPaddingTop } = this.props
+    const { height, paddingTop, axisHeight, paddingBottom, chartPaddingTop } = this.props
     const scaleY = scaleLinear()
       .domain([this.previousYRange[0], this.previousYRange[1]])
-      .range([height - axisHeight - paddingBottom, paddingTop + graphPaddingTop])
+      .range([height - axisHeight - paddingBottom, paddingTop + chartPaddingTop])
     const y = scaleY(this.previousData[this.previousSelectedBarNumber]?.y ?? 0)
 
     // Move the tool tip vertically
@@ -633,7 +633,7 @@ class SlideBarChart extends Component<SlideBarChartComponentProps, State> {
       paddingBottom,
       paddingLeft,
       paddingRight,
-      graphPaddingTop,
+      chartPaddingTop,
       hideSelection,
       onPress,
       barSelectedColor,
@@ -654,7 +654,7 @@ class SlideBarChart extends Component<SlideBarChartComponentProps, State> {
         .range([axisWidth + paddingLeft, width - paddingRight])
     this.scaleY = scaleLinear()
       .domain([yRangeCalculated[0], yRangeCalculated[1]])
-      .range([height - axisHeight - paddingBottom, paddingTop + graphPaddingTop])
+      .range([height - axisHeight - paddingBottom, paddingTop + chartPaddingTop])
 
     return (
       <View style={[
