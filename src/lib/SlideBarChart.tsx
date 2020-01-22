@@ -636,6 +636,7 @@ class SlideBarChart extends Component<SlideBarChartComponentProps, State> {
       graphPaddingTop,
       hideSelection,
       onPress,
+      barSelectedColor,
     } = this.props
 
     this.graphWidth = width - axisWidth - paddingLeft - paddingRight
@@ -690,6 +691,7 @@ class SlideBarChart extends Component<SlideBarChartComponentProps, State> {
           barSpacing={barSpacing}
           barFillColor={barFillColor}
           hideSelection={!!onPress || hideSelection}
+          barSelectedColor={barSelectedColor}
           animated={animated}
           yAxisProps={yAxisProps}
           xAxisProps={xAxisProps}
