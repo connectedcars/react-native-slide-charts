@@ -543,10 +543,8 @@ If [`alwaysShowIndicator`](#alwaysshowindicator) is `false` this function is fir
 <td align="center">
 
 ```ts
-{
-backgroundColor:
-'#fff'
-}
+{ backgroundColor:
+'#fff' }
 ```
 
 </td>
