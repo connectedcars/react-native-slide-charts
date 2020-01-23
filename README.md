@@ -66,6 +66,26 @@ import {
 } from 'react-native-slide-charts'
 ```
 
+To get started you can render an empty chart:
+
+```jsx
+<SlideAreaChart />
+```
+
+But it will be more visually useful for configuring to use some test [data](#data).
+
+```jsx
+<SlideBarChart
+  data={[
+    { x: 0, y: 0 },
+    { x: 1, y: 1 },
+    { x: 2, y: 2 },
+    { x: 3, y: 3 },
+    { x: 4, y: 4 },
+  ]}
+/>
+```
+
 ### Charts
 
 #### Common Props:
@@ -913,11 +933,9 @@ TODO: add link<br/>
 <td align="center">
 
 ```ts
-{
-cursorMarkerHeight: 24,
+{ cursorMarkerHeight: 24,
 cursorMarkerWidth: 24,
-cursorWidth: 2,
-}
+cursorWidth: 2 }
 ```
 
 </td>
@@ -935,8 +953,7 @@ Props for `Cursor` that follows the touch.
 <td align="center">
 
 ```ts
-shape
-.CurveFactory
+shape.CurveFactory
 | shape
 .CurveFactoryLineOnly
 ```
@@ -945,14 +962,13 @@ shape
 <td align="center">
 
 ```ts
-shape
-.curveMonotoneX
+shape.curveMonotoneX
 ```
 
 </td>
 <td align="left">
 
-Type of curve to use for the area graph from [`d3-shape`](https://github.com/d3/d3-shape#curves).
+Type of curve to use for the area chart from [`d3-shape`](https://github.com/d3/d3-shape#curves).
 
 </td>
 </tr>
@@ -996,6 +1012,297 @@ Color for the line designating the area charted.
 <td align="left">
 
 Width of the line designating the area charted.
+
+</td>
+</tr>
+</tbody>
+</table>
+
+### Axis
+
+#### Common Props:
+
+<table>
+<thead>
+<tr>
+<td align="center">
+  Prop
+</td>
+<td align="center">
+  Type
+</td>
+<td align="center">
+  Default
+</td>
+<td align="left">
+  Note
+</td>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center">
+  
+  ##### `axisLabel`
+</td>
+<td align="center">
+
+`string`
+
+</td>
+<td align="center">
+
+`undefined`
+
+</td>
+<td align="left">
+
+Label for the axis.
+
+</td>
+</tr>
+<tr>
+<td align="center">
+  
+  ##### `axisLabelStyle`
+</td>
+<td align="center">
+
+```ts
+TSpanProps &
+{ color: string }
+```
+
+</td>
+<td align="center">
+
+```ts
+{ fontSize: 13,
+color: '#777' }
+```
+
+</td>
+<td align="left">
+
+Styling for label, extends [`TSpanProps`](https://github.com/react-native-community/react-native-svg/blob/master/src/index.d.ts) from `react-native-svg` with type `color`.
+
+</td>
+</tr>
+<tr>
+<td align="center">
+  
+  ##### `labelTopPadding`
+</td>
+<td align="center">
+
+`number`
+
+</td>
+<td align="center">
+
+`4`
+
+</td>
+<td align="left">
+
+Space above the label to offset it from either the top of the component or the bottom of the chart.
+
+</td>
+</tr>
+</tbody>
+</table>
+
+
+#### X-Axis Props:
+
+<table>
+<thead>
+<tr>
+<td align="center">
+  Prop
+</td>
+<td align="center">
+  Type
+</td>
+<td align="center">
+  Default
+</td>
+<td align="left">
+  Note
+</td>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center">
+  
+  ##### `adjustForSpecialMarkers`
+</td>
+<td align="center">
+
+`boolean`
+
+</td>
+<td align="center">
+
+`false`
+
+</td>
+<td align="left">
+TODO:
+If [`specialStartmarker`]() or [`specialEndMarker`]() are set it adjusts the text to left or right align to the edge of the chart.
+
+</td>
+</tr>
+<tr>
+<td align="center">
+  
+  ##### `axisLabelAlignment`
+</td>
+<td align="center">
+
+`XAxisLabelAlignment`
+
+</td>
+<td align="center">
+
+```ts
+XAxisLabelAlignment.right
+```
+
+</td>
+<td align="left">
+
+Position for the axis label below the chart.
+
+</td>
+</tr>
+<tr>
+<td align="center">
+  
+  ##### `axisMarkerLabels`
+</td>
+<td align="center">
+
+```ts
+string[]
+```
+
+</td>
+<td align="center">
+
+`[]`
+
+</td>
+<td align="left">
+
+Array of labels placed below the chart, these will line up with the bars if there are an adequate amount, or space evenly otherwise.
+
+</td>
+</tr>
+<tr>
+<td align="center">
+  
+  ##### `labelBottomOffset`
+</td>
+<td align="center">
+
+`number`
+
+</td>
+<td align="center">
+
+`0`
+
+</td>
+<td align="left">
+
+If [`axisMarkerLabels`](#axismarkerlabels) and [`axisLabel`](#axislabel) the `axisLabel` will bottom justify and this offset will apply to it.
+
+</td>
+</tr>
+<tr>
+<td align="center">
+  
+  ##### `markerSpacing`
+</td>
+<td align="center">
+
+`number`
+
+</td>
+<td align="center">
+
+`undefined`
+
+</td>
+<td align="left">
+
+If [`axisMarkerLabels`](#axismarkerlabels) are overcrowded a number of empty spaces can be given to set between each marker shown.
+
+</td>
+</tr>
+</tr>
+<tr>
+<td align="center">
+  
+  ##### `markerTopPadding`
+</td>
+<td align="center">
+
+`number`
+
+</td>
+<td align="center">
+
+`4`
+
+</td>
+<td align="left">
+
+The axis markers are top justified below the chart, this is the space between the marker and the chart.
+
+</td>
+</tr>
+<tr>
+<td align="center">
+  
+  ##### `minimumSpacing`
+</td>
+<td align="center">
+
+`number`
+
+</td>
+<td align="center">
+
+`0`
+
+</td>
+<td align="left">
+TODO:
+The first and last marker are always shown then the rest are layed out left to right, if the marker before the final one would layout closer than [`markerSpacing`](#markerspacing) to the final marker, this can be avoided with minimum spacing. This is also useful in making room for a [`specialEndMarker`]().
+
+</td>
+</tr>
+<tr>
+<td align="center">
+  
+  ##### `specialEndMarker`
+</td>
+<td align="center">
+
+`string`
+
+</td>
+<td align="center">
+
+`undefined`
+
+</td>
+<td align="left">
+TODO:
+The first and last marker are always shown then the rest are layed out left to right, if the marker before the final one would layout closer than [`markerSpacing`](#markerspacing) to the final marker, this can be avoided with minimum spacing. This is also useful in making room for a [`specialEndMarker`]().
 
 </td>
 </tr>
