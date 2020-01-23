@@ -223,6 +223,28 @@ Callback function that provides the current cursor position `y`. As this is firi
 <tr>
 <td align="center">
   
+  ##### `chartPaddingTop`
+</td>
+<td align="center">
+
+`number`
+
+</td>
+<td align="center">
+
+`16`
+
+</td>
+<td align="left">
+
+TODO: LINK
+Pushes the rendered height of the data within the chart down to make room for the `ToolTip` at the max. The `ToolTip` will render outside of the chart component if desired so this can be set to `0` or adjusted for using [`paddingTop`](#paddingtop) or [`style`](#style) if desired.
+
+</td>
+</tr>
+<tr>
+<td align="center">
+  
   ##### `data`
 </td>
 <td align="center">
@@ -250,22 +272,21 @@ Data that will be displayed on the chart. This must be an array of object with `
 <tr>
 <td align="center">
   
-  ##### `chartPaddingTop`
+  ##### `fillColor`
 </td>
 <td align="center">
 
-`number`
+`string`
 
 </td>
 <td align="center">
 
-`16`
+`undefined`
 
 </td>
 <td align="left">
 
-TODO: LINK
-Pushes the rendered height of the data within the chart down to make room for the `ToolTip` at the max. The `ToolTip` will render outside of the chart component if desired so this can be set to `0` or adjusted for using [`paddingTop`](#paddingtop) or [`style`](#style) if desired.
+Color to fill the bars of the bar chart or area of the area chart. Takes precedence over [`renderFillGradient`](#renderfillgradient) when applied.
 
 </td>
 </tr>
@@ -435,7 +456,7 @@ Function that returns a custom gradient to fill the bars of the bar chart or are
 </td>
 <td align="center">
 
-`undefined`
+`false`
 
 </td>
 <td align="left">
@@ -697,6 +718,284 @@ Max and Min value of `y` in [`data`](#data) array
 
 TODO: link
 The range for the `YAxis` of the chart to be rendered using.
+
+</td>
+</tr>
+</tbody>
+</table>
+
+#### Bar Chart Props:
+
+<table>
+<thead>
+<tr>
+<td align="center">
+  Prop
+</td>
+<td align="center">
+  Type
+</td>
+<td align="center">
+  Default
+</td>
+<td align="left">
+  Note
+</td>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center">
+  
+  ##### `barSelectedColor`
+</td>
+<td align="center">
+
+`string`
+
+</td>
+<td align="center">
+
+`undefined`
+
+</td>
+<td align="left">
+
+Sets the bar color for the selected bar. Takes precedence over [`renderSelectedFillGradient`](#renderselectedfillgradient).
+
+</td>
+</tr>
+<tr>
+<td align="center">
+  
+  ##### `barSpacing`
+</td>
+<td align="center">
+
+`number`
+
+</td>
+<td align="center">
+
+`1`
+
+</td>
+<td align="left">
+
+Sets the space that should be rendered between each bar on the bar chart.
+
+</td>
+</tr>
+<tr>
+<td align="center">
+  
+  ##### `barWidth`
+</td>
+<td align="center">
+
+`number`
+
+</td>
+<td align="center">
+
+`undefined`
+
+</td>
+<td align="left">
+
+Sets the width of each bar, takes precedence over [`barSpacing`](#barspacing) when applied.
+
+</td>
+</tr>
+</tr>
+<tr>
+<td align="center">
+  
+  ##### `hapticFeedback`
+</td>
+<td align="center">
+
+`boolean`
+
+</td>
+<td align="center">
+
+`true`
+
+</td>
+<td align="left">
+
+Runs [`selection`](https://developer.apple.com/documentation/uikit/uiselectionfeedbackgenerator) feedback on iOS using [`react-native-haptic-feedback`](https://github.com/milk-and-cookies-io/react-native-haptic-feedback).
+
+</td>
+</tr>
+<tr>
+<td align="center">
+  
+  ##### `hideSelection`
+</td>
+<td align="center">
+
+`boolean`
+
+</td>
+<td align="center">
+
+`false`
+
+</td>
+<td align="left">
+
+Prevents [`fillColor`](#fillcolor) or [`renderSelectedFillGradient`](#renderselectedfillgradient) from being applied to the selected bar.
+
+</td>
+</tr>
+<tr>
+<td align="center">
+  
+  ##### `renderSelectedFillGradient`
+</td>
+<td align="center">
+
+```ts
+(props:
+GradientProps)
+=> JSX.Element
+| null
+```
+
+</td>
+<td align="center">
+
+TODO: GRAD
+
+</td>
+<td align="left">
+
+Function that returns a custom gradient to fill the selected bar.
+
+</td>
+</tr>
+</tbody>
+</table>
+
+#### Area Chart Props:
+
+<table>
+<thead>
+<tr>
+<td align="center">
+  Prop
+</td>
+<td align="center">
+  Type
+</td>
+<td align="center">
+  Default
+</td>
+<td align="left">
+  Note
+</td>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center">
+  
+  ##### `cursorProps`
+</td>
+<td align="center">
+
+TODO: add link<br/>
+`CursorProps`
+
+</td>
+<td align="center">
+
+```ts
+{
+cursorMarkerHeight: 24,
+cursorMarkerWidth: 24,
+cursorWidth: 2,
+}
+```
+
+</td>
+<td align="left">
+
+Props for `Cursor` that follows the touch.
+
+</td>
+</tr>
+<tr>
+<td align="center">
+  
+  ##### `curveType`
+</td>
+<td align="center">
+
+```ts
+shape
+.CurveFactory
+| shape
+.CurveFactoryLineOnly
+```
+
+</td>
+<td align="center">
+
+```ts
+shape
+.curveMonotoneX
+```
+
+</td>
+<td align="left">
+
+Type of curve to use for the area graph from [`d3-shape`](https://github.com/d3/d3-shape#curves).
+
+</td>
+</tr>
+<tr>
+<td align="center">
+  
+  ##### `chartLineColor`
+</td>
+<td align="center">
+
+`string`
+
+</td>
+<td align="center">
+
+`'#0081EB'`
+
+</td>
+<td align="left">
+
+Color for the line designating the area charted.
+
+</td>
+</tr>
+</tr>
+<tr>
+<td align="center">
+  
+  ##### `chartLineWidth`
+</td>
+<td align="center">
+
+`number`
+
+</td>
+<td align="center">
+
+`3`
+
+</td>
+<td align="left">
+
+Width of the line designating the area charted.
 
 </td>
 </tr>

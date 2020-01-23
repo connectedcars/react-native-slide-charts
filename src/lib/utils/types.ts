@@ -92,15 +92,15 @@ export type SlideBarChartComponentProps = SlideBarChartDefaultProps &
 export type SlideAreaChartProps = SharedChartProps & {
   curveType?: shape.CurveFactory | shape.CurveFactoryLineOnly
   cursorProps?: CursorProps
-  graphLineColor?: string
-  graphLineWidth?: number
+  chartLineColor?: string
+  chartLineWidth?: number
 }
 
 export type SlideAreaChartDefaultProps = SharedChartDefaultProps & {
   curveType: shape.CurveFactory | shape.CurveFactoryLineOnly
   cursorProps: CursorProps
-  graphLineColor: string
-  graphLineWidth: number
+  chartLineColor: string
+  chartLineWidth: number
 }
 
 export type SlideAreaChartComponentProps = SlideAreaChartDefaultProps &

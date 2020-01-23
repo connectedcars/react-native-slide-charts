@@ -46,11 +46,11 @@ class AreaChart extends Component<AreaChartProps> {
       xAxisProps,
       yAxisProps,
       axisWidth,
-      graphLineWidth,
+      chartLineWidth,
       yRange,
       renderFillGradient,
       fillColor,
-      graphLineColor,
+      chartLineColor,
       data,
       scaleX,
       axisHeight,
@@ -106,8 +106,8 @@ class AreaChart extends Component<AreaChartProps> {
           ref={this.animatedPathRef}
           d={line}
           fill='transparent'
-          stroke={graphLineColor}
-          strokeWidth={graphLineWidth}
+          stroke={chartLineColor}
+          strokeWidth={chartLineWidth}
         />
       </Svg>
     )

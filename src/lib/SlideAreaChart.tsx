@@ -32,8 +32,8 @@ class SlideAreaChart extends Component<SlideAreaChartComponentProps, State> {
       cursorWidth: 2,
     },
     renderFillGradient: defaultAreaChartFillGradient,
-    graphLineColor: '#0081EB',
-    graphLineWidth: 3,
+    chartLineColor: '#0081EB',
+    chartLineWidth: 3,
     chartPaddingTop: 16,
     paddingTop: 8,
     paddingBottom: 0,
@@ -556,7 +556,7 @@ class SlideAreaChart extends Component<SlideAreaChartComponentProps, State> {
       style,
       data,
       xScale,
-      graphLineWidth,
+      chartLineWidth,
       xAxisProps,
       yAxisProps,
       toolTipProps,
@@ -567,7 +567,7 @@ class SlideAreaChart extends Component<SlideAreaChartComponentProps, State> {
       width,
       fillColor,
       renderFillGradient,
-      graphLineColor,
+      chartLineColor,
       axisHeight,
       animated,
       paddingBottom,
@@ -626,8 +626,8 @@ class SlideAreaChart extends Component<SlideAreaChartComponentProps, State> {
           axisHeight={axisHeight}
           renderFillGradient={renderFillGradient}
           fillColor={fillColor}
-          graphLineColor={graphLineColor}
-          graphLineWidth={graphLineWidth}
+          chartLineColor={chartLineColor}
+          chartLineWidth={chartLineWidth}
           paddingLeft={paddingLeft}
           paddingRight={paddingRight}
           paddingBottom={paddingBottom}

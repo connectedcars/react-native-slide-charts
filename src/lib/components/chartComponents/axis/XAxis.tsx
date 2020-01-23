@@ -51,7 +51,7 @@ class XAxis extends Component<XAxisComponentProps> {
         x={x}
         y={y}
         fill={fill}
-        alignmentBaseline={alignmentBaseline ?? 'hanging'}
+        alignmentBaseline={alignmentBaseline || 'hanging'}
         textAnchor={textAnchor}
         key={key}
       >
@@ -180,7 +180,7 @@ class XAxis extends Component<XAxisComponentProps> {
       }
 
       // If there is a label given for every item we line up items directly under each bar
-      if ((barWidth ?? barSpacing) && numberOfBars > 0 && numberOfBars === numberOfMarks) {
+      if ((barWidth || barSpacing) && numberOfBars > 0 && numberOfBars === numberOfMarks) {
         if (barWidth) {
           const barSpacingFromWidth = (graphWidth - (numberOfBars * barWidth)) / (numberOfBars > 1 ? numberOfBars - 1 : 2)
           markerX = numberOfBars > 1 ?

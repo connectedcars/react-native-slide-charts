@@ -36,6 +36,6 @@ export type BarChartProps = SharedChartProps & {
 
 export type AreaChartProps = SharedChartProps & {
   line: string
-  graphLineColor: string
-  graphLineWidth: number
+  chartLineColor: string
+  chartLineWidth: number
 }

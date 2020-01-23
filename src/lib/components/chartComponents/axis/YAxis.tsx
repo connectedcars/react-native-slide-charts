@@ -46,7 +46,7 @@ class YAxis extends Component<YAxisComponentProps> {
         y={y}
         fill={fill}
         alignmentBaseline={alignmentBaseline}
-        textAnchor={textAnchor ?? 'end'}
+        textAnchor={textAnchor || 'end'}
         key={key}
         transform={rotated ? `rotate(270, ${x}, ${y})` : undefined}
       >
