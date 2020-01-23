@@ -66,35 +66,635 @@ import {
 } from 'react-native-slide-charts'
 ```
 
-### Common Props:
+### Charts
 
-|           Prop            |                                    Type                                    |                                                                                                                                           Default                                                                                                                                            | Note                                                                                                                                                                                                                                                                                                               |
-| :-----------------------: | :------------------------------------------------------------------------: | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------: | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-|   `alwaysShowIndicator`   |                                 `boolean`                                  |                                                                                                                                            `true`                                                                                                                                            | Determines if the indicator for the chart should be visible always or just when being touched.<br/><br/>For `SlideAreaChart` the indicator is the `CursorMarker`, `CursorLine`, and `ToolTip`.<br/><br/>For `SlideBarChart` the indicator is the `barSelectedColor` or `renderSelectedFillGradient` and `ToolTip`. |
-|        `animated`         |                                 `boolean`                                  |                                                                                                                                            `true`                                                                                                                                            | Animates the charts on mounting and between prop updates.                                                                                                                                                                                                                                                          |
-|       `axisHeight`        |                                  `number`                                  |                                                                                                                                             `0`                                                                                                                                              | Height of the area below the chart for the X-Axis markers and label to render in.                                                                                                                                                                                                                                  |
-|        `axisWidth`        |                                  `number`                                  |                                                                                                                                             `0`                                                                                                                                              | Width of the area left of the chart for the Y-Axis markers and label to render in.                                                                                                                                                                                                                                 |
-|      `callbackWithX`      |               <pre lang="typescript">(x: number \| Date) =>                |
-|        void</pre>         |                                `undefined`                                 | Callback function that provides the current cursor position `x`. As this is firing off of a continuous animation and not state usage should match appropriately.<br/><br/>e.g. This can be used in conjunction with an array of timed gps points to move an indicator along a path on a map. |
-|      `callbackWithY`      |              <pre lang="typescript">(y: number) => void</pre>              |                                                                                                                                         `undefined`                                                                                                                                          | Callback function that provides the current cursor position `y`. As this is firing off of a continuous animation and not state usage should match appropriately.<br/><br/>e.g. This can be used with direct manipulation on a `TextInput` to display the current value outside the chart.                          |
-|          `data`           |    <pre lang="typescript">Array<{ x: number \| Date, y: number }></pre>    |                                                                                                                                             [ ]                                                                                                                                              | Data that will be displayed on the chart. This must be an array of object with `x` and `y` values with the `x` increasing as the chart does not sort the array before use and will render incorrectly otherwise.                                                                                                   |
-|     `chartPaddingTop`     |                                  `number`                                  |                                                                                                                                             `16`                                                                                                                                             | Pushes the rendered height of the data within the chart down to make room for the `toolTip` at the max. The `toolTip` will render outside of the chart component if desired so this can be set to `0` or adjusted for with `paddingTop` or styling if desired.                                                     |
-|         `height`          |                                  `number`                                  |                                                                                                                                            `200`                                                                                                                                             | Height of the entire chart component.                                                                                                                                                                                                                                                                              |
-|         `onPress`         |                  <pre lang="typescript">() => void</pre>                   |                                                                                                                                         `undefined`                                                                                                                                          | If provided the chart will not be interactive and instead can be pressed.                                                                                                                                                                                                                                          |
-|      `paddingBottom`      |                                  `number`                                  |                                                                                                                                             `0`                                                                                                                                              | Bottom padding as it can not be applied via styles to the chart component.                                                                                                                                                                                                                                         |
-|       `paddingLeft`       |                                  `number`                                  |                                                                                                                                             `8`                                                                                                                                              | Left padding as it can not be applied via styles to the chart component.                                                                                                                                                                                                                                           |
-|      `paddingRight`       |                                  `number`                                  |                                                                                                                                             `8`                                                                                                                                              | Right padding as it can not be applied via styles to the chart component.                                                                                                                                                                                                                                          |
-|       `paddingTop`        |                                  `number`                                  |                                                                                                                                             `0`                                                                                                                                              | Top padding as it can not be applied via styles to the chart component.                                                                                                                                                                                                                                            |
-|   `renderFillGradient`    | <pre lang="typescript">(props: GradientProps) => JSX.Element \| null</pre> |                                                                                                                                      TODO: PUT GRADIENT                                                                                                                                      | Function that returns a custom gradient to fill the bars of the bar chart or area of the area chart.                                                                                                                                                                                                               |
-|       `scrollable`        |                                 `boolean`                                  |                                                                                                                                         `undefined`                                                                                                                                          | Ensure touch is passed to `scrollView` on `y` movement if component is inside `scrollView`.                                                                                                                                                                                                                        |
-| `shouldCancelWhenOutside` |                                 `boolean`                                  |                                                                                                                                            `true`                                                                                                                                            | Terminates touch outside the chart component.                                                                                                                                                                                                                                                                      |
-|  `showIndicatorCallback`  |           <pre lang="typescript">(opacity: number) => void</pre>           |                                                                                                                                         `undefined`                                                                                                                                          | If `alwaysShowIndicator` is `false` this function is fired with the current indicator opacity whenever the indicator appears or disappears.                                                                                                                                                                        |
-|          `style`          |                                `ViewStyle`                                 |                                                                                                                 <pre lang="typescript">{ backgroundColor: '#ffffff' }</pre>                                                                                                                  | Style of chart component.                                                                                                                                                                                                                                                                                          |
-|     `throttleAndroid`     |                                 `boolean`                                  |                                                                                                                                           `false`                                                                                                                                            | On some slower Android devices there may be too many calls across the bridge that it can cause some lagging of the indicator movement, this limits the flow on Android with little noticeable change in the interaction.                                                                                           |
-|      `toolTipProps`       |                               `ToolTipProps`                               |                                                                                                                                         `undefined`                                                                                                                                          | Props for rendering the `ToolTip`.                                                                                                                                                                                                                                                                                 |
-|          `width`          |                                  `number`                                  |                                                                                                                 <pre lang="typescript">Dimensions.get('window').width</pre>                                                                                                                  | Width of the entire chart.                                                                                                                                                                                                                                                                                         |
-|       `xAxisProps`        |                                `XAxisProps`                                |                                                                                                                                         `undefined`                                                                                                                                          | Props for rendering the `XAxis`.                                                                                                                                                                                                                                                                                   |
-|         `xRange`          |       <pre lang="typescript">[number, number] \| [Date, Date]</pre>        |                                                                                                                    Value of `x` in first and last object in `data` array                                                                                                                     | The range for the `XAxis` of the chart to be rendered using.                                                                                                                                                                                                                                                       |
-|         `xScale`          |              <pre lang="typescript">'time' \| 'linear'</pre>               |                                                                                                                                           `linear`                                                                                                                                           | Determines the applied `d3` scale of the chart.                                                                                                                                                                                                                                                                    |
-|       `yAxisProps`        |                                `YAxisProps`                                |                                                                                                                                         `undefined`                                                                                                                                          | Props for rendering the YAxis.                                                                                                                                                                                                                                                                                     |
-|         `yRange`          |               <pre lang="typescript">[number, number]</pre>                |                                                                                                                           Max and Min value of `y` in `data` array                                                                                                                           | The range for the `YAxis` of the chart to be rendered using.                                                                                                                                                                                                                                                       |
+#### Common Props:
+
+<table>
+<thead>
+<tr>
+<td align="center">
+  Prop
+</td>
+<td align="center">
+  Type
+</td>
+<td align="center">
+  Default
+</td>
+<td align="left">
+  Note
+</td>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center">
+  
+  #### `alwaysShowIndicator`
+</td>
+<td align="center">
+
+`boolean`
+
+</td>
+<td align="center">
+
+`true`
+
+</td>
+<td align="left">
+
+Determines if the indicator for the chart should be visible always or just when being touched.<br/><br/>For `SlideAreaChart` the indicator is the `CursorMarker`, `CursorLine`, and `ToolTip`.<br/><br/>For `SlideBarChart` the indicator is the `barSelectedColor` or `renderSelectedFillGradient` and `ToolTip`.
+
+</td>
+</tr>
+<tr>
+<td align="center">
+  
+  #### `animated`
+</td>
+<td align="center">
+
+`boolean`
+
+</td>
+<td align="center">
+
+`true`
+
+</td>
+<td align="left">
+
+Animates the charts on mounting and between prop updates.
+
+</td>
+</tr>
+<tr>
+<td align="center">
+  
+  #### `axisHeight`
+</td>
+<td align="center">
+
+`number`
+
+</td>
+<td align="center">
+
+`0`
+
+</td>
+<td align="left">
+
+Height of the area below the chart for the X-Axis markers and label to render in.
+
+</td>
+</tr>
+<tr>
+<td align="center">
+  
+  #### `axisWidth`
+</td>
+<td align="center">
+
+`number`
+
+</td>
+<td align="center">
+
+`0`
+
+</td>
+<td align="left">
+
+Width of the area left of the chart for the Y-Axis markers and label to render in.
+
+</td>
+</tr>
+<tr>
+<td align="center">
+  
+  #### `callbackWithX`
+</td>
+<td align="center">
+
+```ts
+(x: number | Date)
+=> void
+```
+
+</td>
+<td align="center">
+
+`undefined`
+
+</td>
+<td align="left">
+
+Callback function that provides the current cursor position `x`. As this is firing off of a continuous animation and not state usage should match appropriately.<br/><br/>e.g. This can be used in conjunction with an array of timed gps points to move an indicator along a path on a map.
+
+</td>
+</tr>
+<tr>
+<td align="center">
+  
+  #### `callbackWithY`
+</td>
+<td align="center">
+
+```ts
+(y: number)
+=> void
+```
+
+</td>
+<td align="center">
+
+`undefined`
+
+</td>
+<td align="left">
+
+Callback function that provides the current cursor position `y`. As this is firing off of a continuous animation and not state usage should match appropriately.<br/><br/>e.g. This can be used with direct manipulation on a `TextInput` to display the current value outside the chart.
+
+</td>
+</tr>
+<tr>
+<td align="center">
+  
+  #### `data`
+</td>
+<td align="center">
+
+```ts
+Array<{
+  x: number
+  | Date,
+  y: number
+}>
+```
+
+</td>
+<td align="center">
+
+`[]`
+
+</td>
+<td align="left">
+
+Data that will be displayed on the chart. This must be an array of object with `x` and `y` values with the `x` increasing as the chart does not sort the array before use and will render incorrectly otherwise.
+
+</td>
+</tr>
+<tr>
+<td align="center">
+  
+  #### `chartPaddingTop`
+</td>
+<td align="center">
+
+`number`
+
+</td>
+<td align="center">
+
+`16`
+
+</td>
+<td align="left">
+
+TODO: LINK
+Pushes the rendered height of the data within the chart down to make room for the `ToolTip` at the max. The `ToolTip` will render outside of the chart component if desired so this can be set to `0` or adjusted for using [`paddingTop`](#paddingtop) or [`style`](#style) if desired.
+
+</td>
+</tr>
+<tr>
+<td align="center">
+  
+  #### `height`
+</td>
+<td align="center">
+
+`number`
+
+</td>
+<td align="center">
+
+`200`
+
+</td>
+<td align="left">
+
+Height of the entire chart component.
+
+</td>
+</tr>
+<tr>
+<td align="center">
+  
+  #### `onPress`
+</td>
+<td align="center">
+
+```ts
+() => void
+```
+
+</td>
+<td align="center">
+
+`undefined`
+
+</td>
+<td align="left">
+
+If provided the chart will not be interactive and instead can be pressed.
+
+</td>
+</tr>
+<tr>
+<td align="center">
+  
+  #### `paddingBottom`
+</td>
+<td align="center">
+
+`number`
+
+</td>
+<td align="center">
+
+`0`
+
+</td>
+<td align="left">
+
+Bottom padding as it can not be applied via styles to the chart component.
+
+</td>
+</tr>
+<tr>
+<td align="center">
+  
+  #### `paddingLeft`
+</td>
+<td align="center">
+
+`number`
+
+</td>
+<td align="center">
+
+`8`
+
+</td>
+<td align="left">
+
+Left padding as it can not be applied via styles to the chart component.
+
+</td>
+</tr>
+<tr>
+<td align="center">
+  
+  #### `paddingRight`
+</td>
+<td align="center">
+
+`number`
+
+</td>
+<td align="center">
+
+`8`
+
+</td>
+<td align="left">
+
+Right padding as it can not be applied via styles to the chart component.
+
+</td>
+</tr>
+<tr>
+<td align="center">
+  
+  #### `paddingTop`
+</td>
+<td align="center">
+
+`number`
+
+</td>
+<td align="center">
+
+`0`
+
+</td>
+<td align="left">
+
+Top padding as it can not be applied via styles to the chart component.
+
+</td>
+</tr>
+<tr>
+<td align="center">
+  
+  #### `renderFillGradient`
+</td>
+<td align="center">
+
+```ts
+(props: GradientProps)
+=> JSX.Element | null
+```
+
+</td>
+<td align="center">
+
+TODO: PUT GRADIENT
+
+</td>
+<td align="left">
+
+Function that returns a custom gradient to fill the bars of the bar chart or area of the area chart.
+
+</td>
+</tr>
+<tr>
+<td align="center">
+  
+  #### `scrollable`
+</td>
+<td align="center">
+
+`boolean`
+
+</td>
+<td align="center">
+
+`undefined`
+
+</td>
+<td align="left">
+
+Ensure touch is passed to `scrollView` on `y` movement if component is inside `scrollView`.
+
+</td>
+</tr>
+<tr>
+<td align="center">
+  
+  #### `shouldCancelWhenOutside`
+</td>
+<td align="center">
+
+`boolean`
+
+</td>
+<td align="center">
+
+`true`
+
+</td>
+<td align="left">
+
+Terminates touch outside the chart component.
+
+</td>
+</tr>
+<tr>
+<td align="center">
+  
+  #### `showIndicatorCallback`
+</td>
+<td align="center">
+
+```ts
+(opacity: number)
+=> void
+```
+
+</td>
+<td align="center">
+
+`undefined`
+
+</td>
+<td align="left">
+
+If [`alwaysShowIndicator`](#alwaysshowindicator) is `false` this function is fired with the current indicator opacity whenever the indicator appears or disappears.
+
+</td>
+</tr>
+<tr>
+<td align="center">
+  
+  #### `style`
+</td>
+<td align="center">
+
+`ViewStyle`
+
+</td>
+<td align="center">
+
+```ts
+{ backgroundColor:
+'#ffffff' }
+```
+
+</td>
+<td align="left">
+
+Style of chart component.
+
+</td>
+</tr>
+</tr>
+<tr>
+<td align="center">
+  
+  #### `throttleAndroid`
+</td>
+<td align="center">
+
+`boolean`
+
+</td>
+<td align="center">
+
+`false`
+
+</td>
+<td align="left">
+
+On some slower Android devices there may be too many calls across the bridge that it can cause some lagging of the indicator movement, this limits the calls to the queue on Android with little noticeable change in the interaction.
+
+</td>
+</tr>
+<tr>
+<td align="center">
+  
+  #### `toolTipProps`
+</td>
+<td align="center">
+
+TODO:LINK
+`ToolTipProps`
+
+</td>
+<td align="center">
+
+`undefined`
+
+</td>
+<td align="left">
+
+Props for rendering the `ToolTip`.
+
+</td>
+</tr>
+<tr>
+<td align="center">
+  
+  #### `width`
+</td>
+<td align="center">
+
+`number`
+
+</td>
+<td align="center">
+
+```ts
+Dimensions
+.get('window')
+.width
+```
+
+</td>
+<td align="left">
+
+Width of the entire chart.
+
+</td>
+</tr>
+<tr>
+<td align="center">
+  
+  #### `xAxisProps`
+</td>
+<td align="center">
+
+TODO: LINK
+`XAxisProps`
+
+</td>
+<td align="center">
+
+`undefined`
+
+</td>
+<td align="left">
+
+Props for rendering the `XAxis`.
+
+</td>
+</tr>
+<tr>
+<td align="center">
+  
+  #### `xRange`
+</td>
+<td align="center">
+
+```ts
+[number, number]
+| [Date, Date]
+```
+
+</td>
+<td align="center">
+
+Value of `x` in first and last object in [`data`](#data) array.
+
+</td>
+<td align="left">
+
+TODO: Link
+The range for the `XAxis` of the chart to be rendered using.
+
+</td>
+</tr>
+<tr>
+<td align="center">
+  
+  #### `xScale`
+</td>
+<td align="center">
+
+```ts
+'time' | 'linear'
+```
+
+</td>
+<td align="center">
+
+`'linear'`
+
+</td>
+<td align="left">
+
+Determines the applied [`d3` scale](https://www.d3indepth.com/scales/) of the chart.
+
+</td>
+</tr>
+<tr>
+<td align="center">
+  
+  #### `yAxisProps`
+</td>
+<td align="center">
+
+TODO: link
+`YAxisProps`
+
+</td>
+<td align="center">
+
+`undefined`
+
+</td>
+<td align="left">
+
+Props for rendering the YAxis.
+
+</td>
+</tr>
+<tr>
+<td align="center">
+  
+  #### `yRange`
+</td>
+<td align="center">
+
+```ts
+[number, number]
+```
+
+</td>
+<td align="center">
+
+Max and Min value of `y` in [`data`](#data) array
+
+</td>
+<td align="left">
+
+TODO: link
+The range for the `YAxis` of the chart to be rendered using.
+
+</td>
+</tr>
+</tbody>
+</table>
