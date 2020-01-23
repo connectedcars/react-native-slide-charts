@@ -1563,10 +1563,12 @@ Stroke width for horizontal lines.
 
 ```ts
 (Math.abs(
-yRange[0]
-- yRange[1]) /
-((numberOfTicks
-?? 0) + 1))
+yRange[0] -
+yRange[1]) /
+((
+numberOfTicks
+?? 0) + 1
+))
 ```
 
 </td>
