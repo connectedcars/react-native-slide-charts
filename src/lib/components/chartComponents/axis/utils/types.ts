@@ -88,8 +88,6 @@ export type YAxisMarkerProps = {
 
 type XAxisPartialProps = {
   axisLabel?: string
-  barWidth?: number
-  barSpacing?: number
   specialStartMarker?: string
   specialEndMarker?: string
   markerSpacing?: number
@@ -119,7 +117,10 @@ export type XAxisDefaultProps = {
 
 export type XAxisComponentProps = XAxisDefaultProps &
   XAxisPartialProps &
-  AxisProps
+  AxisProps & {
+    barWidth?: number
+    barSpacing?: number
+  }
 
 export type XAxisMarkerProps = {
   x: number
