@@ -1565,8 +1565,8 @@ Stroke width for horizontal lines.
 (Math.abs(
 yRange[0]
 - yRange[1]) /
-((numberOfTicks ?? 0)
-+ 1))
+((numberOfTicks
+?? 0) + 1))
 ```
 
 </td>
@@ -1690,8 +1690,9 @@ Number of ticks the chart should have, spaced via [`interval`](#interval).
 
 ```ts
 (props:
-GradientProps &
-{ count: number })
+GradientProps
+& { count:
+number })
 => JSX.Element
 | null
 ```
