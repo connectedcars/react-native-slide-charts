@@ -1402,10 +1402,12 @@ string }
 <td align="center">
 
 ```ts
-{fontSize:
+{
+fontSize:
 13,
 color:
-'#77777780'}
+'#77777780'
+}
 ```
 
 </td>
