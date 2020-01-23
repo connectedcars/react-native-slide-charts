@@ -405,8 +405,10 @@ Top padding as it can not be applied via styles to the chart component.
 <td align="center">
 
 ```ts
-(props: GradientProps)
-=> JSX.Element | null
+(props:
+GradientProps)
+=> JSX.Element
+| null
 ```
 
 </td>
