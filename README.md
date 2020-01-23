@@ -55,10 +55,8 @@ import {
   SlideAreaChartProps,
   YAxisProps,
   XAxisProps,
-  XAxisMarkerProps,
   XAxisLabelAlignment,
   YAxisLabelAlignment,
-  LabelAndAlignment,
   CursorProps,
   ToolTipProps,
   ToolTipTextRenderersInput,
@@ -286,7 +284,7 @@ Array<{
 </td>
 <td align="left">
 
-Data that will be displayed on the chart. This must be an array of object with `x` and `y` values with the `x` increasing as the chart does not sort the array before use and will render incorrectly otherwise.
+Data that will be displayed on the chart. This must be an array of objects with `x` and `y` values with the `x` increasing from index 0 onward as the chart does not sort the array before use and will render incorrectly otherwise.
 
 </td>
 </tr>
@@ -1840,3 +1838,222 @@ Stroke width of the vertial side lines.
 </tr>
 </tbody>
 </table>
+
+#### CursorProps:
+
+
+<table>
+<thead>
+<tr>
+<td align="center">
+  Prop
+</td>
+<td align="center">
+  Type
+</td>
+<td align="center">
+  Default
+</td>
+<td align="left">
+  Note
+</td>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center">
+  
+  ##### `cursorBorderColor`
+</td>
+<td align="center">
+
+`string`
+
+</td>
+<td align="center">
+
+`'#fff'`
+
+</td>
+<td align="left">
+
+Border color for default cursor.
+
+</td>
+</tr>
+<tr>
+<td align="center">
+  
+  ##### `cursorColor`
+</td>
+<td align="center">
+
+`string`
+
+</td>
+<td align="center">
+
+`'#F4B700'`
+
+</td>
+<td align="left">
+
+Inside color of default cursor.
+
+</td>
+</tr>
+<tr>
+<td align="center">
+  
+  ##### `cursorLine`
+</td>
+<td align="center">
+
+`boolean`
+
+</td>
+<td align="center">
+
+`true`
+
+</td>
+<td align="left">
+
+Display line to bottom of chart below cursor.
+
+</td>
+</tr>
+<tr>
+<td align="center">
+  
+  ##### `cursorMarkerHeight`
+</td>
+<td align="center">
+
+`number`
+
+</td>
+<td align="center">
+
+`24`
+
+</td>
+<td align="left">
+
+Height of the cursor, you need to adjust this is you use a custom cursor or want to change the default cursor size.
+
+</td>
+</tr>
+<tr>
+<td align="center">
+  
+  ##### `cursorMarkerWidth`
+</td>
+<td align="center">
+
+`number`
+
+</td>
+<td align="center">
+
+`24`
+
+</td>
+<td align="left">
+
+Width of the cursor, you need to adjust this is you use a custom cursor or want to change the default cursor size.
+
+</td>
+</tr>
+<tr>
+<td align="center">
+  
+  ##### `cursorWidth`
+</td>
+<td align="center">
+
+`number`
+
+</td>
+<td align="center">
+
+`2`
+
+</td>
+<td align="left">
+
+Width of the cursor line.
+
+</td>
+</tr>
+<tr>
+<td align="center">
+  
+  ##### `displayCursor`
+</td>
+<td align="center">
+
+`boolean`
+
+</td>
+<td align="center">
+
+`true`
+
+</td>
+<td align="left">
+
+Display the cursor.
+
+</td>
+</tr>
+<tr>
+<td align="center">
+  
+  ##### `renderCursorMarker`
+</td>
+<td align="center">
+
+```ts
+(props:
+CursorProps & { ref:
+React.RefObject<any>
+}) =>
+React.ReactNode | null
+```
+
+</td>
+<td align="center">
+
+`undefined`
+
+</td>
+<td align="left">
+
+Function that returns a custom cursor marker with ref assigned.
+
+</td>
+</tr>
+</tbody>
+</table>
+
+#### YAxisLabelAlignment:
+
+```ts
+enum YAxisLabelAlignment {
+  top = 'top',
+  bottom = 'bottom',
+  middle = 'middle',
+  aboveTicks = 'aboveTicks',
+}
+```
+
+#### XAxisLabelAlignment:
+
+```ts
+enum XAxisLabelAlignment {
+  right = 'right',
+  left = 'left',
+  center = 'center',
+}
+```

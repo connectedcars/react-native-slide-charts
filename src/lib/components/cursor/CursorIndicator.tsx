@@ -4,7 +4,7 @@ import { CursorIndicatorProps } from './utils/types'
 
 class CursorIndicator extends Component<CursorIndicatorProps> {
   static defaultProps = {
-    borderColor: '#FFFFFF',
+    borderColor: '#FFF',
     backgroundColor: '#F4B700',
   }
 
