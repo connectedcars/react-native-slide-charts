@@ -1161,7 +1161,7 @@ TODO: link
 </td>
 <td align="center">
 
-`XAxisLabelAlignment.right`
+`right`
 
 </td>
 <td align="left">
@@ -1427,7 +1427,7 @@ TODO: link
 </td>
 <td align="center">
 
-`YAxisLabelAlignment.aboveTicks`
+`aboveTicks`
 
 </td>
 <td align="left">
