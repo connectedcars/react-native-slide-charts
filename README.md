@@ -1394,7 +1394,8 @@ Number of decimal places to show in the average marker if [`markAverageLine`](#m
 
 ```ts
 TSpanProps &
-{ color: string }
+{ color:
+string }
 ```
 
 </td>
@@ -1445,7 +1446,8 @@ Position for the axis label left of the chart.
 
 ```ts
 TSpanProps &
-{ color: string }
+{ color:
+string }
 ```
 
 </td>
@@ -1694,8 +1696,8 @@ Number of ticks the chart should have, spaced via [`interval`](#interval).
 (props:
 GradientProps
 & { count:
-number })
-=> JSX.Element
+number }) =>
+JSX.Element
 | null
 ```
 
