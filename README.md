@@ -632,8 +632,7 @@ Width of the entire chart.
 </td>
 <td align="center">
 
-TODO: LINK<br/>
-`XAxisProps`
+[`XAxisProps`](#x-axis-props)
 
 </td>
 <td align="center">
@@ -667,8 +666,7 @@ Value of `x` in first and last object in [`data`](#data) array.
 </td>
 <td align="left">
 
-TODO: Link
-The range for the `XAxis` of the chart to be rendered using.
+The range for the [`XAxis`](#x-axis-props) of the chart to be rendered using.
 
 </td>
 </tr>
@@ -1149,8 +1147,8 @@ Space above the label to offset it from either the top of the component or the b
 
 </td>
 <td align="left">
-TODO:
-If [`specialStartmarker`]() or [`specialEndMarker`]() are set it adjusts the text to left or right align to the edge of the chart.
+
+If [`specialStartmarker`](#specialstartmarker) or [`specialEndMarker`](#specialendmarker) are set it adjusts the text to left or right align to the edge of the chart.
 
 </td>
 </tr>
@@ -1167,7 +1165,8 @@ If [`specialStartmarker`]() or [`specialEndMarker`]() are set it adjusts the tex
 <td align="center">
 
 ```ts
-XAxisLabelAlignment.right
+XAxisLabelAlignment
+.right
 ```
 
 </td>
@@ -1280,8 +1279,8 @@ The axis markers are top justified below the chart, this is the space between th
 
 </td>
 <td align="left">
-TODO:
-The first and last marker are always shown then the rest are layed out left to right, if the marker before the final one would layout closer than [`markerSpacing`](#markerspacing) to the final marker, this can be avoided with minimum spacing. This is also useful in making room for a [`specialEndMarker`]().
+
+The first and last marker are always shown then the rest are layed out left to right, if the marker before the final one would layout closer than [`markerSpacing`](#markerspacing) to the final marker, this can be avoided with minimum spacing. This is also useful in making room for a [`specialEndMarker`](#specialendmarker).
 
 </td>
 </tr>
@@ -1301,8 +1300,29 @@ The first and last marker are always shown then the rest are layed out left to r
 
 </td>
 <td align="left">
-TODO:
-The first and last marker are always shown then the rest are layed out left to right, if the marker before the final one would layout closer than [`markerSpacing`](#markerspacing) to the final marker, this can be avoided with minimum spacing. This is also useful in making room for a [`specialEndMarker`]().
+
+The right hand marker of the graph can be set to a special marker, such as 'end', or another designation.
+
+</td>
+</tr>
+<tr>
+<td align="center">
+  
+  ##### `specialStartMarker`
+</td>
+<td align="center">
+
+`string`
+
+</td>
+<td align="center">
+
+`undefined`
+
+</td>
+<td align="left">
+
+The left hand marker of the graph can be set to a special marker, such as 'start', or another designation.
 
 </td>
 </tr>
