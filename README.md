@@ -200,7 +200,8 @@ Width of the area left of the chart for the Y-Axis markers and label to render i
 <td align="center">
 
 ```ts
-(x: number | Date)
+(x: number
+| Date)
 => void
 ```
 
@@ -543,8 +544,8 @@ If [`alwaysShowIndicator`](#alwaysshowindicator) is `false` this function is fir
 <td align="center">
 
 ```ts
-{ backgroundColor:
-'#fff' }
+{backgroundColor:
+'#fff'}
 ```
 
 </td>
