@@ -19,6 +19,7 @@ type SharedChartProps = {
   paddingBottom: number
   height: number
   renderFillGradient: (props: GradientProps) => JSX.Element | null
+  fillColor?: string
   yAxisProps?: YAxisProps
   xAxisProps?: XAxisProps
 }
@@ -28,7 +29,6 @@ export type BarChartProps = SharedChartProps & {
   animated: boolean
   barSpacing: number
   barWidth?: number
-  barFillColor?: string
   barSelectedColor?: string
   barSelectedIndex?: number
   hideSelection?: boolean
@@ -38,5 +38,4 @@ export type AreaChartProps = SharedChartProps & {
   line: string
   graphLineColor: string
   graphLineWidth: number
-  graphFillColor?: string
 }

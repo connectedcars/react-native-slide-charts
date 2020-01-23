@@ -565,7 +565,7 @@ class SlideAreaChart extends Component<SlideAreaChartComponentProps, State> {
       axisWidth,
       height,
       width,
-      graphFillColor,
+      fillColor,
       renderFillGradient,
       graphLineColor,
       axisHeight,
@@ -625,7 +625,7 @@ class SlideAreaChart extends Component<SlideAreaChartComponentProps, State> {
           axisWidth={axisWidth}
           axisHeight={axisHeight}
           renderFillGradient={renderFillGradient}
-          graphFillColor={graphFillColor}
+          fillColor={fillColor}
           graphLineColor={graphLineColor}
           graphLineWidth={graphLineWidth}
           paddingLeft={paddingLeft}

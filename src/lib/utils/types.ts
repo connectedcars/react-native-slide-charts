@@ -26,6 +26,7 @@ type SharedChartComponentProps = {
   onPress?: () => void
   style?: StyleProp<ViewStyle>
   scrollable?: boolean
+  fillColor?: string
 }
 
 type SharedChartProps = SharedChartComponentProps & {
@@ -67,7 +68,6 @@ type SharedChartDefaultProps = {
 
 type SharedBarChartProps = {
   barSelectedColor?: string
-  barFillColor?: string
   barWidth?: number
   hideSelection?: boolean
 }
@@ -94,7 +94,6 @@ export type SlideAreaChartProps = SharedChartProps & {
   cursorProps?: CursorProps
   graphLineColor?: string
   graphLineWidth?: number
-  graphFillColor?: string
 }
 
 export type SlideAreaChartDefaultProps = SharedChartDefaultProps & {
@@ -105,6 +104,4 @@ export type SlideAreaChartDefaultProps = SharedChartDefaultProps & {
 }
 
 export type SlideAreaChartComponentProps = SlideAreaChartDefaultProps &
-  SharedChartComponentProps & {
-    graphFillColor?: string
-  }
+  SharedChartComponentProps

@@ -627,7 +627,7 @@ class SlideBarChart extends Component<SlideBarChartComponentProps, State> {
       barSpacing,
       barWidth,
       renderSelectedFillGradient,
-      barFillColor,
+      fillColor,
       animated,
       toolTipProps,
       paddingBottom,
@@ -689,7 +689,7 @@ class SlideBarChart extends Component<SlideBarChartComponentProps, State> {
           barSelectedIndex={this.state.selectedBarNumber}
           barWidth={barWidth}
           barSpacing={barSpacing}
-          barFillColor={barFillColor}
+          fillColor={fillColor}
           hideSelection={!!onPress || hideSelection}
           barSelectedColor={barSelectedColor}
           animated={animated}

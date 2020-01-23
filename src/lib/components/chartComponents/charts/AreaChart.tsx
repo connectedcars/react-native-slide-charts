@@ -49,7 +49,7 @@ class AreaChart extends Component<AreaChartProps> {
       graphLineWidth,
       yRange,
       renderFillGradient,
-      graphFillColor,
+      fillColor,
       graphLineColor,
       data,
       scaleX,
@@ -100,7 +100,7 @@ class AreaChart extends Component<AreaChartProps> {
           d={`${line} L ${stopX} ${scaleY(yRange[0])} L ${startX} ${scaleY(
             yRange[0]
           )}`}
-          fill={graphFillColor || 'url(#gradient)'}
+          fill={fillColor || 'url(#gradient)'}
         />
         <AnimatedPath
           ref={this.animatedPathRef}

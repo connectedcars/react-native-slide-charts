@@ -63,7 +63,7 @@ class BarChart extends Component<BarChartProps, State> {
     item: { x: number | Date, y: number },
     index: number
   ) => {
-    const { barFillColor, barSelectedIndex, barSelectedColor, hideSelection } = this.props
+    const { fillColor, barSelectedIndex, barSelectedColor, hideSelection } = this.props
     this.bars[index] = this.createPaths(widthOfBar, barStartX, bottomOfBar, scaleY, item)
     this.barInterpolators[index] = interpolatePath(this.bars[index].flatBar, this.bars[index].bar, null)
     const barSelected = barSelectedIndex === index
@@ -74,7 +74,7 @@ class BarChart extends Component<BarChartProps, State> {
         d={this.bars[index].flatBar}
         fill={barSelected && !hideSelection ?
           (barSelectedColor || 'url(#selectedGradient)') :
-          (barFillColor || 'url(#gradient)')}
+          (fillColor || 'url(#gradient)')}
       />
     )
   }
