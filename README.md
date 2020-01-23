@@ -699,8 +699,7 @@ Determines the applied [`d3` scale](https://www.d3indepth.com/scales/) of the ch
 </td>
 <td align="center">
 
-TODO: link<br/>
-`YAxisProps`
+[`YAxisProps`](#y-axis-props)
 
 </td>
 <td align="center">
@@ -733,8 +732,7 @@ Max and Min value of `y` in [`data`](#data) array
 </td>
 <td align="left">
 
-TODO: link
-The range for the `YAxis` of the chart to be rendered using.
+The range for the [`YAxis`](#y-axis-props) of the chart to be rendered using.
 
 </td>
 </tr>
@@ -1008,7 +1006,7 @@ Color for the line designating the area charted.
 </td>
 <td align="left">
 
-Width of the line designating the area charted.
+Stroke width of the line designating the area charted.
 
 </td>
 </tr>
@@ -1081,7 +1079,7 @@ color: '#777'}
 </td>
 <td align="left">
 
-Styling for label, extends [`TSpanProps`](https://github.com/react-native-community/react-native-svg/blob/master/src/index.d.ts) from `react-native-svg` with type `color`.
+Styling for label, extends [`TSpanProps`](https://github.com/react-native-community/react-native-svg/blob/master/src/index.d.ts) from [`react-native-svg`](https://github.com/react-native-community/react-native-svg) with type `color`.
 
 </td>
 </tr>
@@ -1108,7 +1106,6 @@ Space above the label to offset it from either the top of the component or the b
 </tr>
 </tbody>
 </table>
-
 
 #### X-Axis Props:
 
@@ -1158,6 +1155,7 @@ If [`specialStartmarker`](#specialstartmarker) or [`specialEndMarker`](#speciale
 </td>
 <td align="center">
 
+TODO: link
 `XAxisLabelAlignment`
 
 </td>
@@ -1300,7 +1298,7 @@ The first and last marker are always shown then the rest are layed out left to r
 </td>
 <td align="left">
 
-The right hand marker of the graph can be set to a special marker, such as 'end', or another designation.
+The right hand marker of the chart can be set to a special marker, such as 'end', or another designation.
 
 </td>
 </tr>
@@ -1321,7 +1319,526 @@ The right hand marker of the graph can be set to a special marker, such as 'end'
 </td>
 <td align="left">
 
-The left hand marker of the graph can be set to a special marker, such as 'start', or another designation.
+The left hand marker of the chart can be set to a special marker, such as 'start', or another designation.
+
+</td>
+</tr>
+</tbody>
+</table>
+
+#### Y-Axis Props:
+
+<table>
+<thead>
+<tr>
+<td align="center">
+  Prop
+</td>
+<td align="center">
+  Type
+</td>
+<td align="center">
+  Default
+</td>
+<td align="left">
+  Note
+</td>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center">
+  
+  ##### `averageLineColor`
+</td>
+<td align="center">
+
+`string`
+
+</td>
+<td align="center">
+
+`'#77777780'`
+
+</td>
+<td align="left">
+
+Color for average line.
+
+</td>
+</tr>
+<tr>
+<td align="center">
+  
+  ##### `averageMarkerDecimals`
+</td>
+<td align="center">
+
+`number`
+
+</td>
+<td align="center">
+
+`0`
+
+</td>
+<td align="left">
+
+Number of decimal places to show in the average marker if [`markAverageLine`](#markaverageline) is `true`.
+
+</td>
+</tr>
+<tr>
+<td align="center">
+  
+  ##### `axisAverageMarkerStyle`
+</td>
+<td align="center">
+
+```ts
+TSpanProps &
+{ color: string }
+```
+
+</td>
+<td align="center">
+
+```ts
+{fontSize: 13,
+color: '#77777780'}
+```
+
+</td>
+<td align="left">
+
+Styling for marker, extends [`TSpanProps`](https://github.com/react-native-community/react-native-svg/blob/master/src/index.d.ts) from [`react-native-svg`](https://github.com/react-native-community/react-native-svg) with type `color`.
+
+</td>
+</tr>
+<tr>
+<td align="center">
+  
+  ##### `axisLabelAlignment`
+</td>
+<td align="center">
+
+TODO: link
+`YAxisLabelAlignment`
+
+</td>
+<td align="center">
+
+```ts
+YAxisLabelAlignment
+.aboveTicks
+```
+
+</td>
+<td align="left">
+
+Position for the axis label left of the chart.
+
+</td>
+</tr>
+<tr>
+<td align="center">
+  
+  ##### `axisMarkerStyle`
+</td>
+<td align="center">
+
+```ts
+TSpanProps &
+{ color: string }
+```
+
+</td>
+<td align="center">
+
+```ts
+{fontSize: 13,
+color: '#222'}
+```
+
+</td>
+<td align="left">
+
+Styling for markers, extends [`TSpanProps`](https://github.com/react-native-community/react-native-svg/blob/master/src/index.d.ts) from [`react-native-svg`](https://github.com/react-native-community/react-native-svg) with type `color`.
+
+</td>
+</tr>
+<tr>
+<td align="center">
+  
+  ##### `fullBaseLine`
+</td>
+<td align="center">
+
+`boolean`
+
+</td>
+<td align="center">
+
+`false`
+
+</td>
+<td align="left">
+
+Extends bottom line of chart to left edge.
+
+</td>
+</tr>
+<tr>
+<td align="center">
+  
+  ##### `hideMarkers`
+</td>
+<td align="center">
+
+`boolean`
+
+</td>
+<td align="center">
+
+`undefined`
+
+</td>
+<td align="left">
+
+Hides the markers on the Y-Axis without hiding the tick lines.
+
+</td>
+</tr>
+<tr>
+<td align="center">
+  
+  ##### `horizontalLineColor`
+</td>
+<td align="center">
+
+`string`
+
+</td>
+<td align="center">
+
+`undefined`
+
+</td>
+<td align="left">
+
+Color for horizontal lines, overrides [`renderHorizontalLineGradient`](#renderhorizontallinegradient).
+
+</td>
+</tr>
+<tr>
+<td align="center">
+  
+  ##### `horizontalLineWidth`
+</td>
+<td align="center">
+
+`number`
+
+</td>
+<td align="center">
+
+`1`
+
+</td>
+<td align="left">
+
+Stroke width for horizontal lines.
+
+</td>
+</tr>
+<tr>
+<td align="center">
+  
+  ##### `interval`
+</td>
+<td align="center">
+
+`number`
+
+</td>
+<td align="center">
+
+```ts
+(Math.abs(
+yRange[0]
+- yRange[1]) /
+((numberOfTicks ?? 0)
++ 1))
+```
+
+</td>
+<td align="left">
+
+Spacing for the Y-Axis ticks, this is determined using `numberOfTicks` and [`yRange`](#yrange) if not defined while `numberOfTicks` is given.
+
+</td>
+</tr>
+<tr>
+<td align="center">
+  
+  ##### `labelLeftOffset`
+</td>
+<td align="center">
+
+`number`
+
+</td>
+<td align="center">
+
+`0`
+
+</td>
+<td align="left">
+
+If there are ticks with labels and [`axisLabel`](#axislabel) the `axisLabel` will left justify and this offset will apply to it.
+
+</td>
+</tr>
+<tr>
+<td align="center">
+  
+  ##### `markAverageLine`
+</td>
+<td align="center">
+
+`boolean`
+
+</td>
+<td align="center">
+
+`undefined`
+
+</td>
+<td align="left">
+
+Show marker next to the average of the data.
+
+</td>
+</tr>
+<tr>
+<td align="center">
+  
+  ##### `markerChartOffset`
+</td>
+<td align="center">
+
+`number`
+
+</td>
+<td align="center">
+
+`4`
+
+</td>
+<td align="left">
+
+Spacing between the markers and the chart to the left of the chart and right of the markers.
+
+</td>
+</tr>
+<tr>
+<td align="center">
+  
+  ##### `markFirstLine`
+</td>
+<td align="center">
+
+`boolean`
+
+</td>
+<td align="center">
+
+`false`
+
+</td>
+<td align="left">
+
+Show marker next to bottom line, often `0` and not needed.
+
+</td>
+</tr>
+<tr>
+<td align="center">
+  
+  ##### `numberOfTicks`
+</td>
+<td align="center">
+
+`number`
+
+</td>
+<td align="center">
+
+`undefined`
+
+</td>
+<td align="left">
+
+Number of ticks the chart should have, spaced via [`interval`](#interval).
+
+</td>
+</tr>
+<tr>
+<td align="center">
+  
+  ##### `renderHorizontalLineGradient`
+</td>
+<td align="center">
+
+```ts
+(props:
+GradientProps &
+{ count: number }
+)
+=> JSX.Element
+| null
+```
+
+</td>
+<td align="center">
+
+TODO: put line gradient
+
+</td>
+<td align="left">
+
+Function that returns a custom gradient for the horizontal lines.
+
+</td>
+</tr>
+<tr>
+<td align="center">
+  
+  ##### `renderVerticalLineGradient`
+</td>
+<td align="center">
+
+```ts
+(props:
+GradientProps)
+=> JSX.Element
+| null
+```
+
+</td>
+<td align="center">
+
+TODO: put line gradient
+
+</td>
+<td align="left">
+
+Function that returns a custom gradient for the vertical side lines.
+
+</td>
+</tr>
+<tr>
+<td align="center">
+  
+  ##### `rotateAxisLabel`
+</td>
+<td align="center">
+
+`boolean`
+
+</td>
+<td align="center">
+
+`false`
+
+</td>
+<td align="left">
+
+Rotates the Y-Axis label vertically.
+
+</td>
+</tr>
+<tr>
+<td align="center">
+  
+  ##### `showAverageLine`
+</td>
+<td align="center">
+
+`boolean`
+
+</td>
+<td align="center">
+
+`undefined`
+
+</td>
+<td align="left">
+
+Shows the average line.
+
+</td>
+</tr>
+<tr>
+<td align="center">
+  
+  ##### `showBaseLine`
+</td>
+<td align="center">
+
+`boolean`
+
+</td>
+<td align="center">
+
+`true`
+
+</td>
+<td align="left">
+
+Shows the base line of the chart.
+
+</td>
+</tr>
+<tr>
+<td align="center">
+  
+  ##### `verticalLineColor`
+</td>
+<td align="center">
+
+`string`
+
+</td>
+<td align="center">
+
+`undefined`
+
+</td>
+<td align="left">
+
+Color for vertical lines, overrides [`renderVerticallLineGradient`](#renderverticallinegradient).
+
+</td>
+</tr>
+<tr>
+<td align="center">
+  
+  ##### `verticalLineWidth`
+</td>
+<td align="center">
+
+`number`
+
+</td>
+<td align="center">
+
+`1`
+
+</td>
+<td align="left">
+
+Stroke width of the vertial side lines.
 
 </td>
 </tr>

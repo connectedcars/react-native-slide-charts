@@ -24,9 +24,9 @@ export const horizontalLineGradient = (
   </Defs>
 )
 
-export const axisLabelColor = '#777777'
+export const axisLabelColor = '#777'
 
-export const axisMarkerColor = '#222222'
+export const axisMarkerColor = '#222'
 
 export const averageMarkerColor = '#77777780'
 
