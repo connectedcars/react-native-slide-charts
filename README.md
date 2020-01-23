@@ -930,9 +930,9 @@ TODO: add link<br/>
 <td align="center">
 
 ```ts
-{ cursorMarkerHeight: 24,
+{cursorMarkerHeight: 24,
 cursorMarkerWidth: 24,
-cursorWidth: 2 }
+cursorWidth: 2}
 ```
 
 </td>
@@ -1074,8 +1074,8 @@ TSpanProps &
 <td align="center">
 
 ```ts
-{ fontSize: 13,
-color: '#777' }
+{fontSize: 13,
+color: '#777'}
 ```
 
 </td>
