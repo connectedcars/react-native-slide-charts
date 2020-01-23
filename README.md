@@ -1161,10 +1161,7 @@ TODO: link
 </td>
 <td align="center">
 
-```ts
-XAxisLabelAlignment
-.right
-```
+`XAxisLabelAlignment.right`
 
 </td>
 <td align="left">
@@ -1404,8 +1401,10 @@ TSpanProps &
 <td align="center">
 
 ```ts
-{fontSize: 13,
-color: '#77777780'}
+{fontSize:
+13,
+color:
+'#77777780'}
 ```
 
 </td>
@@ -1428,10 +1427,7 @@ TODO: link
 </td>
 <td align="center">
 
-```ts
-YAxisLabelAlignment
-.aboveTicks
-```
+`YAxisLabelAlignment.aboveTicks`
 
 </td>
 <td align="left">
@@ -1456,8 +1452,10 @@ TSpanProps &
 <td align="center">
 
 ```ts
-{fontSize: 13,
-color: '#222'}
+{fontSize:
+13,
+color:
+'#222'}
 ```
 
 </td>
@@ -1693,8 +1691,7 @@ Number of ticks the chart should have, spaced via [`interval`](#interval).
 ```ts
 (props:
 GradientProps &
-{ count: number }
-)
+{ count: number })
 => JSX.Element
 | null
 ```
