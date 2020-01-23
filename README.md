@@ -1563,15 +1563,7 @@ Stroke width for horizontal lines.
 </td>
 <td align="center">
 
-```ts
-(Math.abs(
-yRange[0] -
-yRange[1]) /
-((
-numberOfTicks
-?? 0) + 1
-))
-```
+`undefined`
 
 </td>
 <td align="left">
