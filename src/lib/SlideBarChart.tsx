@@ -709,7 +709,7 @@ class SlideBarChart extends Component<SlideBarChartComponentProps, State> {
 const styles = StyleSheet.create({
   container: {
     marginHorizontal: 0,
-    backgroundColor: '#ffffff',
+    backgroundColor: '#fff',
   },
 })
 

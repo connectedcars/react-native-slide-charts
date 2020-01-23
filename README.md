@@ -91,7 +91,7 @@ import {
 <tr>
 <td align="center">
   
-  #### `alwaysShowIndicator`
+  ##### `alwaysShowIndicator`
 </td>
 <td align="center">
 
@@ -112,7 +112,7 @@ Determines if the indicator for the chart should be visible always or just when 
 <tr>
 <td align="center">
   
-  #### `animated`
+  ##### `animated`
 </td>
 <td align="center">
 
@@ -133,7 +133,7 @@ Animates the charts on mounting and between prop updates.
 <tr>
 <td align="center">
   
-  #### `axisHeight`
+  ##### `axisHeight`
 </td>
 <td align="center">
 
@@ -154,7 +154,7 @@ Height of the area below the chart for the X-Axis markers and label to render in
 <tr>
 <td align="center">
   
-  #### `axisWidth`
+  ##### `axisWidth`
 </td>
 <td align="center">
 
@@ -175,7 +175,7 @@ Width of the area left of the chart for the Y-Axis markers and label to render i
 <tr>
 <td align="center">
   
-  #### `callbackWithX`
+  ##### `callbackWithX`
 </td>
 <td align="center">
 
@@ -199,7 +199,7 @@ Callback function that provides the current cursor position `x`. As this is firi
 <tr>
 <td align="center">
   
-  #### `callbackWithY`
+  ##### `callbackWithY`
 </td>
 <td align="center">
 
@@ -223,7 +223,7 @@ Callback function that provides the current cursor position `y`. As this is firi
 <tr>
 <td align="center">
   
-  #### `data`
+  ##### `data`
 </td>
 <td align="center">
 
@@ -250,7 +250,7 @@ Data that will be displayed on the chart. This must be an array of object with `
 <tr>
 <td align="center">
   
-  #### `chartPaddingTop`
+  ##### `chartPaddingTop`
 </td>
 <td align="center">
 
@@ -272,7 +272,7 @@ Pushes the rendered height of the data within the chart down to make room for th
 <tr>
 <td align="center">
   
-  #### `height`
+  ##### `height`
 </td>
 <td align="center">
 
@@ -293,7 +293,7 @@ Height of the entire chart component.
 <tr>
 <td align="center">
   
-  #### `onPress`
+  ##### `onPress`
 </td>
 <td align="center">
 
@@ -316,7 +316,7 @@ If provided the chart will not be interactive and instead can be pressed.
 <tr>
 <td align="center">
   
-  #### `paddingBottom`
+  ##### `paddingBottom`
 </td>
 <td align="center">
 
@@ -337,7 +337,7 @@ Bottom padding as it can not be applied via styles to the chart component.
 <tr>
 <td align="center">
   
-  #### `paddingLeft`
+  ##### `paddingLeft`
 </td>
 <td align="center">
 
@@ -358,7 +358,7 @@ Left padding as it can not be applied via styles to the chart component.
 <tr>
 <td align="center">
   
-  #### `paddingRight`
+  ##### `paddingRight`
 </td>
 <td align="center">
 
@@ -379,7 +379,7 @@ Right padding as it can not be applied via styles to the chart component.
 <tr>
 <td align="center">
   
-  #### `paddingTop`
+  ##### `paddingTop`
 </td>
 <td align="center">
 
@@ -400,7 +400,7 @@ Top padding as it can not be applied via styles to the chart component.
 <tr>
 <td align="center">
   
-  #### `renderFillGradient`
+  ##### `renderFillGradient`
 </td>
 <td align="center">
 
@@ -424,7 +424,7 @@ Function that returns a custom gradient to fill the bars of the bar chart or are
 <tr>
 <td align="center">
   
-  #### `scrollable`
+  ##### `scrollable`
 </td>
 <td align="center">
 
@@ -445,7 +445,7 @@ Ensure touch is passed to `scrollView` on `y` movement if component is inside `s
 <tr>
 <td align="center">
   
-  #### `shouldCancelWhenOutside`
+  ##### `shouldCancelWhenOutside`
 </td>
 <td align="center">
 
@@ -466,7 +466,7 @@ Terminates touch outside the chart component.
 <tr>
 <td align="center">
   
-  #### `showIndicatorCallback`
+  ##### `showIndicatorCallback`
 </td>
 <td align="center">
 
@@ -490,7 +490,7 @@ If [`alwaysShowIndicator`](#alwaysshowindicator) is `false` this function is fir
 <tr>
 <td align="center">
   
-  #### `style`
+  ##### `style`
 </td>
 <td align="center">
 
@@ -500,8 +500,10 @@ If [`alwaysShowIndicator`](#alwaysshowindicator) is `false` this function is fir
 <td align="center">
 
 ```ts
-{ backgroundColor:
-'#ffffff' }
+{
+backgroundColor:
+'#fff'
+}
 ```
 
 </td>
@@ -515,7 +517,7 @@ Style of chart component.
 <tr>
 <td align="center">
   
-  #### `throttleAndroid`
+  ##### `throttleAndroid`
 </td>
 <td align="center">
 
@@ -536,11 +538,11 @@ On some slower Android devices there may be too many calls across the bridge tha
 <tr>
 <td align="center">
   
-  #### `toolTipProps`
+  ##### `toolTipProps`
 </td>
 <td align="center">
 
-TODO:LINK
+TODO:LINK<br/>
 `ToolTipProps`
 
 </td>
@@ -558,7 +560,7 @@ Props for rendering the `ToolTip`.
 <tr>
 <td align="center">
   
-  #### `width`
+  ##### `width`
 </td>
 <td align="center">
 
@@ -583,11 +585,11 @@ Width of the entire chart.
 <tr>
 <td align="center">
   
-  #### `xAxisProps`
+  ##### `xAxisProps`
 </td>
 <td align="center">
 
-TODO: LINK
+TODO: LINK<br/>
 `XAxisProps`
 
 </td>
@@ -605,7 +607,7 @@ Props for rendering the `XAxis`.
 <tr>
 <td align="center">
   
-  #### `xRange`
+  ##### `xRange`
 </td>
 <td align="center">
 
@@ -630,7 +632,7 @@ The range for the `XAxis` of the chart to be rendered using.
 <tr>
 <td align="center">
   
-  #### `xScale`
+  ##### `xScale`
 </td>
 <td align="center">
 
@@ -653,11 +655,11 @@ Determines the applied [`d3` scale](https://www.d3indepth.com/scales/) of the ch
 <tr>
 <td align="center">
   
-  #### `yAxisProps`
+  ##### `yAxisProps`
 </td>
 <td align="center">
 
-TODO: link
+TODO: link<br/>
 `YAxisProps`
 
 </td>
@@ -675,7 +677,7 @@ Props for rendering the YAxis.
 <tr>
 <td align="center">
   
-  #### `yRange`
+  ##### `yRange`
 </td>
 <td align="center">
 

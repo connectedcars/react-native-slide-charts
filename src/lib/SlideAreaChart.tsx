@@ -652,7 +652,7 @@ class SlideAreaChart extends Component<SlideAreaChartComponentProps, State> {
 const styles = StyleSheet.create({
   container: {
     marginHorizontal: 0,
-    backgroundColor: '#ffffff',
+    backgroundColor: '#fff',
   },
 })
 
