@@ -5,7 +5,7 @@
 
 `react-native-slide-charts` uses [`react-native-svg`](https://github.com/react-native-community/react-native-svg), [`d3`](https://github.com/d3/d3), and [`react-native-gesture-handler`](https://github.com/software-mansion/react-native-gesture-handler) to create highly customizable interactive charts that animate smoothly via [`Direct Manipulation`](https://facebook.github.io/react-native/docs/direct-manipulation).
 
-## [Check out the demo on expo](https://snack.expo.io/@nhannah/react-native-slide-charts)
+## [Check out the demo on expo 📊📈](https://snack.expo.io/@nhannah/react-native-slide-charts)
 
 ## Features
 
@@ -2273,6 +2273,178 @@ Width of the tool tip, you should set this if there is minimal change as the mea
 </tr>
 </tbody>
 </table>
+
+### Types
+
+#### Tool Tip Text Renderers Input:
+
+<table>
+<thead>
+<tr>
+<td align="center">
+  Prop
+</td>
+<td align="center">
+  Type
+</td>
+<td align="center">
+  Default
+</td>
+<td align="left">
+  Note
+</td>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center">
+  
+  ##### `scaleX`
+</td>
+<td align="center">
+
+```ts
+ScaleTime<number, number> |
+ScaleLinear<number, number>
+```
+
+</td>
+<td align="center">
+
+</td>
+<td align="left">
+
+The scaleX function used to draw the graph, combined with `.invert` and `x` a value can be determined for any cursor position.
+
+</td>
+</tr>
+<tr>
+<td align="center">
+  
+  ##### `scaleY`
+</td>
+<td align="center">
+
+```ts
+ScaleLinear<number, number>
+```
+
+</td>
+<td align="center">
+
+</td>
+<td align="left">
+
+The scaleY function used to draw the graph, combined with `.invert` and `y` a value can be determined for any cursor position.
+
+</td>
+</tr>
+<tr>
+<td align="center">
+  
+  ##### `selectedBarNumber`
+</td>
+<td align="center">
+
+`number`
+
+</td>
+<td align="center">
+
+`0`
+
+</td>
+<td align="left">
+
+The `selectedBarNumber` of the bar chart, this is always `0` for the area chart.
+
+</td>
+</tr>
+<tr>
+<td align="center">
+  
+  ##### `x`
+</td>
+<td align="center">
+
+`number`
+
+</td>
+<td align="center">
+
+</td>
+<td align="left">
+
+Current `x` value of the cursor, use in combination with [scaleX](#scalex).
+
+</td>
+</tr>
+<tr>
+<td align="center">
+  
+  ##### `y`
+</td>
+<td align="center">
+
+`number`
+
+</td>
+<td align="center">
+
+</td>
+<td align="left">
+
+Current `y` value of the cursor, use in combination with [scaleY](#scaley).
+
+</td>
+</tr>
+</tbody>
+</table>
+
+#### Gradient Props:
+
+<table>
+<thead>
+<tr>
+<td align="center">
+  Prop
+</td>
+<td align="center">
+  Type
+</td>
+<td align="center">
+  Default
+</td>
+<td align="left">
+  Note
+</td>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center">
+  
+  ##### `id`
+</td>
+<td align="center">
+
+`string`
+
+</td>
+<td align="center">
+
+</td>
+<td align="left">
+
+TODO: example
+The `id` must be used as the key on the gradient `Defs` returned to designate it for use by the the graph as shown in the example.
+
+</td>
+</tr>
+</tbody>
+</table>
+
+### Enums
 
 #### YAxisLabelAlignment:
 
