@@ -11,11 +11,15 @@
 
 ### Bar Chart
 
-![](./screenshots/BarChart.gif)
+<p align="center">
+  <img alt="Bar Chart" src="./screenshots/BarChart.gif">
+</p>
 
 ### Area Chart
 
-![](./screenshots/AreaChart.gif)
+<p align="center">
+  <img alt="Bar Chart" src="./screenshots/AreaChart.gif">
+</p>
 
 ## Installation
 
@@ -45,7 +49,7 @@ Make sure the version of the native module packages chosen works with the `react
 
 ## Usage
 
-`react-native-slide-charts` exports two types of charts, `SlideAreaChart` and `SlideBarChart` along with the type definitions for the charts, Props, and enums.
+`react-native-slide-charts` exports two types of charts, `SlideAreaChart` and `SlideBarChart` along with the type definitions for the Charts, Props, and Enums.
 
 ```jsx
 import {
@@ -150,7 +154,7 @@ The Props, Types, Enums, and Defaults are defined below:
 </td>
 <td align="left">
 
-Determines if the indicator for the chart should be visible always or just when being touched.<br/><br/>For `SlideAreaChart` the indicator is the [`CursorMarker`, `CursorLine`](#cursor), and [`ToolTip`](#tool-tip).<br/><br/>For `SlideBarChart` the indicator is the [`barSelectedColor`](#barselectedcolor) or [`renderSelectedFillGradient`](#renderselectedfillgradient) and [`ToolTip`](#tool-tip).
+Determines if the indicator for the chart should be visible always or just when being touched.<br/><br/>For [`SlideAreaChart`](#area-chart-props) the indicator is the [`CursorMarker`, `CursorLine`](#cursor), and [`ToolTip`](#tool-tip).<br/><br/>For [`SlideBarChart`](#bar-chart-props) the indicator is the [`barSelectedColor`](#barselectedcolor) or [`renderSelectedFillGradient`](#renderselectedfillgradient) and [`ToolTip`](#tool-tip).
 
 </td>
 </tr>
@@ -238,7 +242,7 @@ Width of the area left of the chart for the Y-Axis markers and label to render i
 </td>
 <td align="left">
 
-Callback function that provides the current [Cursor](#cursor) position `x`. As this is firing off of a continuous animation and not state usage should match appropriately.<br/><br/>e.g. This can be used in conjunction with an array of timed gps points to move an indicator along a path on a map.
+Callback function that provides the current [Cursor](#cursor) position `x`. As this is firing off of a continuous animation and not state the usage should match appropriately.<br/><br/>e.g. This can be used in conjunction with an array of timed gps points to move an indicator along a path on a map.
 
 </td>
 </tr>
@@ -262,7 +266,7 @@ Callback function that provides the current [Cursor](#cursor) position `x`. As t
 </td>
 <td align="left">
 
-Callback function that provides the current [Cursor](#cursor) position `y`. As this is firing off of a continuous animation and not state usage should match appropriately.<br/><br/>e.g. This can be used with direct manipulation on a `TextInput` to display the current value outside the chart.
+Callback function that provides the current [Cursor](#cursor) position `y`. As this is firing off of a continuous animation and not state the usage should match appropriately.<br/><br/>e.g. This can be used with direct manipulation on a `TextInput` to display the current value outside the chart.
 
 </td>
 </tr>
@@ -283,7 +287,7 @@ Callback function that provides the current [Cursor](#cursor) position `y`. As t
 </td>
 <td align="left">
 
-Pushes the rendered height of the data within the chart down to make room for the [`ToolTip`](#tool-tip-props) at the max. The [`ToolTip`](#tool-tip-props) will render outside of the chart component if desired so this can be set to `0` or adjusted for using [`paddingTop`](#paddingtop) or [`style`](#style) if desired.
+Pushes the rendered height of the data within the chart down to make room for the [`ToolTip`](#tool-tip-props) at the max. The [`ToolTip`](#tool-tip-props) will render outside of the chart component if desired so this can be set to `0`, or adjusted for using [`paddingTop`](#paddingtop) or [`style`](#style) instead if desired.
 
 </td>
 </tr>
@@ -310,7 +314,7 @@ Array<{
 </td>
 <td align="left">
 
-Data that will be displayed on the chart. This must be an array of objects with `x` and `y` values with the `x` increasing from index 0 onward as the chart does not sort the array before use and will render incorrectly otherwise.
+Data that will be displayed on the chart. This must be an array of objects with `x` and `y` values with the `x` increasing from index `0` onward as the chart does not sort the array before use and will render incorrectly otherwise.
 
 </td>
 </tr>
@@ -396,7 +400,7 @@ If provided the chart will not be interactive and instead can be pressed.
 </td>
 <td align="left">
 
-Bottom padding as it can not be applied via styles to the chart component.
+Bottom padding as it can not be applied via [`style`](#style) to the chart component.
 
 </td>
 </tr>
@@ -417,7 +421,7 @@ Bottom padding as it can not be applied via styles to the chart component.
 </td>
 <td align="left">
 
-Left padding as it can not be applied via styles to the chart component.
+Left padding as it can not be applied via [style](#style) to the chart component.
 
 </td>
 </tr>
@@ -438,7 +442,7 @@ Left padding as it can not be applied via styles to the chart component.
 </td>
 <td align="left">
 
-Right padding as it can not be applied via styles to the chart component.
+Right padding as it can not be applied via [style](#style) to the chart component.
 
 </td>
 </tr>
@@ -459,7 +463,7 @@ Right padding as it can not be applied via styles to the chart component.
 </td>
 <td align="left">
 
-Top padding as it can not be applied via styles to the chart component.
+Top padding as it can not be applied via [style](#style) to the chart component.
 
 </td>
 </tr>
@@ -507,7 +511,7 @@ Function that takes [`GradientProps`](#gradient-props) and returns a custom grad
 </td>
 <td align="left">
 
-Ensure touch is passed to `scrollView` on `y` movement if component is inside `scrollView`.
+Ensure touch is passed to [`scrollView`](https://facebook.github.io/react-native/docs/scrollview) on `y` movement if component is inside [`scrollView`](https://facebook.github.io/react-native/docs/scrollview).
 
 </td>
 </tr>
@@ -665,7 +669,7 @@ Width of the entire chart.
 </td>
 <td align="left">
 
-Props for rendering the `XAxis`.
+Props for rendering the [`XAxis`](#x-axis-props).
 
 </td>
 </tr>
@@ -689,7 +693,7 @@ Value of `x` in first and last object in [`data`](#data) array.
 </td>
 <td align="left">
 
-The range for the [`XAxis`](#x-axis-props) of the chart to be rendered using.
+The range for the [`XAxis`](#x-axis-props) of the chart to be rendered.
 
 </td>
 </tr>
@@ -733,7 +737,7 @@ Determines the applied [`d3` scale](https://www.d3indepth.com/scales/) of the ch
 </td>
 <td align="left">
 
-Props for rendering the YAxis.
+Props for rendering the [YAxis](#y-axis-props).
 
 </td>
 </tr>
@@ -756,7 +760,7 @@ Max and Min value of `y` in [`data`](#data) array
 </td>
 <td align="left">
 
-The range for the [`YAxis`](#y-axis-props) of the chart to be rendered using.
+The range for the [`YAxis`](#y-axis-props) of the chart to be rendered.
 
 </td>
 </tr>
@@ -1007,7 +1011,7 @@ Type of curve to use for the area chart from [`d3-shape`](https://github.com/d3/
 </td>
 <td align="left">
 
-Color for the line designating the area charted.
+Color for the line designating the data charted.
 
 </td>
 </tr>
@@ -1029,7 +1033,7 @@ Color for the line designating the area charted.
 </td>
 <td align="left">
 
-Stroke width of the line designating the area charted.
+Stroke width of the line designating the data charted.
 
 </td>
 </tr>
@@ -1102,7 +1106,7 @@ color: '#777'}
 </td>
 <td align="left">
 
-Styling for label, extends [`TSpanProps`](https://github.com/react-native-community/react-native-svg/blob/master/src/index.d.ts) from [`react-native-svg`](https://github.com/react-native-community/react-native-svg) with type `color`.
+Styling for [axisLabel](#axislabel), extends [`TSpanProps`](https://github.com/react-native-community/react-native-svg/blob/master/src/index.d.ts) from [`react-native-svg`](https://github.com/react-native-community/react-native-svg) with type `color`.
 
 </td>
 </tr>
@@ -1123,7 +1127,7 @@ Styling for label, extends [`TSpanProps`](https://github.com/react-native-commun
 </td>
 <td align="left">
 
-Space above the label to offset it from either the top of the component or the bottom of the chart.
+Space above the label to offset it from either the top of the component ([Y-Axis](#y-axis-props)) or the bottom of the chart ([X-Axis](#x-axis-props)).
 
 </td>
 </tr>
@@ -1188,7 +1192,7 @@ If [`specialStartmarker`](#specialstartmarker) or [`specialEndMarker`](#speciale
 </td>
 <td align="left">
 
-Position for the axis label below the chart.
+Position for the [axisLabel](#axislabel) below the chart.
 
 </td>
 </tr>
@@ -1232,7 +1236,7 @@ Array of labels placed below the chart, these will line up with the bars if ther
 </td>
 <td align="left">
 
-If [`axisMarkerLabels`](#axismarkerlabels) and [`axisLabel`](#axislabel) the `axisLabel` will bottom justify and this offset will apply to it.
+If [`axisMarkerLabels`](#axismarkerlabels) and [`axisLabel`](#axislabel) the [`axisLabel`](#axislabel) will bottom justify and this offset will apply to it.
 
 </td>
 </tr>
@@ -1253,7 +1257,7 @@ If [`axisMarkerLabels`](#axismarkerlabels) and [`axisLabel`](#axislabel) the `ax
 </td>
 <td align="left">
 
-If [`axisMarkerLabels`](#axismarkerlabels) are overcrowded a number of empty spaces can be given to set between each marker shown.
+If [`axisMarkerLabels`](#axismarkerlabels) are overcrowded a number of empty marker spaces can be given to set between each marker shown.
 
 </td>
 </tr>
@@ -1275,7 +1279,7 @@ If [`axisMarkerLabels`](#axismarkerlabels) are overcrowded a number of empty spa
 </td>
 <td align="left">
 
-The axis markers are top justified below the chart, this is the space between the marker and the chart.
+The [axis marker labels](#axismarkerlabels) are top justified below the chart, this is the space between the marker and the chart.
 
 </td>
 </tr>
@@ -1296,7 +1300,7 @@ The axis markers are top justified below the chart, this is the space between th
 </td>
 <td align="left">
 
-The first and last marker are always shown then the rest are layed out left to right, if the marker before the final one would layout closer than [`markerSpacing`](#markerspacing) to the final marker, this can be avoided with minimum spacing. This is also useful in making room for a [`specialEndMarker`](#specialendmarker).
+The first and last marker are always shown then the rest are laid out left to right; if the marker before the final one would layout closer than [`markerSpacing`](#markerspacing) to the final marker, this can be avoided with minimum spacing. This is also useful in making room for a [`specialEndMarker`](#specialendmarker).
 
 </td>
 </tr>
@@ -1317,7 +1321,7 @@ The first and last marker are always shown then the rest are layed out left to r
 </td>
 <td align="left">
 
-The right hand marker of the chart can be set to a special marker, such as 'end', or another designation.
+The right hand marker of the chart can be set to a special marker.<br/><br/>e.g. 'end'
 
 </td>
 </tr>
@@ -1338,7 +1342,7 @@ The right hand marker of the chart can be set to a special marker, such as 'end'
 </td>
 <td align="left">
 
-The left hand marker of the chart can be set to a special marker, such as 'start', or another designation.
+The left hand marker of the chart can be set to a special marker.<br/><br/>e.g. 'start'
 
 </td>
 </tr>
@@ -1591,7 +1595,7 @@ Stroke width for horizontal lines.
 </td>
 <td align="left">
 
-Spacing for the Y-Axis ticks, this is determined using `numberOfTicks` and [`yRange`](#yrange) if not defined while `numberOfTicks` is given.
+Spacing for the Y-Axis ticks, this is determined using [`numberOfTicks`](#numberofticks) and [`yRange`](#yrange) if not defined while [`numberOfTicks`](#numberofticks) is given.
 
 </td>
 </tr>
@@ -1612,7 +1616,7 @@ Spacing for the Y-Axis ticks, this is determined using `numberOfTicks` and [`yRa
 </td>
 <td align="left">
 
-If there are ticks with labels and [`axisLabel`](#axislabel) the `axisLabel` will left justify and this offset will apply to it.
+If there are ticks with labels and an [`axisLabel`](#axislabel) the [`axisLabel`](#axislabel) will left justify and this offset will apply to it.
 
 </td>
 </tr>
@@ -1654,7 +1658,7 @@ Show marker next to the average of the data.
 </td>
 <td align="left">
 
-Spacing between the markers and the chart to the left of the chart and right of the markers.
+Spacing between the markers and the chart to the left of the chart i.e. right of the markers.
 
 </td>
 </tr>
@@ -1675,7 +1679,7 @@ Spacing between the markers and the chart to the left of the chart and right of 
 </td>
 <td align="left">
 
-Show marker next to bottom line, often `0` and not needed.
+Show marker next to bottom line, often `0` and not visually needed.
 
 </td>
 </tr>
@@ -1771,7 +1775,7 @@ Function that takes [`GradientProps`](#gradient-props) and returns a custom grad
 </td>
 <td align="left">
 
-Rotates the Y-Axis label vertically.
+Rotates the [Y-Axis label](#axislabel) vertically.
 
 </td>
 </tr>
@@ -1922,7 +1926,7 @@ Border color for default cursor.
 </td>
 <td align="left">
 
-Inside color of default cursor.
+Internal color for default cursor.
 
 </td>
 </tr>
@@ -1964,7 +1968,7 @@ Display line to bottom of chart below cursor.
 </td>
 <td align="left">
 
-Height of the cursor, you need to adjust this is you use a custom cursor or want to change the default cursor size.
+Height of the cursor, you need to adjust this is you use a [custom cursor](#rendercursormarker) or want to change the default cursor size.
 
 </td>
 </tr>
@@ -1985,7 +1989,7 @@ Height of the cursor, you need to adjust this is you use a custom cursor or want
 </td>
 <td align="left">
 
-Width of the cursor, you need to adjust this is you use a custom cursor or want to change the default cursor size.
+Width of the cursor, you need to adjust this is you use a [custom cursor](#rendercursormarker) or want to change the default cursor size.
 
 </td>
 </tr>
@@ -2006,7 +2010,7 @@ Width of the cursor, you need to adjust this is you use a custom cursor or want 
 </td>
 <td align="left">
 
-Width of the cursor line.
+Width of the [cursor line](#cursorline).
 
 </td>
 </tr>
@@ -2054,7 +2058,7 @@ React.ReactNode | null
 </td>
 <td align="left">
 
-Function that returns a custom cursor marker with ref assigned.
+Function that returns a custom cursor marker with ref assigned to outer most [`View`](https://facebook.github.io/react-native/docs/view).
 
 </td>
 </tr>
@@ -2205,7 +2209,7 @@ Default font size of tool tip text.
 </td>
 <td align="left">
 
-Height of the tool tip, you should set this if there is minimal change as the measurements for less jitteriness if wanted.
+Height of the tool tip, you should set this if there are minimal changes to the height across the data as the measurements for setting this can cause jitteriness on Android at times.
 
 </td>
 </tr>
@@ -2226,7 +2230,7 @@ Height of the tool tip, you should set this if there is minimal change as the me
 </td>
 <td align="left">
 
-Keeps the tool tip triangle centered instead of moving to adjust for the position within the chart.
+Set the tool tip triangle centered instead of moving to adjust for the position within the chart.
 
 </td>
 </tr>
@@ -2295,7 +2299,7 @@ Array of functions that take [`toolTipTextRenderersInput`](#tool-tip-text-render
 </td>
 <td align="left">
 
-Width of the tool tip, you should set this if there is minimal change as the measurements for less jitteriness if wanted.
+Width of the tool tip, you should set this if there are minimal changes to the width across the data as the measurements for setting this can cause jitteriness on Android at times.
 
 </td>
 </tr>
@@ -2370,7 +2374,7 @@ The scaleY function used to draw the chart, combined with `.invert` and `y` a va
 </td>
 <td align="left">
 
-The `selectedBarNumber` of the bar chart, this is always `0` for the area chart.
+The `selectedBarNumber` of the [bar chart](#bar-chart-props), this is always `0` for the [area chart](#area-chart-props).
 
 </td>
 </tr>
@@ -2438,7 +2442,7 @@ Current `y` value of the cursor, use in combination with [scaleY](#scaley).
 </td>
 <td align="left">
 
-The `id` can be used as the key on the gradient `Defs` returned to designate it for use by the the chart as shown in the [example](#horizontal-line-gradient).
+The `id` can be used as the key on the gradient `Defs` returned to designate it for use by the the chart as shown in the [example](#default-horizontal-line-gradient).
 
 </td>
 </tr>
