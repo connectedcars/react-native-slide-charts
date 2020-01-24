@@ -108,8 +108,7 @@ class ToolTip extends Component<ToolTipComponentProps, State> {
 
       // Added to account for android textInput padding / late rendering
       const baseHeight = (textStyles[i] != null && textStyles[i].fontSize != null) ?
-        textStyles[i].fontSize :
-        fontSize ? fontSize : 17
+        textStyles[i].fontSize : fontSize
       const height = baseHeight ? baseHeight + 5 : 22
       inputs.push(
         <TextInput

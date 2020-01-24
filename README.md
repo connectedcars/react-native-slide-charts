@@ -256,8 +256,7 @@ Callback function that provides the current cursor position `y`. As this is firi
 </td>
 <td align="left">
 
-TODO: LINK
-Pushes the rendered height of the data within the chart down to make room for the `ToolTip` at the max. The `ToolTip` will render outside of the chart component if desired so this can be set to `0` or adjusted for using [`paddingTop`](#paddingtop) or [`style`](#style) if desired.
+Pushes the rendered height of the data within the chart down to make room for the [`ToolTip`](#tool-tip-props) at the max. The [`ToolTip`](#tool-tip-props) will render outside of the chart component if desired so this can be set to `0` or adjusted for using [`paddingTop`](#paddingtop) or [`style`](#style) if desired.
 
 </td>
 </tr>
@@ -582,8 +581,7 @@ On some slower Android devices there may be too many calls across the bridge tha
 </td>
 <td align="center">
 
-TODO:LINK<br/>
-`ToolTipProps`
+[`ToolTipProps`](#tool-tip-props)
 
 </td>
 <td align="center">
@@ -919,8 +917,7 @@ Function that returns a custom gradient to fill the selected bar.
 </td>
 <td align="center">
 
-TODO: add link<br/>
-`CursorProps`
+[`CursorProps`](#cursor-props)
 
 </td>
 <td align="center">
@@ -1153,8 +1150,7 @@ If [`specialStartmarker`](#specialstartmarker) or [`specialEndMarker`](#speciale
 </td>
 <td align="center">
 
-TODO: link
-`XAxisLabelAlignment`
+[`XAxisLabelAlignment`](#xaxislabelalignment)
 
 </td>
 <td align="center">
@@ -1422,8 +1418,7 @@ Styling for marker, extends [`TSpanProps`](https://github.com/react-native-commu
 </td>
 <td align="center">
 
-TODO: link
-`YAxisLabelAlignment`
+[`YAxisLabelAlignment`](#yaxislabelalignment)
 
 </td>
 <td align="center">
@@ -1839,8 +1834,7 @@ Stroke width of the vertial side lines.
 </tbody>
 </table>
 
-#### CursorProps:
-
+#### Cursor Props:
 
 <table>
 <thead>
@@ -2031,6 +2025,245 @@ React.ReactNode | null
 <td align="left">
 
 Function that returns a custom cursor marker with ref assigned.
+
+</td>
+</tr>
+</tbody>
+</table>
+
+#### Tool Tip Props:
+
+<table>
+<thead>
+<tr>
+<td align="center">
+  Prop
+</td>
+<td align="center">
+  Type
+</td>
+<td align="center">
+  Default
+</td>
+<td align="left">
+  Note
+</td>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center">
+  
+  ##### `backgroundColor`
+</td>
+<td align="center">
+
+`string`
+
+</td>
+<td align="center">
+
+`'#fff'`
+
+</td>
+<td align="left">
+
+Background color of tool tip.
+
+</td>
+</tr>
+<tr>
+<td align="center">
+  
+  ##### `borderRadius`
+</td>
+<td align="center">
+
+`number`
+
+</td>
+<td align="center">
+
+`2`
+
+</td>
+<td align="left">
+
+Border radius of tool tip corners.
+
+</td>
+</tr>
+<tr>
+<td align="center">
+  
+  ##### `displayToolTip`
+</td>
+<td align="center">
+
+`boolean`
+
+</td>
+<td align="center">
+
+`true`
+
+</td>
+<td align="left">
+
+Display tool tip if [`toolTipTextRenderers`](#tooltiptextrenderers) given.
+
+</td>
+</tr>
+<tr>
+<td align="center">
+  
+  ##### `displayTriangle`
+</td>
+<td align="center">
+
+`boolean`
+
+</td>
+<td align="center">
+
+`true`
+
+</td>
+<td align="left">
+
+Display tool tip triangle on bottom of tool tip.
+
+</td>
+</tr>
+<tr>
+<td align="center">
+  
+  ##### `fontSize`
+</td>
+<td align="center">
+
+`number`
+
+</td>
+<td align="center">
+
+`13`
+
+</td>
+<td align="left">
+
+Default font size of tool tip text.
+
+</td>
+</tr>
+<tr>
+<td align="center">
+  
+  ##### `height`
+</td>
+<td align="center">
+
+`number`
+
+</td>
+<td align="center">
+
+`undefined`
+
+</td>
+<td align="left">
+
+Height of the tool tip, you should set this if there is minimal change as the measurements for less jitteriness if wanted.
+
+</td>
+</tr>
+<tr>
+<td align="center">
+  
+  ##### `lockTriangleCenter`
+</td>
+<td align="center">
+
+`boolean`
+
+</td>
+<td align="center">
+
+`false`
+
+</td>
+<td align="left">
+
+Keeps the tool tip triangle centered instead of moving to adjust for the position within the graph.
+
+</td>
+</tr>
+<tr>
+<td align="center">
+  
+  ##### `textStyles`
+</td>
+<td align="center">
+
+[`TextStyle[]`](https://facebook.github.io/react-native/docs/text-style-props)
+
+</td>
+<td align="center">
+
+`[]`
+
+</td>
+<td align="left">
+
+Array of text styles that match up with [toolTipTextRenderers](#tooltiptextrenderers) array for styling.
+
+</td>
+</tr>
+<tr>
+<td align="center">
+  
+  ##### `toolTipTextRenderers`
+</td>
+<td align="center">
+
+```ts
+Array<(
+toolTipTextRenderersInput:
+ToolTipTextRenderersInput
+) => { text: string }
+>
+```
+
+</td>
+<td align="center">
+
+`[]`
+
+</td>
+<td align="left">
+
+Array of functions that return an object that has a `text` key with a `string` value.
+
+</td>
+</tr>
+<tr>
+<td align="center">
+  
+  ##### `width`
+</td>
+<td align="center">
+
+`number`
+
+</td>
+<td align="center">
+
+`undefined`
+
+</td>
+<td align="left">
+
+Width of the tool tip, you should set this if there is minimal change as the measurements for less jitteriness if wanted.
 
 </td>
 </tr>
