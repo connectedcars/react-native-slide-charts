@@ -84,9 +84,36 @@ But it will be more visually useful for configuring to use some test [data](#dat
 />
 ```
 
+The Props, Types, Enums, and Defaults are defined below:
+
+- [Charts](#charts)
+  - [Common Props](#common-bar-and-area-chart-props)
+  - [Bar Chart Props](#bar-chart-props)
+  - [Area Chart Props](#area-chart-props)
+- [Axis](#axis)
+  - [Common Props](#common-x-and-y-axis-props)
+  - [X-Axis Props](#x-axis-props)
+  - [Y-Axis](#y-axis-props)
+- [Cursor](#cursor)
+  - [Cursor Props](#cursor-props)
+- [Tool Tip](#tool-tip)
+  - [Tool Tip Props](#tool-tip-props)
+- [Types](#types)
+  - [Tool Tip Text Renderers Input](#tool-tip-text-renderers-input)
+  - [Gradient Props](#gradient-props)
+- [Enums](#enums)
+  - [XAxisLabelAlignment](#xaxislabelalignment)
+  - [YAxisLabelAlignment](#yaxislabelalignment)
+- [Gradients](#gradients)
+  - [Default Area Chart Fill Gradient](#default-area-chart-fill-gradient)
+  - [Default Bar Chart Fill Gradient](#default-bar-chart-fill-gradient)
+  - [Default Bar Chart Selected Fill Gradient](#default-bar-chart-selected-fill-gradient)
+  - [Default Vertical Line Gradient](#default-vertical-line-gradient)
+  - [Default Horizontal Line Gradient](#default-horizontal-line-gradient)
+
 ### Charts
 
-#### Common Props:
+#### Common Bar and Area Chart Props:
 
 <table>
 <thead>
@@ -453,12 +480,13 @@ GradientProps)
 </td>
 <td align="center">
 
-TODO: PUT GRADIENT
+[Default Area Chart](#default-area-chart-fill-gradient)
+[Default Bar Chart](#default-bar-chart-fill-gradient)
 
 </td>
 <td align="left">
 
-Function that returns a custom gradient to fill the bars of the bar chart or area of the area chart.
+Function that takes [`GradientProps`](#gradient-props) and returns a custom gradient to fill the bars of the bar chart or area of the area chart.
 
 </td>
 </tr>
@@ -878,12 +906,12 @@ GradientProps)
 </td>
 <td align="center">
 
-TODO: GRAD
+[Default Selected Fill Gradient](#default-bar-chart-selected-fill-gradient)
 
 </td>
 <td align="left">
 
-Function that returns a custom gradient to fill the selected bar.
+Function that takes [`GradientProps`](#gradient-props) and returns a custom gradient to fill the selected bar.
 
 </td>
 </tr>
@@ -1010,7 +1038,7 @@ Stroke width of the line designating the area charted.
 
 ### Axis
 
-#### Common Props:
+#### Common X and Y Axis Props:
 
 <table>
 <thead>
@@ -1691,12 +1719,12 @@ JSX.Element
 </td>
 <td align="center">
 
-TODO: put line gradient
+[Default Horizontal Line Gradient](#default-horizontal-line-gradient)
 
 </td>
 <td align="left">
 
-Function that returns a custom gradient for the horizontal lines.
+Function that takes [`GradientProps`](#gradient-props) and returns a custom gradient for the horizontal lines. The `Defs` prop `key` must match the default, i.e. `key={props.id}`.
 
 </td>
 </tr>
@@ -1717,12 +1745,12 @@ GradientProps)
 </td>
 <td align="center">
 
-TODO: put line gradient
+[Default Vertical Line Gradient](#default-vertical-line-gradient)
 
 </td>
 <td align="left">
 
-Function that returns a custom gradient for the vertical side lines.
+Function that takes [`GradientProps`](#gradient-props) and returns a custom gradient for the vertical side lines. The `Defs` prop `key` must match the default, i.e. `key={'verticalLineGradient'}`.
 
 </td>
 </tr>
@@ -2246,7 +2274,7 @@ ToolTipTextRenderersInput
 </td>
 <td align="left">
 
-Array of functions that return an object that has a `text` key with a `string` value.
+Array of functions that take [`toolTipTextRenderersInput`](#tool-tip-text-renderers-input) and return an object that has a `text` key with a `string` value.
 
 </td>
 </tr>
@@ -2282,13 +2310,10 @@ Width of the tool tip, you should set this if there is minimal change as the mea
 <thead>
 <tr>
 <td align="center">
-  Prop
+  Key
 </td>
 <td align="center">
   Type
-</td>
-<td align="center">
-  Default
 </td>
 <td align="left">
   Note
@@ -2309,9 +2334,6 @@ ScaleLinear<number, number>
 ```
 
 </td>
-<td align="center">
-
-</td>
 <td align="left">
 
 The scaleX function used to draw the graph, combined with `.invert` and `x` a value can be determined for any cursor position.
@@ -2330,9 +2352,6 @@ ScaleLinear<number, number>
 ```
 
 </td>
-<td align="center">
-
-</td>
 <td align="left">
 
 The scaleY function used to draw the graph, combined with `.invert` and `y` a value can be determined for any cursor position.
@@ -2347,11 +2366,6 @@ The scaleY function used to draw the graph, combined with `.invert` and `y` a va
 <td align="center">
 
 `number`
-
-</td>
-<td align="center">
-
-`0`
 
 </td>
 <td align="left">
@@ -2370,9 +2384,6 @@ The `selectedBarNumber` of the bar chart, this is always `0` for the area chart.
 `number`
 
 </td>
-<td align="center">
-
-</td>
 <td align="left">
 
 Current `x` value of the cursor, use in combination with [scaleX](#scalex).
@@ -2387,9 +2398,6 @@ Current `x` value of the cursor, use in combination with [scaleX](#scalex).
 <td align="center">
 
 `number`
-
-</td>
-<td align="center">
 
 </td>
 <td align="left">
@@ -2407,13 +2415,10 @@ Current `y` value of the cursor, use in combination with [scaleY](#scaley).
 <thead>
 <tr>
 <td align="center">
-  Prop
+  Key
 </td>
 <td align="center">
   Type
-</td>
-<td align="center">
-  Default
 </td>
 <td align="left">
   Note
@@ -2431,13 +2436,9 @@ Current `y` value of the cursor, use in combination with [scaleY](#scaley).
 `string`
 
 </td>
-<td align="center">
-
-</td>
 <td align="left">
 
-TODO: example
-The `id` must be used as the key on the gradient `Defs` returned to designate it for use by the the graph as shown in the example.
+The `id` can be used as the key on the gradient `Defs` returned to designate it for use by the the graph as shown in the [example](#horizontal-line-gradient).
 
 </td>
 </tr>
@@ -2445,6 +2446,16 @@ The `id` must be used as the key on the gradient `Defs` returned to designate it
 </table>
 
 ### Enums
+
+#### XAxisLabelAlignment:
+
+```ts
+enum XAxisLabelAlignment {
+  right = 'right',
+  left = 'left',
+  center = 'center',
+}
+```
 
 #### YAxisLabelAlignment:
 
@@ -2457,12 +2468,73 @@ enum YAxisLabelAlignment {
 }
 ```
 
-#### XAxisLabelAlignment:
+### Gradients
+
+#### Default Area Chart Fill Gradient:
 
 ```ts
-enum XAxisLabelAlignment {
-  right = 'right',
-  left = 'left',
-  center = 'center',
+const defaultAreaChartFillGradient = (props: GradientProps) => {
+  return (
+    <LinearGradient x1='50%' y1='0%' x2='50%' y2='100%' {...props}>
+      <Stop stopColor='#0081EB' offset='0%' stopOpacity='0.2' />
+      <Stop stopColor='#FFFFFF' offset='100%' stopOpacity='0.2' />
+    </LinearGradient>
+  )
 }
+```
+
+#### Default Bar Chart Fill Gradient:
+
+```ts
+const defaultBarChartFillGradient = (props: GradientProps) => {
+  return (
+    <LinearGradient x1='50%' y1='0%' x2='50%' y2='100%' {...props}>
+      <Stop stopColor='#0081EB' offset='0%' stopOpacity='0.4' />
+      <Stop stopColor='#0081EB' offset='100%' stopOpacity='0.4' />
+    </LinearGradient>
+  )
+}
+```
+
+#### Default Bar Chart Selected Fill Gradient:
+
+```ts
+const defaultBarChartSelectedFillGradient = (props: GradientProps) => {
+  return (
+    <LinearGradient x1='50%' y1='0%' x2='50%' y2='100%' {...props}>
+      <Stop stopColor='#0081EB' offset='0%' stopOpacity='1' />
+      <Stop stopColor='#0081EB' offset='100%' stopOpacity='1' />
+    </LinearGradient>
+  )
+}
+```
+
+#### Default Vertical Line Gradient:
+
+```ts
+export const verticalLineGradient = (props: GradientProps) => (
+  <Defs key={'verticalLineGradient'}>
+    <LinearGradient x1='50%' y1='0%' x2='50%' y2='100%' {...props}>
+      <Stop stopColor='#ffffff' offset='0%' stopOpacity='1' />
+      <Stop stopColor='#dadada' offset='30%' stopOpacity='1' />
+      <Stop stopColor='#dadada' offset='100%' stopOpacity='1' />
+    </LinearGradient>
+  </Defs>
+)
+```
+
+#### Default Horizontal Line Gradient:
+
+```ts
+export const horizontalLineGradient = (
+  props: GradientProps & { count: number }
+) => (
+  <Defs key={props.id}>
+    <LinearGradient x1='0%' y1='0%' x2='100%' y2='0%' id={props.id}>
+      <Stop stopColor='#dadada' offset='0%' stopOpacity='1' />
+      <Stop stopColor='#dadada' offset='50%' stopOpacity='1' />
+      <Stop stopColor='#dadada' offset='100%' stopOpacity='1' />
+    </LinearGradient>
+  </Defs>
+)
 ```
