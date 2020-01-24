@@ -2226,7 +2226,7 @@ Height of the tool tip, you should set this if there is minimal change as the me
 </td>
 <td align="left">
 
-Keeps the tool tip triangle centered instead of moving to adjust for the position within the graph.
+Keeps the tool tip triangle centered instead of moving to adjust for the position within the chart.
 
 </td>
 </tr>
@@ -2336,7 +2336,7 @@ ScaleLinear<number, number>
 </td>
 <td align="left">
 
-The scaleX function used to draw the graph, combined with `.invert` and `x` a value can be determined for any cursor position.
+The scaleX function used to draw the chart, combined with `.invert` and `x` a value can be determined for any cursor position.
 
 </td>
 </tr>
@@ -2354,7 +2354,7 @@ ScaleLinear<number, number>
 </td>
 <td align="left">
 
-The scaleY function used to draw the graph, combined with `.invert` and `y` a value can be determined for any cursor position.
+The scaleY function used to draw the chart, combined with `.invert` and `y` a value can be determined for any cursor position.
 
 </td>
 </tr>
@@ -2438,7 +2438,7 @@ Current `y` value of the cursor, use in combination with [scaleY](#scaley).
 </td>
 <td align="left">
 
-The `id` can be used as the key on the gradient `Defs` returned to designate it for use by the the graph as shown in the [example](#horizontal-line-gradient).
+The `id` can be used as the key on the gradient `Defs` returned to designate it for use by the the chart as shown in the [example](#horizontal-line-gradient).
 
 </td>
 </tr>

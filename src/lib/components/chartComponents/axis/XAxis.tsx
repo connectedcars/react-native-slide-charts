@@ -61,8 +61,8 @@ class XAxis extends Component<XAxisComponentProps> {
       </Text>
     )
 
-  // For graphs that want an x-label, label can be left, right, or center justified
-  // If the graph has markers and a label the label is pinned to the bottom
+  // For charts that want an x-label, label can be left, right, or center justified
+  // If the chart has markers and a label the label is pinned to the bottom
   renderAxisLabel = () => {
     const {
       axisLabelAlignment, scaleY, yRange, labelTopPadding, axisLabelStyle, height, labelBottomOffset,
@@ -70,7 +70,7 @@ class XAxis extends Component<XAxisComponentProps> {
     } = this.props
     const stopX = data.length > 1 ? scaleX(data[data.length - 1].x) : width - paddingRight
 
-    // Align label at start, end, or center of graph
+    // Align label at start, end, or center of chart
     const labelAnchor = axisLabelAlignment === XAxisLabelAlignment.right ? 'end' :
       axisLabelAlignment === XAxisLabelAlignment.left ? 'start' :
         'middle'
@@ -109,7 +109,7 @@ class XAxis extends Component<XAxisComponentProps> {
     if (axisMarkerLabels.length > 1) {
       if (i === 0) {
 
-        // If the fist element should be left aligned to the start of the graph
+        // If the fist element should be left aligned to the start of the chart
         return {
           label: specialStartMarker || marker,
           markerAlignment: adjustForSpecialMarkers ?
@@ -122,7 +122,7 @@ class XAxis extends Component<XAxisComponentProps> {
       }
       if (i === numberOfMarks - 1) {
 
-        // If the last element should be right aligned to the end of the graph
+        // If the last element should be right aligned to the end of the chart
         return {
           label: specialEndMarker || marker,
           markerAlignment: adjustForSpecialMarkers ?
@@ -169,7 +169,7 @@ class XAxis extends Component<XAxisComponentProps> {
     const numberOfBars = data.length
     const startX = data.length > 1 ? scaleX(data[0].x) : axisWidth + paddingLeft
     const stopX = data.length > 1 ? scaleX(data[data.length - 1].x) : width - paddingRight
-    const graphWidth = stopX - startX
+    const chartWidth = stopX - startX
     const numberOfMarks = axisMarkerLabels.length
     const axisMarkers: JSX.Element[] = axisMarkerLabels.map((marker, i) => {
       let markerX = startX
@@ -182,21 +182,21 @@ class XAxis extends Component<XAxisComponentProps> {
       // If there is a label given for every item we line up items directly under each bar
       if ((barWidth || barSpacing) && numberOfBars > 0 && numberOfBars === numberOfMarks) {
         if (barWidth) {
-          const barSpacingFromWidth = (graphWidth - (numberOfBars * barWidth)) / (numberOfBars > 1 ? numberOfBars - 1 : 2)
+          const barSpacingFromWidth = (chartWidth - (numberOfBars * barWidth)) / (numberOfBars > 1 ? numberOfBars - 1 : 2)
           markerX = numberOfBars > 1 ?
             startX + (i * (barWidth + barSpacingFromWidth)) + (barWidth / 2) :
             startX + barSpacingFromWidth + (barWidth / 2)
         } else if (barSpacing) {
           const barWidthFromSpacing = numberOfBars > 1 ?
-            (graphWidth - ((numberOfBars - 1) * barSpacing)) / numberOfBars :
-            graphWidth
+            (chartWidth - ((numberOfBars - 1) * barSpacing)) / numberOfBars :
+            chartWidth
           markerX = startX + (i * (barWidthFromSpacing + barSpacing)) + (barWidthFromSpacing / 2)
         }
         labelAndAlignment = this.determineLabelAndAlignment(numberOfMarks, numberOfBars, marker, i)
       } else {
 
         // If we have labels that are not in alignment with each bar we evenly distribute them
-        markerX = numberOfMarks > 1 ? startX + (i * graphWidth / (numberOfMarks - 1)) : startX + graphWidth / 2
+        markerX = numberOfMarks > 1 ? startX + (i * chartWidth / (numberOfMarks - 1)) : startX + chartWidth / 2
         labelAndAlignment = this.determineLabelAndAlignment(numberOfMarks, numberOfBars, marker, i)
       }
       return this.renderAxisMarker({

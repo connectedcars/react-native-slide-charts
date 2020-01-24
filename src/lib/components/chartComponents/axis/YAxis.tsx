@@ -167,7 +167,7 @@ class YAxis extends Component<YAxisComponentProps> {
 
       /**
        * Determine label alignment, there is a lot of logic here to make sure
-       * regardless of the alignment and if the graph has markers with the ticks
+       * regardless of the alignment and if the chart has markers with the ticks
        * the label is shown in a usable way
        */
       let y = paddingTop + labelTopPadding
@@ -223,7 +223,7 @@ class YAxis extends Component<YAxisComponentProps> {
     }
 
 
-    // Create the vertical lines designating the start and end of the graph
+    // Create the vertical lines designating the start and end of the chart
     if (verticalLineWidth > 0) {
       const lineFromX = (x: number, key: string) => (
         <Line

@@ -53,9 +53,9 @@ class SlideBarChart extends Component<SlideBarChartComponentProps, State> {
   scaleX: ScaleTime<number, number> | ScaleLinear<number, number> = scaleLinear().domain([0, 1]).range([0, 1])
   scaleY: ScaleLinear<number, number> = scaleLinear().domain([0, 1]).range([0, 1])
   line: string | null = null
-  graphWidth = this.props.width - this.props.axisWidth - this.props.paddingLeft - this.props.paddingRight
+  chartWidth = this.props.width - this.props.axisWidth - this.props.paddingLeft - this.props.paddingRight
   mounted = false
-  nextValue = this.graphWidth / 2
+  nextValue = this.chartWidth / 2
   next: any
   selectedBarNumber = 0
   previousSelectedBarNumber = 0
@@ -108,8 +108,8 @@ class SlideBarChart extends Component<SlideBarChartComponentProps, State> {
     }
   }
 
-  // Animates the initial rendering of the graph vertically
-  animateGraph = (value: number) => {
+  // Animates the initial rendering of the chart vertically
+  animateChart = (value: number) => {
     const {
       axisWidth,
       yRange,
@@ -124,9 +124,9 @@ class SlideBarChart extends Component<SlideBarChartComponentProps, State> {
     const toolTipTextRenderers = toolTipProps?.toolTipTextRenderers || []
     const numberOfBars = data.length > 0 ? data.length : 1
     const barWidthForToolTip = barWidth ??
-      (this.graphWidth - (numberOfBars - 1) * barSpacing) / numberOfBars
+      (this.chartWidth - (numberOfBars - 1) * barSpacing) / numberOfBars
     const barSpacingForToolTip = barWidth ?
-      (this.graphWidth - (barWidth * numberOfBars)) / (numberOfBars > 1 ? numberOfBars - 1 : 2) :
+      (this.chartWidth - (barWidth * numberOfBars)) / (numberOfBars > 1 ? numberOfBars - 1 : 2) :
       barSpacing
     const x = this.getX(
       this.selectedBarNumber,
@@ -138,9 +138,9 @@ class SlideBarChart extends Component<SlideBarChartComponentProps, State> {
     )
     const y = this.scaleY(data[this.selectedBarNumber]?.y ?? 0)
 
-    // Move the tool tip upward when it mounts alongside the graph
+    // Move the tool tip upward when it mounts alongside the chart
     if (this.toolTip.current != null) {
-      const realPercentage = (x - axisWidth - paddingLeft) / this.graphWidth
+      const realPercentage = (x - axisWidth - paddingLeft) / this.chartWidth
       this.toolTip.current.setNativeToolTipPositionProps(
         ((1 - value) * this.scaleY(yRangeCalculated[0])) + (y * value),
         x,
@@ -166,8 +166,8 @@ class SlideBarChart extends Component<SlideBarChartComponentProps, State> {
     }
   }
 
-  // Animates the re-rendering of the graph vertically only
-  animateGraphReRender = (value: number) => {
+  // Animates the re-rendering of the chart vertically only
+  animateChartReRender = (value: number) => {
     const { height, paddingTop, axisHeight, paddingBottom, chartPaddingTop } = this.props
     const scaleY = scaleLinear()
       .domain([this.previousYRange[0], this.previousYRange[1]])
@@ -186,7 +186,7 @@ class SlideBarChart extends Component<SlideBarChartComponentProps, State> {
 
   // To prevent jumping around before the animation kicks in we initially
   // reset all the initial values to 0 in the Y-axis
-  setGraphToZero = () => {
+  setChartToZero = () => {
     const {
       axisWidth,
       yRange,
@@ -203,12 +203,12 @@ class SlideBarChart extends Component<SlideBarChartComponentProps, State> {
     if (this.toolTip.current != null) {
       const numberOfBars = data.length > 0 ? data.length : 1
       const barWidthForToolTip = barWidth ??
-        (this.graphWidth - (numberOfBars - 1) * barSpacing) / numberOfBars
+        (this.chartWidth - (numberOfBars - 1) * barSpacing) / numberOfBars
       const barSpacingForToolTip = barWidth ?
-        (this.graphWidth - (barWidth * numberOfBars)) / (numberOfBars > 1 ? numberOfBars - 1 : 2) :
+        (this.chartWidth - (barWidth * numberOfBars)) / (numberOfBars > 1 ? numberOfBars - 1 : 2) :
         barSpacing
-      const barWidthSize = this.graphWidth / numberOfBars
-      const xInput = this.graphWidth / 2
+      const barWidthSize = this.chartWidth / numberOfBars
+      const xInput = this.chartWidth / 2
 
       // Set selected bar at 50% of chart width
       this.selectedBarNumber = Math.floor(xInput / barWidthSize) > 0 ?
@@ -218,7 +218,7 @@ class SlideBarChart extends Component<SlideBarChartComponentProps, State> {
         0
       this.setState({ selectedBarNumber: alwaysShowIndicator ? this.selectedBarNumber : undefined })
 
-      // Get the proper x and percentage of the graph to position the toolTip in its starting position
+      // Get the proper x and percentage of the chart to position the toolTip in its starting position
       const x = this.getX(
         this.selectedBarNumber,
         numberOfBars,
@@ -227,7 +227,7 @@ class SlideBarChart extends Component<SlideBarChartComponentProps, State> {
         axisWidth,
         paddingLeft
       )
-      const realPercentage = (x - axisWidth - paddingLeft) / this.graphWidth
+      const realPercentage = (x - axisWidth - paddingLeft) / this.chartWidth
       this.toolTip.current.setNativeToolTipPositionProps(this.scaleY(yRangeCalculated[0]), x, 0, realPercentage, 4)
       this.toolTip.current.setNativeTriangleXPositionProps(realPercentage)
       for (let i = 0; i < toolTipTextRenderers.length; i++) {
@@ -297,7 +297,7 @@ class SlideBarChart extends Component<SlideBarChartComponentProps, State> {
       hapticFeedback,
     } = this.props
     const numberOfBars = data.length > 0 ? data.length : 1
-    const barWidthSize = this.graphWidth / numberOfBars
+    const barWidthSize = this.chartWidth / numberOfBars
     const xInput = value
     this.selectedBarNumber = Math.floor(xInput / barWidthSize) > 0 ?
       Math.floor(xInput / barWidthSize) < numberOfBars - 1 ?
@@ -316,9 +316,9 @@ class SlideBarChart extends Component<SlideBarChartComponentProps, State> {
     }
     this.setState({ selectedBarNumber: this.selectedBarNumber })
     const barWidthForToolTip = barWidth ??
-      (this.graphWidth - (numberOfBars - 1) * barSpacing) / numberOfBars
+      (this.chartWidth - (numberOfBars - 1) * barSpacing) / numberOfBars
     const barSpacingForToolTip = barWidth ?
-      (this.graphWidth - (barWidth * numberOfBars)) / (numberOfBars > 1 ? numberOfBars - 1 : 2) :
+      (this.chartWidth - (barWidth * numberOfBars)) / (numberOfBars > 1 ? numberOfBars - 1 : 2) :
       barSpacing
     const x = this.getX(
       this.selectedBarNumber,
@@ -330,7 +330,7 @@ class SlideBarChart extends Component<SlideBarChartComponentProps, State> {
     )
     const y = this.scaleY(data[this.selectedBarNumber]?.y ?? 0)
     if (this.toolTip.current != null) {
-      const realPercentage = (x - axisWidth - paddingLeft) / this.graphWidth
+      const realPercentage = (x - axisWidth - paddingLeft) / this.chartWidth
       this.toolTip.current.setNativeToolTipPositionProps(y, x, 0, realPercentage, 4)
       this.toolTip.current.setNativeTriangleXPositionProps(realPercentage)
       const toolTipTextRenderers = toolTipProps?.toolTipTextRenderers || []
@@ -360,8 +360,8 @@ class SlideBarChart extends Component<SlideBarChartComponentProps, State> {
     const { x } = this.state
 
     /**
-     * If onPress is provided the graph likely will not have a cursor shown (provided by props)
-     * and therefore it makes more sense to allow the graph to be clicked than scrolled
+     * If onPress is provided the chart likely will not have a cursor shown (provided by props)
+     * and therefore it makes more sense to allow the chart to be clicked than scrolled
      */
     if (onPress) {
       return (
@@ -455,7 +455,7 @@ class SlideBarChart extends Component<SlideBarChartComponentProps, State> {
     } = this.props
 
     if (alwaysShowIndicator) {
-      this.moveCursorBinary(this.graphWidth / 2)
+      this.moveCursorBinary(this.chartWidth / 2)
     }
 
     /**
@@ -465,14 +465,14 @@ class SlideBarChart extends Component<SlideBarChartComponentProps, State> {
     this.showIndicator(0)
 
     // This is used when re-rendering and animating to push
-    // the graph down with old data still used to determine Y
-    this.state.toolTipY.addListener(({ value }) => this.animateGraphReRender(value))
+    // the chart down with old data still used to determine Y
+    this.state.toolTipY.addListener(({ value }) => this.animateChartReRender(value))
 
-    // This will flatten the Y axis of the graph for
+    // This will flatten the Y axis of the chart for
     // animation and set the toolTip X to the middle point
-    this.state.cursorY.addListener(({ value }) => this.animateGraph(value))
+    this.state.cursorY.addListener(({ value }) => this.animateChart(value))
     if (animated) {
-      this.setGraphToZero()
+      this.setChartToZero()
     } else {
       this.state.cursorY.setValue(1)
     }
@@ -483,9 +483,9 @@ class SlideBarChart extends Component<SlideBarChartComponentProps, State> {
         // due to it not being mounted at the proper time as noted above
         const numberOfBars = data.length > 0 ? data.length : 1
         const barWidthForToolTip = barWidth ??
-          (this.graphWidth - (numberOfBars - 1) * barSpacing) / numberOfBars
+          (this.chartWidth - (numberOfBars - 1) * barSpacing) / numberOfBars
         const barSpacingForToolTip = barWidth ?
-          (this.graphWidth - (barWidth * numberOfBars)) / (numberOfBars > 1 ? numberOfBars - 1 : 2) :
+          (this.chartWidth - (barWidth * numberOfBars)) / (numberOfBars > 1 ? numberOfBars - 1 : 2) :
           barSpacing
         const x = this.getX(
           this.selectedBarNumber,
@@ -539,7 +539,7 @@ class SlideBarChart extends Component<SlideBarChartComponentProps, State> {
     this.previousData = [...prevProps.data]
     this.previousSelectedBarNumber = this.selectedBarNumber
 
-    // If width or height change we wait to update the graph dimensions with the down animation
+    // If width or height change we wait to update the chart dimensions with the down animation
     if (prevProps.width !== width) {
       setTimeout(() => {
         this.setState({ width })
@@ -559,7 +559,7 @@ class SlideBarChart extends Component<SlideBarChartComponentProps, State> {
     ) {
       if (animated) {
 
-        // If the graph is not currently zeroed out
+        // If the chart is not currently zeroed out
         if (prevProps.data.filter(dataObject => dataObject.y !== 0).length > 0) {
 
           // Set old values to 100%, this should not change the position
@@ -570,8 +570,8 @@ class SlideBarChart extends Component<SlideBarChartComponentProps, State> {
             this.state.toolTipY,
             { toValue: 0, duration: 250, useNativeDriver: true }
           ).start(() => {
-            this.moveCursorBinary(this.graphWidth / 2)
-            this.setGraphToZero()
+            this.moveCursorBinary(this.chartWidth / 2)
+            this.setChartToZero()
             this.state.cursorY.setValue(0)
 
             // If the next values aren't zeroed animate the tool tip up
@@ -589,8 +589,8 @@ class SlideBarChart extends Component<SlideBarChartComponentProps, State> {
            * zeroed and the new data must be non zero, therefore we only
            * animate the toolTip back upward, the same logic is used in the chart
            */
-          this.moveCursorBinary(this.graphWidth / 2)
-          this.setGraphToZero()
+          this.moveCursorBinary(this.chartWidth / 2)
+          this.setChartToZero()
           Animated.timing(
             this.state.toolTipY,
             { toValue: 0, duration: 250, useNativeDriver: true, }
@@ -602,7 +602,7 @@ class SlideBarChart extends Component<SlideBarChartComponentProps, State> {
         }
       } else {
         if (alwaysShowIndicator) {
-          this.moveCursorBinary(this.graphWidth / 2)
+          this.moveCursorBinary(this.chartWidth / 2)
         }
         this.state.cursorY.setValue(1)
       }
@@ -639,7 +639,7 @@ class SlideBarChart extends Component<SlideBarChartComponentProps, State> {
       barSelectedColor,
     } = this.props
 
-    this.graphWidth = width - axisWidth - paddingLeft - paddingRight
+    this.chartWidth = width - axisWidth - paddingLeft - paddingRight
 
     const yRangeCalculated = yRange ? yRange : this.yRange
     const xRangeCalculated = xRange ? xRange : [(data[0]?.x ?? 0), (data[data.length - 1]?.x ?? 1)]

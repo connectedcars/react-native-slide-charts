@@ -25,7 +25,7 @@ class BarChart extends Component<BarChartProps, State> {
     data: this.props.data
   }
 
-  animateGraph = (value: number) => {
+  animateChart = (value: number) => {
     const { data } = this.props.animated ? this.state : this.props
     data.forEach((_item, index) => {
       if (this.barRefs[index] != null) {
@@ -80,7 +80,7 @@ class BarChart extends Component<BarChartProps, State> {
   }
 
   componentDidMount() {
-    this.state.y.addListener(({ value }) => this.animateGraph(value))
+    this.state.y.addListener(({ value }) => this.animateChart(value))
     if (this.props.animated) {
       setTimeout(() => {
         Animated.timing(this.state.y, { toValue: 1, duration: 250, useNativeDriver: true }).start()
@@ -186,7 +186,7 @@ class BarChart extends Component<BarChartProps, State> {
     const stopX = data.length > 1 ? scaleX(data[data.length - 1].x) : width - paddingRight
 
     const numberOfBars = data.length
-    const graphWidth = stopX - startX
+    const chartWidth = stopX - startX
     const horizontalLineWidth = yAxisProps?.horizontalLineWidth
     const bottomOfBar = scaleY(yRange[0]) - (horizontalLineWidth ? horizontalLineWidth / 2 : 1 / 2)
     let paths: JSX.Element[] = []
@@ -195,7 +195,7 @@ class BarChart extends Component<BarChartProps, State> {
     if (barWidth != null && numberOfBars > 1) {
 
       // Determine bar spacing based on width and align first and last bar at ends
-      const barSpacingFromWidth = (graphWidth - (numberOfBars * barWidth)) / (numberOfBars - 1)
+      const barSpacingFromWidth = (chartWidth - (numberOfBars * barWidth)) / (numberOfBars - 1)
       paths = data.map((item: { x: number | Date, y: number }, index: number) => {
         const barStartX = startX + (index * (barWidth + barSpacingFromWidth))
         return this.createBarsAndInterpreter(barWidth, barStartX, bottomOfBar, scaleY, item, index)
@@ -203,7 +203,7 @@ class BarChart extends Component<BarChartProps, State> {
     } else if (barWidth != null && numberOfBars > 0) {
 
       // If there is only one bar and a barWidth, align it center
-      const barSpacingFromWidth = (graphWidth - (numberOfBars * barWidth)) / 2
+      const barSpacingFromWidth = (chartWidth - (numberOfBars * barWidth)) / 2
       paths = data.map((item: { x: number | Date, y: number }, index: number) => {
         const barStartX = startX + barSpacingFromWidth
         return this.createBarsAndInterpreter(barWidth, barStartX, bottomOfBar, scaleY, item, index)
@@ -211,7 +211,7 @@ class BarChart extends Component<BarChartProps, State> {
     } else if (barSpacing != null && numberOfBars > 1) {
 
       // Bar spacing has a default prop so this is the default case where the bars fill the available area
-      const barWidthFromSpacing = (graphWidth - ((numberOfBars - 1) * barSpacing)) / numberOfBars
+      const barWidthFromSpacing = (chartWidth - ((numberOfBars - 1) * barSpacing)) / numberOfBars
       paths = data.map((item: { x: number | Date, y: number }, index: number) => {
         const barStartX = startX + (index * (barWidthFromSpacing + barSpacing))
         return this.createBarsAndInterpreter(barWidthFromSpacing, barStartX, bottomOfBar, scaleY, item, index)
@@ -219,9 +219,9 @@ class BarChart extends Component<BarChartProps, State> {
     } else if (barSpacing != null && numberOfBars > 0) {
 
       // Bar spacing has a default prop but we modify for one bar usage
-      const barWidthFromSpacing = graphWidth / 11
+      const barWidthFromSpacing = chartWidth / 11
       paths = data.map((item: { x: number | Date, y: number }, index: number) => {
-        const barStartX = startX + graphWidth / 11 * 5
+        const barStartX = startX + chartWidth / 11 * 5
         return this.createBarsAndInterpreter(barWidthFromSpacing, barStartX, bottomOfBar, scaleY, item, index)
       })
     }

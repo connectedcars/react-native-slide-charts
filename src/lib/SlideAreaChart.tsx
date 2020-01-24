@@ -53,14 +53,14 @@ class SlideAreaChart extends Component<SlideAreaChartComponentProps, State> {
   cursor = React.createRef<Cursor>()
   label = React.createRef<TextInput>()
   toolTip = React.createRef<ToolTip>()
-  graph = React.createRef<AreaChart>()
+  chart = React.createRef<AreaChart>()
   scaleX: ScaleTime<number, number> | ScaleLinear<number, number> = scaleLinear().domain([0, 1]).range([0, 1])
   scaleY: ScaleLinear<number, number> = scaleLinear().domain([0, 1]).range([0, 1])
   line: string = ''
   startLine: string = ''
   properties: path.SvgPathProperties = path.svgPathProperties('')
   previousProperties: path.SvgPathProperties = path.svgPathProperties('')
-  graphWidth: number = vw(100)
+  chartWidth: number = vw(100)
   mounted = false
   nextValue: number = vw(100) / 2
   next: any = undefined
@@ -109,7 +109,7 @@ class SlideAreaChart extends Component<SlideAreaChartComponentProps, State> {
         [[Number(xRangeCalculated[0]), yRangeCalculated[0]], [Number(xRangeCalculated[1]), yRangeCalculated[0]]]
   }
 
-  // Determines the line for the graph
+  // Determines the line for the chart
   calculateLine = () => {
     return shape
       .line()
@@ -119,7 +119,7 @@ class SlideAreaChart extends Component<SlideAreaChartComponentProps, State> {
       ''
   }
 
-  // Determines the start line for the graph
+  // Determines the start line for the chart
   calculateStartLine = () => {
     const yRangeCalculated = this.calculateYRange()
     return shape
@@ -146,8 +146,8 @@ class SlideAreaChart extends Component<SlideAreaChartComponentProps, State> {
     }
   }
 
-  // Animates the initial rendering of the graph vertically
-  animateGraph = (value: number) => {
+  // Animates the initial rendering of the chart vertically
+  animateChart = (value: number) => {
     const { axisWidth, cursorProps, toolTipProps, paddingLeft } = this.props
     const toolTipTextRenderers = toolTipProps?.toolTipTextRenderers || []
     const cursorMarkerHeight = cursorProps.cursorMarkerHeight
@@ -155,15 +155,15 @@ class SlideAreaChart extends Component<SlideAreaChartComponentProps, State> {
     const cursorLineWidth = cursorProps.cursorWidth
     const yRangeCalculated = this.calculateYRange()
 
-    // If graph shrinks animate X as well
+    // If chart shrinks animate X as well
     const stateX = this.state.x.__getValue?.()
-    let x = this.graphWidth / 2 + axisWidth + paddingLeft
+    let x = this.chartWidth / 2 + axisWidth + paddingLeft
     let oldX: number | undefined = undefined
     if (stateX != null) {
       x = stateX + axisWidth + paddingLeft
-      if (stateX > this.graphWidth) {
+      if (stateX > this.chartWidth) {
         oldX = stateX
-        x = this.graphWidth + axisWidth + paddingLeft
+        x = this.chartWidth + axisWidth + paddingLeft
       } else if (stateX < axisWidth + paddingLeft) {
         oldX = stateX
         x = axisWidth + paddingLeft
@@ -174,7 +174,7 @@ class SlideAreaChart extends Component<SlideAreaChartComponentProps, State> {
     const y = SVGPathYFromX(this.properties, x)
 
     /**
-     * Create an interpolator between a flat line and our graph line and use that for the animation
+     * Create an interpolator between a flat line and our chart line and use that for the animation
      * additionally the tool tip and cursor are also started at zero and moved upward with the animation
      */
     const interpolator = interpolatePath(this.startLine, this.line, null)
@@ -197,7 +197,7 @@ class SlideAreaChart extends Component<SlideAreaChartComponentProps, State> {
       ((1 - value) * oldX) + (x * value) :
       x
     if (this.toolTip.current != null) {
-      const realPercentage = (x - axisWidth - paddingLeft) / this.graphWidth
+      const realPercentage = (x - axisWidth - paddingLeft) / this.chartWidth
       this.toolTip.current.setNativeToolTipPositionProps(
         ((1 - value) * startY) + (y * value),
         toolTipX,
@@ -217,14 +217,14 @@ class SlideAreaChart extends Component<SlideAreaChartComponentProps, State> {
           }))
       }
     }
-    if (this.graph.current != null) {
+    if (this.chart.current != null) {
       const nextLine = interpolator(value)
-      this.graph.current.setNativeLineProps(nextLine)
+      this.chart.current.setNativeLineProps(nextLine)
     }
   }
 
   // To prevent jumping around before the animation kicks in we initially reset all the initial values to 0 in the Y-axis
-  setGraphToZero = () => {
+  setChartToZero = () => {
     const { axisWidth, cursorProps, toolTipProps, paddingLeft } = this.props
     const toolTipTextRenderers = toolTipProps?.toolTipTextRenderers || []
     const cursorMarkerHeight = cursorProps.cursorMarkerHeight
@@ -232,9 +232,9 @@ class SlideAreaChart extends Component<SlideAreaChartComponentProps, State> {
     const cursorLineWidth = cursorProps.cursorWidth
     const yRangeCalculated = this.calculateYRange()
 
-    if (this.cursor.current != null && this.toolTip.current != null && this.graph.current != null) {
-      const x = (this.graphWidth / 2) + axisWidth + paddingLeft
-      const realPercentage = (x - axisWidth - paddingLeft) / this.graphWidth
+    if (this.cursor.current != null && this.toolTip.current != null && this.chart.current != null) {
+      const x = (this.chartWidth / 2) + axisWidth + paddingLeft
+      const realPercentage = (x - axisWidth - paddingLeft) / this.chartWidth
       this.cursor.current.setNativeCursorIndicatorProps({
         top: this.scaleY(yRangeCalculated[0]) - cursorMarkerHeight / 2,
         left: x - cursorMarkerWidth / 2
@@ -260,7 +260,7 @@ class SlideAreaChart extends Component<SlideAreaChartComponentProps, State> {
           selectedBarNumber: 0,
         }))
       }
-      this.graph.current.setNativeLineProps(this.startLine)
+      this.chart.current.setNativeLineProps(this.startLine)
     }
   }
 
@@ -301,8 +301,8 @@ class SlideAreaChart extends Component<SlideAreaChartComponentProps, State> {
 
     if (value < 0) {
       value = 0
-    } else if (value > this.graphWidth) {
-      value = this.graphWidth
+    } else if (value > this.chartWidth) {
+      value = this.chartWidth
     }
     const x = value + axisWidth + paddingLeft
 
@@ -325,7 +325,7 @@ class SlideAreaChart extends Component<SlideAreaChartComponentProps, State> {
       })
     }
     if (this.toolTip.current != null) {
-      const realPercentage = (x - axisWidth - paddingLeft) / this.graphWidth
+      const realPercentage = (x - axisWidth - paddingLeft) / this.chartWidth
       this.toolTip.current.setNativeToolTipPositionProps(y, x, cursorMarkerHeight, realPercentage)
       this.toolTip.current.setNativeTriangleXPositionProps(realPercentage)
       for (let i = 0; i < toolTipTextRenderers.length; i++) {
@@ -360,8 +360,8 @@ class SlideAreaChart extends Component<SlideAreaChartComponentProps, State> {
     const { x } = this.state
 
     /**
-     * If onPress is provided the graph likely will not have a cursor shown (provided by props)
-     * and therefore it makes more sense to allow the graph to be clicked than panned
+     * If onPress is provided the chart likely will not have a cursor shown (provided by props)
+     * and therefore it makes more sense to allow the chart to be clicked than panned
      */
     if (onPress) {
       return (
@@ -454,7 +454,7 @@ class SlideAreaChart extends Component<SlideAreaChartComponentProps, State> {
     this.properties = path.svgPathProperties(this.line)
 
     if (alwaysShowIndicator) {
-      this.moveCursorBinary(this.graphWidth / 2)
+      this.moveCursorBinary(this.chartWidth / 2)
     }
 
     /**
@@ -467,10 +467,10 @@ class SlideAreaChart extends Component<SlideAreaChartComponentProps, State> {
     if (animated) {
 
       // Add the cursorY listener that is only used for the initial Y-axis animation on mount
-      this.state.cursorY.addListener(({ value }) => this.animateGraph(value))
+      this.state.cursorY.addListener(({ value }) => this.animateChart(value))
 
-      // This will flatten the Y axis of the graph for animation and set the cursor X to the middle point
-      this.setGraphToZero()
+      // This will flatten the Y axis of the chart for animation and set the cursor X to the middle point
+      this.setChartToZero()
     }
 
     setTimeout(() => {
@@ -480,7 +480,7 @@ class SlideAreaChart extends Component<SlideAreaChartComponentProps, State> {
        * due to it not being mounted at the proper time as noted above
        */
       if (isAndroid()) {
-        const x = (this.graphWidth / 2) + axisWidth + paddingLeft
+        const x = (this.chartWidth / 2) + axisWidth + paddingLeft
 
         if (callbackWithX) { callbackWithX(this.scaleX.invert(x)) }
         const y = SVGPathYFromX(this.properties, x)
@@ -494,13 +494,13 @@ class SlideAreaChart extends Component<SlideAreaChartComponentProps, State> {
         })
       } else {
 
-        // If we aren't animating the graph run the animate graph function at 1 to move 
-        // the graph to the first position completely including any toolTip height calculations
-        this.animateGraph(1)
+        // If we aren't animating the chart run the animate chart function at 1 to move 
+        // the chart to the first position completely including any toolTip height calculations
+        this.animateChart(1)
         this.state.x.addListener(({ value }) => { this.moveCursorBinary(value) })
       }
 
-      // Allow clicks on graph
+      // Allow clicks on chart
       this.isAnimating = false
     }, 500)
   }
@@ -535,7 +535,7 @@ class SlideAreaChart extends Component<SlideAreaChartComponentProps, State> {
     this.properties = path.svgPathProperties(this.line)
 
     if (animated) {
-      this.state.cursorY.addListener(({ value }) => this.animateGraph(value))
+      this.state.cursorY.addListener(({ value }) => this.animateChart(value))
       Animated.spring(this.state.cursorY, { toValue: 1, friction: 7, useNativeDriver: true, }).start(() => {
         this.isAnimating = false
         this.state.x.addListener(({ value }) => { this.moveCursorBinary(value) })
@@ -543,10 +543,10 @@ class SlideAreaChart extends Component<SlideAreaChartComponentProps, State> {
       )
     } else {
 
-      // If we aren't animating the graph run the animate graph function at 1
-      // to move the graph to the new position completely
+      // If we aren't animating the chart run the animate chart function at 1
+      // to move the chart to the new position completely
       this.isAnimating = false
-      this.animateGraph(1)
+      this.animateChart(1)
       this.state.x.addListener(({ value }) => { this.moveCursorBinary(value) })
     }
   }
@@ -577,7 +577,7 @@ class SlideAreaChart extends Component<SlideAreaChartComponentProps, State> {
       onPress,
     } = this.props
 
-    this.graphWidth = width - axisWidth - paddingLeft - paddingRight
+    this.chartWidth = width - axisWidth - paddingLeft - paddingRight
 
     const yRangeCalculated = this.calculateYRange()
     const xRangeCalculated = this.calculateXRange()
@@ -614,7 +614,7 @@ class SlideAreaChart extends Component<SlideAreaChartComponentProps, State> {
         }
       ]}>
         <AreaChart
-          ref={this.graph}
+          ref={this.chart}
           data={data}
           width={width}
           height={height}
