@@ -123,7 +123,7 @@ But it will be more visually useful for configuring to use some test [data](#dat
 </td>
 <td align="left">
 
-Determines if the indicator for the chart should be visible always or just when being touched.<br/><br/>For `SlideAreaChart` the indicator is the `CursorMarker`, `CursorLine`, and `ToolTip`.<br/><br/>For `SlideBarChart` the indicator is the `barSelectedColor` or `renderSelectedFillGradient` and `ToolTip`.
+Determines if the indicator for the chart should be visible always or just when being touched.<br/><br/>For `SlideAreaChart` the indicator is the [`CursorMarker`, `CursorLine`](#cursor), and [`ToolTip`](#tool-tip).<br/><br/>For `SlideBarChart` the indicator is the [`barSelectedColor`](#barselectedcolor) or [`renderSelectedFillGradient`](#renderselectedfillgradient) and [`ToolTip`](#tool-tip).
 
 </td>
 </tr>
@@ -211,7 +211,7 @@ Width of the area left of the chart for the Y-Axis markers and label to render i
 </td>
 <td align="left">
 
-Callback function that provides the current cursor position `x`. As this is firing off of a continuous animation and not state usage should match appropriately.<br/><br/>e.g. This can be used in conjunction with an array of timed gps points to move an indicator along a path on a map.
+Callback function that provides the current [Cursor](#cursor) position `x`. As this is firing off of a continuous animation and not state usage should match appropriately.<br/><br/>e.g. This can be used in conjunction with an array of timed gps points to move an indicator along a path on a map.
 
 </td>
 </tr>
@@ -235,7 +235,7 @@ Callback function that provides the current cursor position `x`. As this is firi
 </td>
 <td align="left">
 
-Callback function that provides the current cursor position `y`. As this is firing off of a continuous animation and not state usage should match appropriately.<br/><br/>e.g. This can be used with direct manipulation on a `TextInput` to display the current value outside the chart.
+Callback function that provides the current [Cursor](#cursor) position `y`. As this is firing off of a continuous animation and not state usage should match appropriately.<br/><br/>e.g. This can be used with direct manipulation on a `TextInput` to display the current value outside the chart.
 
 </td>
 </tr>
@@ -591,7 +591,7 @@ On some slower Android devices there may be too many calls across the bridge tha
 </td>
 <td align="left">
 
-Props for rendering the `ToolTip`.
+Props for rendering the [`ToolTip`](#tool-tip).
 
 </td>
 </tr>
@@ -931,7 +931,7 @@ cursorWidth: 2}
 </td>
 <td align="left">
 
-Props for `Cursor` that follows the touch.
+Props for [`Cursor`](#cursor) that follows the touch.
 
 </td>
 </tr>
@@ -1834,6 +1834,8 @@ Stroke width of the vertial side lines.
 </tbody>
 </table>
 
+### Cursor
+
 #### Cursor Props:
 
 <table>
@@ -2030,6 +2032,8 @@ Function that returns a custom cursor marker with ref assigned.
 </tr>
 </tbody>
 </table>
+
+### Tool Tip
 
 #### Tool Tip Props:
 
