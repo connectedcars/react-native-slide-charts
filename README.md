@@ -35,13 +35,19 @@ $ yarn add react-native-slide-charts
 
 ### Peer Dependencies
 
+#### Expo
+
+All `peerDependencies` are included with [Expo](https://expo.io/) so installation of `peerDependencies` isn't required.
+
+#### React Native
+
 `react-native-slide-charts` depends on three peer dependencies with native modules that must be installed alongside it. Follow the installation instructions for both iOS and Android for all three packages.
 
 | Package                                                                                               | Minimum Version | Maximum Version |
 | ----------------------------------------------------------------------------------------------------- | --------------- | --------------- |
 | [`react-native-svg`](https://github.com/react-native-community/react-native-svg)                      | 7.0.0           | 9.x             |
 | [`react-native-gesture-handler`](https://github.com/software-mansion/react-native-gesture-handler)    | 1.1.0           | 1.x             |
-| [`react-native-haptic-feedback`](https://github.com/milk-and-cookies-io/react-native-haptic-feedback) | 1.8.0           | 1.x             |
+| [`expo-haptics`](https://github.com/expo/expo/tree/master/packages/expo-haptics) | 8.0.0           | 8.x             |
 
 #### NOTICE:
 
@@ -868,7 +874,7 @@ Sets the width of each bar, takes precedence over [`barSpacing`](#barspacing) wh
 </td>
 <td align="left">
 
-Runs [`selection`](https://developer.apple.com/documentation/uikit/uiselectionfeedbackgenerator) feedback on iOS using [`react-native-haptic-feedback`](https://github.com/milk-and-cookies-io/react-native-haptic-feedback).
+Runs [`selection`](https://developer.apple.com/documentation/uikit/uiselectionfeedbackgenerator) feedback on iOS using [`expo-haptics`](https://github.com/expo/expo/tree/master/packages/expo-haptics).
 
 </td>
 </tr>
