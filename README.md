@@ -49,6 +49,8 @@ All `peerDependencies` are included with [Expo](https://expo.io/) so installatio
 | [`react-native-gesture-handler`](https://github.com/software-mansion/react-native-gesture-handler)    | 1.1.0           | 1.x             |
 | [`expo-haptics`](https://github.com/expo/expo/tree/master/packages/expo-haptics) | 8.0.0           | 8.x             |
 
+[`expo-haptics`](https://github.com/expo/expo/tree/master/packages/expo-haptics) requires [`react-native-unimodules`](https://github.com/unimodules/react-native-unimodules), you must ensure that you have [installed and configured the `react-native-unimodules` package](https://github.com/unimodules/react-native-unimodules) before continuing.
+
 #### NOTICE:
 
 Make sure the version of the native module packages chosen works with the `react-native` version of the project. Manually linking the projects may be required depending on the version and platform.
