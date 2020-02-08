@@ -3,8 +3,6 @@ import {
   YAxisProps,
   XAxisProps,
   XAxisMarkerProps,
-  XAxisLabelAlignment,
-  YAxisLabelAlignment,
   LabelAndAlignment,
 } from './lib/components/chartComponents/axis/utils/types'
 import { CursorProps } from './lib/components/cursor/utils/types'
@@ -16,6 +14,17 @@ import { GradientProps } from './lib/components/chartComponents/charts/utils/typ
 
 export const SlideBarChart: React.ComponentClass<SlideBarChartProps>
 export const SlideAreaChart: React.ComponentClass<SlideAreaChartProps>
+export enum XAxisLabelAlignment {
+  right = 'right',
+  left = 'left',
+  center = 'center',
+}
+export enum YAxisLabelAlignment {
+  top = 'top',
+  bottom = 'bottom',
+  middle = 'middle',
+  aboveTicks = 'aboveTicks',
+}
 
 export {
   SlideBarChartProps,
@@ -23,8 +32,6 @@ export {
   YAxisProps,
   XAxisProps,
   XAxisMarkerProps,
-  XAxisLabelAlignment,
-  YAxisLabelAlignment,
   LabelAndAlignment,
   CursorProps,
   ToolTipProps,
