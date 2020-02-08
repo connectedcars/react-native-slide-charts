@@ -21,16 +21,18 @@ type State = {
   cursorY: Animated.Value,
 }
 
+const defaultCursorProps = {
+  cursorMarkerHeight: 24,
+  cursorMarkerWidth: 24,
+  cursorWidth: 2,
+}
+
 class SlideAreaChart extends Component<SlideAreaChartComponentProps, State> {
 
   static defaultProps: SlideAreaChartDefaultProps = {
     data: [],
     xScale: 'linear',
-    cursorProps: {
-      cursorMarkerHeight: 24,
-      cursorMarkerWidth: 24,
-      cursorWidth: 2,
-    },
+    cursorProps: defaultCursorProps,
     renderFillGradient: defaultAreaChartFillGradient,
     chartLineColor: '#0081EB',
     chartLineWidth: 3,
@@ -150,9 +152,9 @@ class SlideAreaChart extends Component<SlideAreaChartComponentProps, State> {
   animateChart = (value: number) => {
     const { axisWidth, cursorProps, toolTipProps, paddingLeft } = this.props
     const toolTipTextRenderers = toolTipProps?.toolTipTextRenderers || []
-    const cursorMarkerHeight = cursorProps.cursorMarkerHeight
-    const cursorMarkerWidth = cursorProps.cursorMarkerWidth
-    const cursorLineWidth = cursorProps.cursorWidth
+    const cursorMarkerHeight = cursorProps?.cursorMarkerHeight ?? defaultCursorProps.cursorMarkerHeight
+    const cursorMarkerWidth = cursorProps?.cursorMarkerWidth ?? defaultCursorProps.cursorMarkerWidth
+    const cursorLineWidth = cursorProps?.cursorWidth ?? defaultCursorProps.cursorWidth
     const yRangeCalculated = this.calculateYRange()
 
     // If chart shrinks animate X as well
@@ -227,9 +229,9 @@ class SlideAreaChart extends Component<SlideAreaChartComponentProps, State> {
   setChartToZero = () => {
     const { axisWidth, cursorProps, toolTipProps, paddingLeft } = this.props
     const toolTipTextRenderers = toolTipProps?.toolTipTextRenderers || []
-    const cursorMarkerHeight = cursorProps.cursorMarkerHeight
-    const cursorMarkerWidth = cursorProps.cursorMarkerWidth
-    const cursorLineWidth = cursorProps.cursorWidth
+    const cursorMarkerHeight = cursorProps?.cursorMarkerHeight ?? defaultCursorProps.cursorMarkerHeight
+    const cursorMarkerWidth = cursorProps?.cursorMarkerWidth ?? defaultCursorProps.cursorMarkerWidth
+    const cursorLineWidth = cursorProps?.cursorWidth ?? defaultCursorProps.cursorWidth
     const yRangeCalculated = this.calculateYRange()
 
     if (this.cursor.current != null && this.toolTip.current != null && this.chart.current != null) {
@@ -294,9 +296,9 @@ class SlideAreaChart extends Component<SlideAreaChartComponentProps, State> {
     } = this.props
 
     const toolTipTextRenderers = toolTipProps?.toolTipTextRenderers || []
-    const cursorMarkerHeight = cursorProps.cursorMarkerHeight
-    const cursorMarkerWidth = cursorProps.cursorMarkerWidth
-    const cursorLineWidth = cursorProps.cursorWidth
+    const cursorMarkerHeight = cursorProps?.cursorMarkerHeight ?? defaultCursorProps.cursorMarkerHeight
+    const cursorMarkerWidth = cursorProps?.cursorMarkerWidth ?? defaultCursorProps.cursorMarkerWidth
+    const cursorLineWidth = cursorProps?.cursorWidth ?? defaultCursorProps.cursorWidth
     const yRangeCalculated = this.calculateYRange()
 
     if (value < 0) {
@@ -579,6 +581,7 @@ class SlideAreaChart extends Component<SlideAreaChartComponentProps, State> {
 
     this.chartWidth = width - axisWidth - paddingLeft - paddingRight
 
+    const combinedCursorProps={...defaultCursorProps, ...cursorProps}
     const yRangeCalculated = this.calculateYRange()
     const xRangeCalculated = this.calculateXRange()
     const xCalculatedScale = xScale ? xScale :
@@ -637,7 +640,7 @@ class SlideAreaChart extends Component<SlideAreaChartComponentProps, State> {
         />
         {!onPress && <Cursor
           ref={this.cursor}
-          {...cursorProps}
+          {...combinedCursorProps}
         />}
         {!onPress && <ToolTip
           ref={this.toolTip}

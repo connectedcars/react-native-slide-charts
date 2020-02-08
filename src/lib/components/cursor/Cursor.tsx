@@ -1,9 +1,9 @@
 import React, { Component } from 'react'
 import CursorIndicator from './CursorIndicator'
 import CursorLine from './CursorLine'
-import { CursorProps } from './utils/types'
+import { CursorComponentProps } from './utils/types'
 
-class Cursor extends Component<CursorProps> {
+class Cursor extends Component<CursorComponentProps> {
   static defaultProps = {
     cursorLine: true,
     displayCursor: true,
