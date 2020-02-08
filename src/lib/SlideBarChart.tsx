@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { View, StyleSheet, Animated, TextInput, TouchableWithoutFeedback } from 'react-native'
-import { isAndroid, vw, reactNativeHapticSelectionIOS } from './utils/platform'
+import { isAndroid, vw } from './utils/platform'
 import ToolTip from './components/toolTip/ToolTip'
 import { scaleTime, scaleLinear, ScaleTime, ScaleLinear } from 'd3-scale'
 import Cursor from './components/Cursor/Cursor'
@@ -44,7 +44,6 @@ class SlideBarChart extends Component<SlideBarChartComponentProps, State> {
     renderSelectedFillGradient: defaultBarChartSelectedFillGradient,
     shouldCancelWhenOutside: true,
     throttleAndroid: false,
-    hapticFeedback: true,
   }
 
   cursor = React.createRef<Cursor>()
@@ -294,7 +293,7 @@ class SlideBarChart extends Component<SlideBarChartComponentProps, State> {
       barWidth,
       barSpacing,
       paddingLeft,
-      hapticFeedback,
+      selectionChangedCallback,
     } = this.props
     const numberOfBars = data.length > 0 ? data.length : 1
     const barWidthSize = this.chartWidth / numberOfBars
@@ -311,8 +310,8 @@ class SlideBarChart extends Component<SlideBarChartComponentProps, State> {
       this.next = undefined
       return
     }
-    if (isTouch && hapticFeedback) {
-      reactNativeHapticSelectionIOS()
+    if (isTouch && selectionChangedCallback) {
+      selectionChangedCallback(this.selectedBarNumber)
     }
     this.setState({ selectedBarNumber: this.selectedBarNumber })
     const barWidthForToolTip = barWidth ??

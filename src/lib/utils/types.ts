@@ -70,17 +70,16 @@ type SharedBarChartProps = {
   barSelectedColor?: string
   barWidth?: number
   hideSelection?: boolean
+  selectionChangedCallback?: (bar: number) => void
 }
 
 export type SlideBarChartProps = SharedChartProps &
   SharedBarChartProps & {
-    hapticFeedback?: boolean
     barSpacing?: number
     renderSelectedFillGradient?: (props: GradientProps) => JSX.Element | null
   }
 
 export type SlideBarChartDefaultProps = SharedChartDefaultProps & {
-  hapticFeedback: boolean
   barSpacing: number
   renderSelectedFillGradient: (props: GradientProps) => JSX.Element | null
 }
