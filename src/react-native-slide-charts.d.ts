@@ -1,4 +1,4 @@
-export { SlideBarChartProps, SlideAreaChartProps } from './lib/utils/types'
+import { SlideBarChartProps, SlideAreaChartProps } from './lib/utils/types'
 export {
   YAxisProps,
   XAxisProps,
@@ -16,5 +16,6 @@ export {
   GradientProps,
 } from './lib/components/chartComponents/charts/utils/types'
 
+export { SlideBarChartProps, SlideAreaChartProps }
 export const SlideBarChart: React.ComponentClass<SlideBarChartProps>
 export const SlideAreaChart: React.ComponentClass<SlideAreaChartProps>
