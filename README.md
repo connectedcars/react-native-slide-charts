@@ -41,15 +41,12 @@ All `peerDependencies` are included with [Expo](https://expo.io/) so installatio
 
 #### React Native
 
-`react-native-slide-charts` depends on three peer dependencies with native modules that must be installed alongside it. Follow the installation instructions for both iOS and Android for all three packages.
+`react-native-slide-charts` depends on two peer dependencies with native modules that must be installed alongside it. Follow the installation instructions for both iOS and Android both packages.
 
 | Package                                                                                               | Minimum Version | Maximum Version |
 | ----------------------------------------------------------------------------------------------------- | --------------- | --------------- |
 | [`react-native-svg`](https://github.com/react-native-community/react-native-svg)                      | 7.0.0           | 11.x             |
 | [`react-native-gesture-handler`](https://github.com/software-mansion/react-native-gesture-handler)    | 1.1.0           | 1.x             |
-| [`expo-haptics`](https://github.com/expo/expo/tree/master/packages/expo-haptics) | 8.0.0           | 8.x             |
-
-[`expo-haptics`](https://github.com/expo/expo/tree/master/packages/expo-haptics) requires [`react-native-unimodules`](https://github.com/unimodules/react-native-unimodules), you must ensure that you have [installed and configured the `react-native-unimodules` package](https://github.com/unimodules/react-native-unimodules) before continuing.
 
 #### NOTICE:
 
@@ -862,27 +859,6 @@ Sets the width of each bar, takes precedence over [`barSpacing`](#barspacing) wh
 <tr>
 <td align="center">
   
-  ##### `hapticFeedback`
-</td>
-<td align="center">
-
-`boolean`
-
-</td>
-<td align="center">
-
-`true`
-
-</td>
-<td align="left">
-
-Runs [`selection`](https://developer.apple.com/documentation/uikit/uiselectionfeedbackgenerator) feedback on iOS using [`expo-haptics`](https://github.com/expo/expo/tree/master/packages/expo-haptics).
-
-</td>
-</tr>
-<tr>
-<td align="center">
-  
   ##### `hideSelection`
 </td>
 <td align="center">
@@ -924,6 +900,30 @@ GradientProps)
 <td align="left">
 
 Function that takes [`GradientProps`](#gradient-props) and returns a custom gradient to fill the selected bar.
+
+</td>
+</tr>
+<tr>
+<td align="center">
+  
+  ##### `selectionChangedCallback`
+</td>
+<td align="center">
+
+```ts
+(bar: number)
+=> void
+```
+
+</td>
+<td align="center">
+
+`undefined`
+
+</td>
+<td align="left">
+
+This callback is fired when the bar selection has changed via touch. This can be used to fire off haptic feedback to the user, or for other side effects. If using [expo](https://expo.io/) [`selection`](https://developer.apple.com/documentation/uikit/uiselectionfeedbackgenerator) feedback on iOS using [`expo-haptics`](https://github.com/expo/expo/tree/master/packages/expo-haptics) is suggested.
 
 </td>
 </tr>
