@@ -133,13 +133,13 @@ export type XAxisMarkerProps = {
   alignmentBaseline?: AlignmentBaseline
 }
 
-export enum XAxisLabelAlignment {
+export const enum XAxisLabelAlignment {
   right = 'right',
   left = 'left',
   center = 'center',
 }
 
-export enum YAxisLabelAlignment {
+export const enum YAxisLabelAlignment {
   top = 'top',
   bottom = 'bottom',
   middle = 'middle',
