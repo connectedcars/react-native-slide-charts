@@ -6,7 +6,7 @@ import {
   YAxisProps,
 } from '../components/chartComponents/axis/utils/types'
 import { ToolTipProps } from '../components/toolTip/utils/types'
-import { CursorProps } from '../components/Cursor/utils/types'
+import { CursorProps } from '../components/cursor/utils/types'
 
 export type ExtendedAnimatedValue = Animated.Value & {
   // __getValue is a unexposed method on Animated.Value
