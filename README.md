@@ -5,7 +5,7 @@
 
 `react-native-slide-charts` uses [`react-native-svg`](https://github.com/react-native-community/react-native-svg), [`d3`](https://github.com/d3/d3), and [`react-native-gesture-handler`](https://github.com/software-mansion/react-native-gesture-handler) to create highly customizable interactive charts that animate smoothly via [`Direct Manipulation`](https://facebook.github.io/react-native/docs/direct-manipulation).
 
-## Note: The package have been moved from `react-native-slide-charts` to [`@connectedcars/react-native-slide-charts`](https://www.npmjs.com/package/@connectedcars/react-native-slide-charts)
+## :warning: Note: The package have been moved from `react-native-slide-charts` to [`@connectedcars/react-native-slide-charts`](https://www.npmjs.com/package/@connectedcars/react-native-slide-charts) :warning:
 
 ## [Check out the demo on expo 📊📈](https://snack.expo.io/@nhannah/react-native-slide-charts)
 
