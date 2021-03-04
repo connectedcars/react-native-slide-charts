@@ -3,7 +3,7 @@ import { View, StyleSheet, Animated, TextInput, TouchableWithoutFeedback } from 
 import { isAndroid, vw } from './utils/platform'
 import ToolTip from './components/toolTip/ToolTip'
 import { scaleTime, scaleLinear, ScaleTime, ScaleLinear } from 'd3-scale'
-import Cursor from './components/Cursor/Cursor'
+import Cursor from './components/cursor/Cursor'
 import BarChart from './components/chartComponents/charts/BarChart'
 import {
   defaultBarChartFillGradient, defaultBarChartSelectedFillGradient
