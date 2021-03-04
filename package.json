@@ -33,7 +33,7 @@
     "graphs",
     "d3"
   ],
-  "author": "Neil Hannah",
+  "author": "Connected Cars <oss@connectedcars.io>",
   "license": "MIT",
   "readmeFilename": "README.md",
   "files": [
