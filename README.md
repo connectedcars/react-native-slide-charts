@@ -1,9 +1,11 @@
-# react-native-slide-charts
+# @connectedcars/react-native-slide-charts
 
-[![Version](https://img.shields.io/npm/v/react-native-slide-charts.svg)](https://www.npmjs.com/package/react-native-slide-charts)
-[![NPM](https://img.shields.io/npm/dm/react-native-slide-charts.svg)](https://www.npmjs.com/package/react-native-slide-charts)
+[![Version](https://img.shields.io/npm/v/@connectedcars/react-native-slide-charts.svg)](https://www.npmjs.com/package/@connectedcars/react-native-slide-charts)
+[![NPM](https://img.shields.io/npm/dm/@connectedcars/react-native-slide-charts.svg)](https://www.npmjs.com/package/@connectedcars/react-native-slide-charts)
 
 `react-native-slide-charts` uses [`react-native-svg`](https://github.com/react-native-community/react-native-svg), [`d3`](https://github.com/d3/d3), and [`react-native-gesture-handler`](https://github.com/software-mansion/react-native-gesture-handler) to create highly customizable interactive charts that animate smoothly via [`Direct Manipulation`](https://facebook.github.io/react-native/docs/direct-manipulation).
+
+## :warning: Note: The package have been moved from `react-native-slide-charts` to [`@connectedcars/react-native-slide-charts`](https://www.npmjs.com/package/@connectedcars/react-native-slide-charts) :warning:
 
 ## [Check out the demo on expo 📊📈](https://snack.expo.io/@nhannah/react-native-slide-charts)
 
@@ -24,13 +26,13 @@
 ## Installation
 
 ```console
-$ npm install react-native-slide-charts --save
+$ npm install @connectedcars/react-native-slide-charts --save
 ```
 
 or
 
 ```console
-$ yarn add react-native-slide-charts
+$ yarn add @connectedcars/react-native-slide-charts
 ```
 
 ### Peer Dependencies
@@ -41,7 +43,7 @@ All `peerDependencies` are included with [Expo](https://expo.io/) so installatio
 
 #### React Native
 
-`react-native-slide-charts` depends on two peer dependencies with native modules that must be installed alongside it. Follow the installation instructions for both iOS and Android both packages.
+`@connectedcars/react-native-slide-charts` depends on two peer dependencies with native modules that must be installed alongside it. Follow the installation instructions for both iOS and Android both packages.
 
 | Package                                                                                               | Minimum Version | Maximum Version |
 | ----------------------------------------------------------------------------------------------------- | --------------- | --------------- |
@@ -54,7 +56,7 @@ Make sure the version of the native module packages chosen works with the `react
 
 ## Usage
 
-`react-native-slide-charts` exports two types of charts, `SlideAreaChart` and `SlideBarChart` along with the type definitions for the Charts, Props, and Enums.
+`@connectedcars/react-native-slide-charts` exports two types of charts, `SlideAreaChart` and `SlideBarChart` along with the type definitions for the Charts, Props, and Enums.
 
 ```jsx
 import {
@@ -70,7 +72,7 @@ import {
   ToolTipProps,
   ToolTipTextRenderersInput,
   GradientProps,
-} from 'react-native-slide-charts'
+} from '@connectedcars/react-native-slide-charts'
 ```
 
 To get started you can render an empty chart:

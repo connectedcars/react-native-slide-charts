@@ -1,11 +1,14 @@
 {
-  "name": "react-native-slide-charts",
+  "name": "@connectedcars/react-native-slide-charts",
   "version": "1.0.5",
   "description": "React Native Slide Charts uses react-native-svg, d3, and react-native-gesture-handler to create interactive charts.",
   "homepage": "https://github.com/connectedcars/react-native-slide-charts",
   "repository": {
     "type": "git",
     "url": "https://github.com/connectedcars/react-native-slide-charts"
+  },
+  "publishConfig": {
+    "access": "public"   
   },
   "main": "src/Charts.ts",
   "types": "src/react-native-slide-charts.d.ts",
@@ -30,7 +33,7 @@
     "graphs",
     "d3"
   ],
-  "author": "Neil Hannah",
+  "author": "Connected Cars <oss@connectedcars.io>",
   "license": "MIT",
   "readmeFilename": "README.md",
   "files": [
@@ -55,7 +58,7 @@
     "@types/d3": "5.7.2",
     "@types/node": "13.13.4",
     "@types/react": "16.8.2",
-    "@types/react-native": "0.62.4",
+    "@types/react-native": "0.63.50",
     "@typescript-eslint/eslint-plugin": "2.24.0",
     "@typescript-eslint/parser": "2.24.0",
     "babel-jest": "25.1.0",
@@ -67,9 +70,9 @@
     "metro-react-native-babel-preset": "0.58.0",
     "prettier": "1.19.1",
     "react": "16.9.0",
-    "react-native": "0.61.5",
+    "react-native": "0.63.4",
     "react-native-gesture-handler": "1.6.0",
     "react-native-svg": "11.0.1",
-    "typescript": "3.8.3"
+    "typescript": "4.2.2"
   }
 }
