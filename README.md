@@ -1,4 +1,4 @@
-# react-native-slide-charts
+# @connectedcars/react-native-slide-charts
 
 [![Version](https://img.shields.io/npm/v/@connectedcars/react-native-slide-charts.svg)](https://www.npmjs.com/package/@connectedcars/react-native-slide-charts)
 [![NPM](https://img.shields.io/npm/dm/@connectedcars/react-native-slide-charts.svg)](https://www.npmjs.com/package/@connectedcars/react-native-slide-charts)
