@@ -91,7 +91,7 @@ class SlideAreaChart extends Component<SlideAreaChartComponentProps, State> {
 
   state: State = {
     x: new Animated.Value(
-        this.getInitialCursorPosition()
+      this.getInitialCursorPosition()
     ) as ExtendedAnimatedValue,
     cursorY: new Animated.Value(0)
   }
@@ -100,10 +100,10 @@ class SlideAreaChart extends Component<SlideAreaChartComponentProps, State> {
   calculateXRange = () => {
     const { xRange, data } = this.props
     return xRange ?
-        xRange :
-        data.length > 1 ?
-            [(data[0]?.x ?? 0), (data[data.length - 1]?.x ?? 1)] :
-            [(data[0]?.x ?? 0), (Number(data[0]?.x ?? 0) + 1)]
+      xRange :
+      data.length > 1 ?
+        [(data[0]?.x ?? 0), (data[data.length - 1]?.x ?? 1)] :
+        [(data[0]?.x ?? 0), (Number(data[0]?.x ?? 0) + 1)]
   }
 
   // Function to determine Y range if not given
@@ -120,33 +120,33 @@ class SlideAreaChart extends Component<SlideAreaChartComponentProps, State> {
     const xRangeCalculated = this.calculateXRange()
 
     return data.length > 1 ?
-        data.map((obj): [number, number] => [Number(obj.x), obj.y]) :
-        data.length > 0 ?
-            data.reduce((arr: Array<[number, number]>, obj) => {
-              return arr.concat([[Number(xRangeCalculated[0]), obj.y], [Number(xRangeCalculated[1]), obj.y]])
-            }, []) :
-            [[Number(xRangeCalculated[0]), yRangeCalculated[0]], [Number(xRangeCalculated[1]), yRangeCalculated[0]]]
+      data.map((obj): [number, number] => [Number(obj.x), obj.y]) :
+      data.length > 0 ?
+        data.reduce((arr: Array<[number, number]>, obj) => {
+          return arr.concat([[Number(xRangeCalculated[0]), obj.y], [Number(xRangeCalculated[1]), obj.y]])
+        }, []) :
+        [[Number(xRangeCalculated[0]), yRangeCalculated[0]], [Number(xRangeCalculated[1]), yRangeCalculated[0]]]
   }
 
   // Determines the line for the chart
   calculateLine = () => {
     return shape
-            .line()
-            .x(d => this.scaleX(d[0]))
-            .y(d => this.scaleY(d[1]))
-            .curve(this.props.curveType)(this.calculateDataToArray()) ||
-        ''
+      .line()
+      .x(d => this.scaleX(d[0]))
+      .y(d => this.scaleY(d[1]))
+      .curve(this.props.curveType)(this.calculateDataToArray()) ||
+      ''
   }
 
   // Determines the start line for the chart
   calculateStartLine = () => {
     const yRangeCalculated = this.calculateYRange()
     return shape
-            .line()
-            .x(d => this.scaleX(d[0]))
-            .y(this.scaleY(yRangeCalculated[0]))
-            .curve(this.props.curveType)(this.calculateDataToArray()) ||
-        ''
+      .line()
+      .x(d => this.scaleX(d[0]))
+      .y(this.scaleY(yRangeCalculated[0]))
+      .curve(this.props.curveType)(this.calculateDataToArray()) ||
+      ''
   }
 
   // If the indicator should only appear when touched this toggles the opacity
@@ -201,39 +201,39 @@ class SlideAreaChart extends Component<SlideAreaChartComponentProps, State> {
       this.cursor.current.setNativeCursorIndicatorProps({
         top: ((1 - value) * startY) - cursorMarkerHeight / 2 + (y * value),
         left: oldX != null ?
-            ((1 - value) * oldX) - cursorMarkerWidth / 2 + (x * value) :
-            x - cursorMarkerWidth / 2
+          ((1 - value) * oldX) - cursorMarkerWidth / 2 + (x * value) :
+          x - cursorMarkerWidth / 2
       })
       this.cursor.current.setNativeCursorLineProps({
         top: ((1 - value) * startY) + (y * value),
         height: this.scaleY(yRangeCalculated[0]) - (((1 - value) * startY) + (y * value)),
         left: oldX != null ?
-            ((1 - value) * oldX) - cursorLineWidth / 2 + (x * value) :
-            x - cursorLineWidth / 2
+          ((1 - value) * oldX) - cursorLineWidth / 2 + (x * value) :
+          x - cursorLineWidth / 2
       })
     }
     const toolTipX = oldX != null ?
-        ((1 - value) * oldX) + (x * value) :
-        x
+      ((1 - value) * oldX) + (x * value) :
+      x
     if (this.toolTip.current != null) {
       const realPercentage = (x - axisWidth - paddingLeft) / this.chartWidth
       this.toolTip.current.setNativeToolTipPositionProps(
-          ((1 - value) * startY) + (y * value),
-          toolTipX,
-          cursorMarkerHeight,
-          realPercentage
+        ((1 - value) * startY) + (y * value),
+        toolTipX,
+        cursorMarkerHeight,
+        realPercentage
       )
       this.toolTip.current.setNativeTriangleXPositionProps(realPercentage)
       for (let i = 0; i < toolTipTextRenderers.length; i++) {
         this.toolTip.current.setNativeTextProps(
-            i,
-            toolTipTextRenderers[i]({
-              x: toolTipX,
-              y: ((1 - value) * startY) + (y * value),
-              scaleX: this.scaleX,
-              scaleY: this.scaleY,
-              selectedBarNumber: 0,
-            }))
+          i,
+          toolTipTextRenderers[i]({
+            x: toolTipX,
+            y: ((1 - value) * startY) + (y * value),
+            scaleX: this.scaleX,
+            scaleY: this.scaleY,
+            selectedBarNumber: 0,
+          }))
       }
     }
     if (this.chart.current != null) {
@@ -264,10 +264,10 @@ class SlideAreaChart extends Component<SlideAreaChartComponentProps, State> {
         left: x - cursorLineWidth / 2
       })
       this.toolTip.current.setNativeToolTipPositionProps(
-          this.scaleY(yRangeCalculated[0]),
-          x,
-          cursorMarkerHeight,
-          realPercentage
+        this.scaleY(yRangeCalculated[0]),
+        x,
+        cursorMarkerHeight,
+        realPercentage
       )
       this.toolTip.current.setNativeTriangleXPositionProps(realPercentage)
       for (let i = 0; i < toolTipTextRenderers.length; i++) {
@@ -349,14 +349,14 @@ class SlideAreaChart extends Component<SlideAreaChartComponentProps, State> {
       this.toolTip.current.setNativeTriangleXPositionProps(realPercentage)
       for (let i = 0; i < toolTipTextRenderers.length; i++) {
         this.toolTip.current.setNativeTextProps(
-            i,
-            toolTipTextRenderers[i]({
-              x,
-              y,
-              scaleX: this.scaleX,
-              scaleY: this.scaleY,
-              selectedBarNumber: 0,
-            })
+          i,
+          toolTipTextRenderers[i]({
+            x,
+            y,
+            scaleX: this.scaleX,
+            scaleY: this.scaleY,
+            selectedBarNumber: 0,
+          })
         )
       }
     }
@@ -384,80 +384,80 @@ class SlideAreaChart extends Component<SlideAreaChartComponentProps, State> {
      */
     if (onPress) {
       return (
-          <TouchableWithoutFeedback
-              onPress={onPress}
-              style={[
-                { marginLeft: axisWidth + paddingLeft, marginRight: paddingRight },
-                StyleSheet.absoluteFill
-              ]}
-          >
-            <View
-                style={[{ backgroundColor: '#FFFFFF00' }, StyleSheet.absoluteFill]}
-            />
-          </TouchableWithoutFeedback>
+        <TouchableWithoutFeedback
+          onPress={onPress}
+          style={[
+            { marginLeft: axisWidth + paddingLeft, marginRight: paddingRight },
+            StyleSheet.absoluteFill
+          ]}
+        >
+          <View
+            style={[{ backgroundColor: '#FFFFFF00' }, StyleSheet.absoluteFill]}
+          />
+        </TouchableWithoutFeedback>
       )
     }
 
     return (
-        <View
-            style={[
-              {
-                marginLeft: axisWidth + paddingLeft,
-                marginRight: paddingRight,
-                ...Platform.select({ ios: {}, android: { elevation: 10 } })
-              },
-              StyleSheet.absoluteFill
-            ]}
+      <View
+        style={[
+          {
+            marginLeft: axisWidth + paddingLeft,
+            marginRight: paddingRight,
+            ...Platform.select({ ios: {}, android: { elevation: 10 } })
+          },
+          StyleSheet.absoluteFill
+        ]}
+      >
+        <PanGestureHandler
+          shouldCancelWhenOutside={shouldCancelWhenOutside}
+          minPointers={0}
+          activeOffsetX={[-3, 3]}
+          failOffsetY={scrollable ? [-6, 6] : undefined}
+          onGestureEvent={Animated.event([{ nativeEvent: { x } }], { useNativeDriver: true })}
+
+          /**
+           * nativeEvent.state enum
+           *
+           * UNDETERMINED = 0
+           * FAILED
+           * BEGAN
+           * CANCELLED
+           * ACTIVE
+           * END
+           */
+          onHandlerStateChange={evt => {
+            if (evt.nativeEvent.state === 1 || evt.nativeEvent.state === 3 || evt.nativeEvent.state === 5) {
+              this.showIndicator(0)
+            } else if (evt.nativeEvent.state === 2) {
+              this.showIndicator(1)
+            }
+          }}
         >
-          <PanGestureHandler
-              shouldCancelWhenOutside={shouldCancelWhenOutside}
-              minPointers={0}
-              activeOffsetX={[-3, 3]}
-              failOffsetY={scrollable ? [-6, 6] : undefined}
-              onGestureEvent={Animated.event([{ nativeEvent: { x } }], { useNativeDriver: true })}
+          <Animated.View
+            onMoveShouldSetResponder={() => false}
+            onResponderTerminationRequest={() => {
 
-              /**
-               * nativeEvent.state enum
-               *
-               * UNDETERMINED = 0
-               * FAILED
-               * BEGAN
-               * CANCELLED
-               * ACTIVE
-               * END
-               */
-              onHandlerStateChange={evt => {
-                if (evt.nativeEvent.state === 1 || evt.nativeEvent.state === 3 || evt.nativeEvent.state === 5) {
-                  this.showIndicator(0)
-                } else if (evt.nativeEvent.state === 2) {
-                  this.showIndicator(1)
-                }
-              }}
-          >
-            <Animated.View
-                onMoveShouldSetResponder={() => false}
-                onResponderTerminationRequest={() => {
-
-                  // Set the indicator to 0 here instead of on termination so the
-                  // indicator doesn't flash when the touch is taken by the PanGestureHandler
-                  this.showIndicator(0)
-                  return true
-                }}
-                onStartShouldSetResponder={() => !this.isAnimating}
-                onResponderRelease={() => this.showIndicator(0)}
-                onResponderGrant={evt => {
-                  const touchLocation = evt.nativeEvent.pageX - axisWidth - paddingLeft
-                  const xToNumber = this.state.x.__getValue?.()
-                  if (xToNumber?.toFixed(2) === touchLocation.toFixed(2)) {
-                    this.showIndicator(1)
-                  }
-                  this.state.x.setValue(touchLocation)
-                  this.moveCursorBinary(touchLocation)
-                }}
-                style={[{ backgroundColor: '#FFFFFF00' }, StyleSheet.absoluteFill]}
-            />
-          </PanGestureHandler>
-        </View>
+              // Set the indicator to 0 here instead of on termination so the
+              // indicator doesn't flash when the touch is taken by the PanGestureHandler
+              this.showIndicator(0)
+              return true
+            }}
+            onStartShouldSetResponder={() => !this.isAnimating}
+            onResponderRelease={() => this.showIndicator(0)}
+            onResponderGrant={evt => {
+              const touchLocation = evt.nativeEvent.pageX - axisWidth - paddingLeft
+              const xToNumber = this.state.x.__getValue?.()
+              if (xToNumber?.toFixed(2) === touchLocation.toFixed(2)) {
+                this.showIndicator(1)
+              }
+              this.state.x.setValue(touchLocation)
+              this.moveCursorBinary(touchLocation)
+            }}
+            style={[{ backgroundColor: '#FFFFFF00' }, StyleSheet.absoluteFill]}
+          />
+        </PanGestureHandler>
+      </View>
     )
   }
 
@@ -556,9 +556,9 @@ class SlideAreaChart extends Component<SlideAreaChartComponentProps, State> {
     if (animated) {
       this.state.cursorY.addListener(({ value }) => this.animateChart(value))
       Animated.spring(this.state.cursorY, { toValue: 1, friction: 7, useNativeDriver: true, }).start(() => {
-            this.isAnimating = false
-            this.state.x.addListener(({ value }) => { this.moveCursorBinary(value) })
-          }
+        this.isAnimating = false
+        this.state.x.addListener(({ value }) => { this.moveCursorBinary(value) })
+      }
       )
     } else {
 
@@ -602,69 +602,69 @@ class SlideAreaChart extends Component<SlideAreaChartComponentProps, State> {
     const yRangeCalculated = this.calculateYRange()
     const xRangeCalculated = this.calculateXRange()
     const xCalculatedScale = xScale ? xScale :
-        isValidDate((data[0]?.x ?? 0)) ? 'time' : 'linear'
+      isValidDate((data[0]?.x ?? 0)) ? 'time' : 'linear'
     this.scaleX = xCalculatedScale === 'linear' ?
-        scaleLinear()
-            .domain([xRangeCalculated[0], xRangeCalculated[1]])
-            .range([axisWidth + paddingLeft, width - paddingRight]) :
-        scaleTime()
-            .domain([xRangeCalculated[0], xRangeCalculated[1]])
-            .range([axisWidth + paddingLeft, width - paddingRight])
+      scaleLinear()
+        .domain([xRangeCalculated[0], xRangeCalculated[1]])
+        .range([axisWidth + paddingLeft, width - paddingRight]) :
+      scaleTime()
+        .domain([xRangeCalculated[0], xRangeCalculated[1]])
+        .range([axisWidth + paddingLeft, width - paddingRight])
     this.scaleY = scaleLinear()
-        .domain([yRangeCalculated[0], yRangeCalculated[1]])
-        .range([height - axisHeight - paddingBottom, paddingTop + chartPaddingTop])
+      .domain([yRangeCalculated[0], yRangeCalculated[1]])
+      .range([height - axisHeight - paddingBottom, paddingTop + chartPaddingTop])
 
     const startLine = animated ?
-        this.calculateStartLine() :
-        this.calculateLine()
+      this.calculateStartLine() :
+      this.calculateLine()
 
     return (
-        <View style={[
-          styles.container,
-          style,
-          {
-            height,
-            width,
-            paddingHorizontal: 0,
-            paddingVertical: 0,
-            paddingTop: 0,
-            paddingBottom: 0,
-            paddingLeft: 0,
-            paddingRight: 0,
-          }
-        ]}>
-          <AreaChart
-              ref={this.chart}
-              data={data}
-              width={width}
-              height={height}
-              line={startLine}
-              scaleY={this.scaleY}
-              yRange={yRangeCalculated}
-              scaleX={this.scaleX}
-              axisWidth={axisWidth}
-              axisHeight={axisHeight}
-              renderFillGradient={renderFillGradient}
-              fillColor={fillColor}
-              chartLineColor={chartLineColor}
-              chartLineWidth={chartLineWidth}
-              paddingLeft={paddingLeft}
-              paddingRight={paddingRight}
-              paddingBottom={paddingBottom}
-              paddingTop={paddingTop}
-              xAxisProps={xAxisProps}
-              yAxisProps={yAxisProps}
-          />
-          {!onPress && <Cursor
-              ref={this.cursor}
-              {...combinedCursorProps}
-          />}
-          {!onPress && <ToolTip
-              ref={this.toolTip}
-              {...toolTipProps}
-          />}
-          {this.renderTouchable()}
-        </View>
+      <View style={[
+        styles.container,
+        style,
+        {
+          height,
+          width,
+          paddingHorizontal: 0,
+          paddingVertical: 0,
+          paddingTop: 0,
+          paddingBottom: 0,
+          paddingLeft: 0,
+          paddingRight: 0,
+        }
+      ]}>
+        <AreaChart
+          ref={this.chart}
+          data={data}
+          width={width}
+          height={height}
+          line={startLine}
+          scaleY={this.scaleY}
+          yRange={yRangeCalculated}
+          scaleX={this.scaleX}
+          axisWidth={axisWidth}
+          axisHeight={axisHeight}
+          renderFillGradient={renderFillGradient}
+          fillColor={fillColor}
+          chartLineColor={chartLineColor}
+          chartLineWidth={chartLineWidth}
+          paddingLeft={paddingLeft}
+          paddingRight={paddingRight}
+          paddingBottom={paddingBottom}
+          paddingTop={paddingTop}
+          xAxisProps={xAxisProps}
+          yAxisProps={yAxisProps}
+        />
+        {!onPress && <Cursor
+          ref={this.cursor}
+          {...combinedCursorProps}
+        />}
+        {!onPress && <ToolTip
+          ref={this.toolTip}
+          {...toolTipProps}
+        />}
+        {this.renderTouchable()}
+      </View>
     )
   }
 }
