@@ -77,7 +77,7 @@ class SlideAreaChart extends Component<SlideAreaChartComponentProps, State> {
     if (this.props.initialCursorPosition === undefined) {
       return axisX / 2;
     }
-    if (this.props.initialCursorPosition === 0) {
+    if (this.props.initialCursorPosition <= 0) {
       return 0;
     }
     if (this.props.data?.length) {
