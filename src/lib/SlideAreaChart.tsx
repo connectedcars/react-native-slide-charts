@@ -72,9 +72,26 @@ class SlideAreaChart extends Component<SlideAreaChartComponentProps, State> {
     getDataMax(this.props.data)
   ]
 
+  getInitialCursorPosition = () => {
+    const axisX = (this.props.width - this.props.axisWidth - this.props.paddingLeft - this.props.paddingRight);
+    if (this.props.initialCursorPosition === undefined) {
+      return axisX / 2;
+    }
+    if (this.props.initialCursorPosition <= 0) {
+      return 0;
+    }
+    if (this.props.data?.length) {
+      if (this.props.initialCursorPosition > this.props.data.length) {
+        return axisX;
+      }
+      return Math.floor(axisX / (this.props.data?.length/this.props.initialCursorPosition))
+    }
+    return this.props.initialCursorPosition;
+  }
+
   state: State = {
     x: new Animated.Value(
-      (this.props.width - this.props.axisWidth - this.props.paddingLeft - this.props.paddingRight) / 2
+      this.getInitialCursorPosition()
     ) as ExtendedAnimatedValue,
     cursorY: new Animated.Value(0)
   }
@@ -401,7 +418,7 @@ class SlideAreaChart extends Component<SlideAreaChartComponentProps, State> {
 
           /**
            * nativeEvent.state enum
-           * 
+           *
            * UNDETERMINED = 0
            * FAILED
            * BEGAN
@@ -496,7 +513,7 @@ class SlideAreaChart extends Component<SlideAreaChartComponentProps, State> {
         })
       } else {
 
-        // If we aren't animating the chart run the animate chart function at 1 to move 
+        // If we aren't animating the chart run the animate chart function at 1 to move
         // the chart to the first position completely including any toolTip height calculations
         this.animateChart(1)
         this.state.x.addListener(({ value }) => { this.moveCursorBinary(value) })
