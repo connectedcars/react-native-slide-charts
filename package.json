@@ -48,8 +48,8 @@
   "peerDependencies": {
     "react": "*",
     "react-native": "*",
-    "react-native-gesture-handler": "~1.1.1",
-    "react-native-svg": "~7.0.3"
+    "react-native-gesture-handler": "1.10.0",
+    "react-native-svg": "12.1.0"
   },
   "devDependencies": {
     "@babel/core": "7.8.7",
