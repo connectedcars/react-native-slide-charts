@@ -8,7 +8,7 @@
     "url": "https://github.com/connectedcars/react-native-slide-charts"
   },
   "publishConfig": {
-    "access": "public"   
+    "access": "public"
   },
   "main": "src/Charts.ts",
   "types": "src/react-native-slide-charts.d.ts",
@@ -48,8 +48,8 @@
   "peerDependencies": {
     "react": "*",
     "react-native": "*",
-    "react-native-gesture-handler": ">1.1.0<2",
-    "react-native-svg": ">=7.0.0<12"
+    "react-native-gesture-handler": "~1.1.1",
+    "react-native-svg": "~7.0.3"
   },
   "devDependencies": {
     "@babel/core": "7.8.7",
