@@ -32,6 +32,8 @@ export type BarChartProps = SharedChartProps & {
   barSelectedColor?: string
   barSelectedIndex?: number
   hideSelection?: boolean
+  barDynamicColor?: ({x, y, index}: { x: number | Date; y: number, index: number }) => string;
+
 }
 
 export type AreaChartProps = SharedChartProps & {

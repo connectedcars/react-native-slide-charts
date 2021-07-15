@@ -71,6 +71,8 @@ type SharedBarChartProps = {
   barWidth?: number
   hideSelection?: boolean
   selectionChangedCallback?: (bar: number) => void
+  barDynamicColor?: ({x, y, index}: { x: number | Date; y: number; index: number }) => string;
+  initialBarSelected?: number
 }
 
 export type SlideBarChartProps = SharedChartProps &
@@ -93,6 +95,7 @@ export type SlideAreaChartProps = SharedChartProps & {
   cursorProps?: CursorProps
   chartLineColor?: string
   chartLineWidth?: number
+  initialIndicatorPosition?: number | 'middle' | 'start' | 'end'
 }
 
 export type SlideAreaChartDefaultProps = SharedChartDefaultProps & {
@@ -100,6 +103,7 @@ export type SlideAreaChartDefaultProps = SharedChartDefaultProps & {
   cursorProps: CursorProps
   chartLineColor: string
   chartLineWidth: number
+  initialIndicatorPosition: number | 'middle' | 'start' | 'end'
 }
 
 export type SlideAreaChartComponentProps = SlideAreaChartDefaultProps &
