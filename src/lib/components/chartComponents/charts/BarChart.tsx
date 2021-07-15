@@ -63,10 +63,15 @@ class BarChart extends Component<BarChartProps, State> {
     item: { x: number | Date, y: number },
     index: number
   ) => {
-    const { fillColor, barSelectedIndex, barSelectedColor, hideSelection } = this.props
+    const { fillColor, barSelectedIndex, barSelectedColor, hideSelection, barDynamicColor } = this.props
     this.bars[index] = this.createPaths(widthOfBar, barStartX, bottomOfBar, scaleY, item)
     this.barInterpolators[index] = interpolatePath(this.bars[index].flatBar, this.bars[index].bar, null)
     const barSelected = barSelectedIndex === index
+    const getFill = () => {
+      if (barDynamicColor) return barDynamicColor({...item, index});
+      if (fillColor) return fillColor
+      return 'url(#gradient)'
+    }
     return (
       <AnimatedPath
         ref={ref => this.barRefs[index] = ref}
@@ -74,7 +79,7 @@ class BarChart extends Component<BarChartProps, State> {
         d={this.bars[index].flatBar}
         fill={barSelected && !hideSelection ?
           (barSelectedColor || 'url(#selectedGradient)') :
-          (fillColor || 'url(#gradient)')}
+          getFill()}
       />
     )
   }

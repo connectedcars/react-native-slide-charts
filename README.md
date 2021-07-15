@@ -929,6 +929,53 @@ This callback is fired when the bar selection has changed via touch. This can be
 
 </td>
 </tr>
+<tr>
+<td align="center">
+  
+  ##### `barDynamicColor`
+</td>
+<td align="center">
+
+```ts
+({ x: number | Date,
+  y: number,
+  index: number })
+  => string
+```
+
+</td>
+<td align="center">
+
+`undefined`
+
+</td>
+<td align="left">
+
+Function that takes the x and y value and the index of a data point and returns a color to fill the bars of the bar chart dynamically. This makes it possible to have different colors for the bars in a chart. Takes precedence over `fillColor` and `renderFillGradient` when applied.
+
+</td>
+</tr>
+<tr>
+<td align="center">
+  
+  ##### `initialBarSelected`
+</td>
+<td align="center">
+
+`number`
+
+</td>
+<td align="center">
+
+`undefined`
+
+</td>
+<td align="left">
+
+The initial bar that should be selected when `alwaysShowIndicator` is `true`. The `number` represents the index of the data point / bar that should be selected.
+
+</td>
+</tr>
 </tbody>
 </table>
 
@@ -1044,6 +1091,30 @@ Color for the line designating the data charted.
 <td align="left">
 
 Stroke width of the line designating the data charted.
+
+</td>
+</tr>
+<tr>
+<td align="center">
+  
+  ##### `initialIndicatorPosition`
+</td>
+<td align="center">
+
+```ts
+number | 'middle'
+| 'start' | 'end'
+```
+
+</td>
+<td align="center">
+
+`middle`
+
+</td>
+<td align="left">
+
+The initial location of the indicator when `alwaysShowIndicator` is `true`. The `number` represents the index of the data point / bar that should be selected.
 
 </td>
 </tr>

@@ -209,12 +209,16 @@ class SlideBarChart extends Component<SlideBarChartComponentProps, State> {
       const barWidthSize = this.chartWidth / numberOfBars
       const xInput = this.chartWidth / 2
 
-      // Set selected bar at 50% of chart width
-      this.selectedBarNumber = Math.floor(xInput / barWidthSize) > 0 ?
-        Math.floor(xInput / barWidthSize) < numberOfBars - 1 ?
-          Math.floor(xInput / barWidthSize) :
-          numberOfBars - 1 :
-        0
+      // Set selected bar at the chosen initial position (default: 50% of chart width)
+      if (this.props.initialBarSelected !== undefined) {
+        this.selectedBarNumber = this.props.initialBarSelected;
+      } else {
+        this.selectedBarNumber = Math.floor(xInput / barWidthSize) > 0 ?
+          Math.floor(xInput / barWidthSize) < numberOfBars - 1 ?
+            Math.floor(xInput / barWidthSize) :
+            numberOfBars - 1 :
+          0
+      }
       this.setState({ selectedBarNumber: alwaysShowIndicator ? this.selectedBarNumber : undefined })
 
       // Get the proper x and percentage of the chart to position the toolTip in its starting position
@@ -263,19 +267,19 @@ class SlideBarChart extends Component<SlideBarChartComponentProps, State> {
    * so we throttle the events here to prevent too many calls being sent across
    * the bridge which we have seen to cause lag on slow Android devices
    */
-  moveCursorBinary(value: number, isTouch = false) {
+  moveCursorBinary(value: number, isTouch = false, isFirstMove = false) {
     if (this.props.throttleAndroid && isAndroid()) {
       this.nextValue = value
       if (this.next) { return }
       this.next = setTimeout(() => {
-        this.moveCursorBinaryCore(this.nextValue, isTouch)
+        this.moveCursorBinaryCore(this.nextValue, isTouch, isFirstMove)
       }, 10)
     } else {
-      this.moveCursorBinaryCore(value, isTouch)
+      this.moveCursorBinaryCore(value, isTouch, isFirstMove)
     }
   }
 
-  moveCursorBinaryCore(value: number, isTouch: boolean) {
+  moveCursorBinaryCore(value: number, isTouch: boolean, isFirstMove: boolean) {
     if (!this.mounted) {
       this.mounted = true
 
@@ -298,11 +302,18 @@ class SlideBarChart extends Component<SlideBarChartComponentProps, State> {
     const numberOfBars = data.length > 0 ? data.length : 1
     const barWidthSize = this.chartWidth / numberOfBars
     const xInput = value
-    this.selectedBarNumber = Math.floor(xInput / barWidthSize) > 0 ?
+    
+    const defaultBarNumber = Math.floor(xInput / barWidthSize) > 0 ?
       Math.floor(xInput / barWidthSize) < numberOfBars - 1 ?
         Math.floor(xInput / barWidthSize) :
         numberOfBars - 1 :
       0
+    
+      if (isFirstMove) {
+        this.selectedBarNumber = this.props.initialBarSelected ?? defaultBarNumber;
+      } else {
+        this.selectedBarNumber = defaultBarNumber;
+      }
 
     // No need to move anything if the bar hasn't changed
     if (this.selectedBarNumber === this.state.selectedBarNumber) {
@@ -454,7 +465,7 @@ class SlideBarChart extends Component<SlideBarChartComponentProps, State> {
     } = this.props
 
     if (alwaysShowIndicator) {
-      this.moveCursorBinary(this.chartWidth / 2)
+      this.moveCursorBinary(this.chartWidth / 2, undefined, true);
     }
 
     /**
@@ -569,7 +580,7 @@ class SlideBarChart extends Component<SlideBarChartComponentProps, State> {
             this.state.toolTipY,
             { toValue: 0, duration: 250, useNativeDriver: true }
           ).start(() => {
-            this.moveCursorBinary(this.chartWidth / 2)
+            this.moveCursorBinary(this.chartWidth / 2, undefined, true)
             this.setChartToZero()
             this.state.cursorY.setValue(0)
 
@@ -588,7 +599,7 @@ class SlideBarChart extends Component<SlideBarChartComponentProps, State> {
            * zeroed and the new data must be non zero, therefore we only
            * animate the toolTip back upward, the same logic is used in the chart
            */
-          this.moveCursorBinary(this.chartWidth / 2)
+          this.moveCursorBinary(this.chartWidth / 2, undefined, true)
           this.setChartToZero()
           Animated.timing(
             this.state.toolTipY,
@@ -601,7 +612,7 @@ class SlideBarChart extends Component<SlideBarChartComponentProps, State> {
         }
       } else {
         if (alwaysShowIndicator) {
-          this.moveCursorBinary(this.chartWidth / 2)
+          this.moveCursorBinary(this.chartWidth / 2, undefined, true);
         }
         this.state.cursorY.setValue(1)
       }
@@ -636,6 +647,7 @@ class SlideBarChart extends Component<SlideBarChartComponentProps, State> {
       hideSelection,
       onPress,
       barSelectedColor,
+      barDynamicColor
     } = this.props
 
     this.chartWidth = width - axisWidth - paddingLeft - paddingRight
@@ -691,6 +703,7 @@ class SlideBarChart extends Component<SlideBarChartComponentProps, State> {
           fillColor={fillColor}
           hideSelection={!!onPress || hideSelection}
           barSelectedColor={barSelectedColor}
+          barDynamicColor={barDynamicColor}
           animated={animated}
           yAxisProps={yAxisProps}
           xAxisProps={xAxisProps}

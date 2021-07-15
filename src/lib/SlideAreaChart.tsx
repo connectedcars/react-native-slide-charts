@@ -50,6 +50,7 @@ class SlideAreaChart extends Component<SlideAreaChartComponentProps, State> {
     animated: true,
     shouldCancelWhenOutside: true,
     throttleAndroid: false,
+    initialIndicatorPosition: 'middle',
   }
 
   cursor = React.createRef<Cursor>()
@@ -71,10 +72,22 @@ class SlideAreaChart extends Component<SlideAreaChartComponentProps, State> {
     getDataMin(this.props.data),
     getDataMax(this.props.data)
   ]
+ 
+
+  getInitialIndicatorPosition = () => {
+    const initialIndicatorPosition = this.props.initialIndicatorPosition;
+    const chartWidth = (this.props.width - this.props.axisWidth - this.props.paddingLeft - this.props.paddingRight)
+    if (initialIndicatorPosition === 'start') return 0;
+    if (initialIndicatorPosition === 'middle') return chartWidth / 2;
+    if (initialIndicatorPosition === "end") return chartWidth;
+    if (initialIndicatorPosition < 0) return 0;
+    if (initialIndicatorPosition > this.props.data.length) return chartWidth;
+    return chartWidth * (initialIndicatorPosition / this.props.data.length)
+  }
 
   state: State = {
     x: new Animated.Value(
-      (this.props.width - this.props.axisWidth - this.props.paddingLeft - this.props.paddingRight) / 2
+      this.getInitialIndicatorPosition()
     ) as ExtendedAnimatedValue,
     cursorY: new Animated.Value(0)
   }
@@ -159,7 +172,7 @@ class SlideAreaChart extends Component<SlideAreaChartComponentProps, State> {
 
     // If chart shrinks animate X as well
     const stateX = this.state.x.__getValue?.()
-    let x = this.chartWidth / 2 + axisWidth + paddingLeft
+    let x = this.getInitialIndicatorPosition() + axisWidth + paddingLeft
     let oldX: number | undefined = undefined
     if (stateX != null) {
       x = stateX + axisWidth + paddingLeft
@@ -167,8 +180,8 @@ class SlideAreaChart extends Component<SlideAreaChartComponentProps, State> {
         oldX = stateX
         x = this.chartWidth + axisWidth + paddingLeft
       } else if (stateX < axisWidth + paddingLeft) {
-        oldX = stateX
-        x = axisWidth + paddingLeft
+        oldX =  stateX + axisWidth + paddingLeft
+        x = axisWidth + paddingLeft + this.getInitialIndicatorPosition()
       }
     }
 
@@ -235,7 +248,7 @@ class SlideAreaChart extends Component<SlideAreaChartComponentProps, State> {
     const yRangeCalculated = this.calculateYRange()
 
     if (this.cursor.current != null && this.toolTip.current != null && this.chart.current != null) {
-      const x = (this.chartWidth / 2) + axisWidth + paddingLeft
+      const x = this.getInitialIndicatorPosition() + axisWidth + paddingLeft
       const realPercentage = (x - axisWidth - paddingLeft) / this.chartWidth
       this.cursor.current.setNativeCursorIndicatorProps({
         top: this.scaleY(yRangeCalculated[0]) - cursorMarkerHeight / 2,
@@ -456,7 +469,7 @@ class SlideAreaChart extends Component<SlideAreaChartComponentProps, State> {
     this.properties = path.svgPathProperties(this.line)
 
     if (alwaysShowIndicator) {
-      this.moveCursorBinary(this.chartWidth / 2)
+      this.moveCursorBinary(this.getInitialIndicatorPosition())
     }
 
     /**
