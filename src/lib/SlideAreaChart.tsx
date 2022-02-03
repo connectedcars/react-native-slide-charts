@@ -80,9 +80,9 @@ class SlideAreaChart extends Component<SlideAreaChartComponentProps, State> {
     if (initialIndicatorPosition === 'start') return 0;
     if (initialIndicatorPosition === 'middle') return chartWidth / 2;
     if (initialIndicatorPosition === "end") return chartWidth;
-    if (initialIndicatorPosition < 0) return 0;
+    if (initialIndicatorPosition < 0 || (this.props.data.length - 1) <= 0) return 0;
     if (initialIndicatorPosition > this.props.data.length) return chartWidth;
-    return chartWidth * (initialIndicatorPosition / this.props.data.length)
+    return chartWidth * (initialIndicatorPosition / (this.props.data.length - 1))
   }
 
   state: State = {
