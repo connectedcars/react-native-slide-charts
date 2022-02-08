@@ -1118,6 +1118,29 @@ The initial location of the indicator when `alwaysShowIndicator` is `true`. The 
 
 </td>
 </tr>
+<tr>
+<td align="center">
+  
+  ##### `lineSliceIndex`
+</td>
+<td align="center">
+
+```ts
+number
+```
+
+</td>
+<td align="center">
+
+`undefined`
+
+</td>
+<td align="left">
+
+Optional index of the data where the line chart should be sliced.
+
+</td>
+</tr>
 </tbody>
 </table>
 

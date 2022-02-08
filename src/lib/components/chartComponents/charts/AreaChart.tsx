@@ -9,30 +9,35 @@ class AreaChart extends Component<AreaChartProps> {
   animatedPathRef = React.createRef<any>()
   animatedFillRef = React.createRef<any>()
 
+  sliceLine(line: string, index: number | undefined) {
+    if (index !== undefined) {
+      return line.split("C").slice(0, index + 1).join("C");
+    }
+    return line;
+  }
+
   // Directly manipulate the line of the area and line to allow for non state based animation
   setNativeLineProps(line: string) {
     const {
-      height,
-      axisHeight,
       data,
       scaleX,
+      scaleY,
+      yRange,
       axisWidth,
-      width,
-      paddingBottom,
       paddingLeft,
-      paddingRight,
+      lineSliceIndex,
     } = this.props
     const startX = data.length > 1 ? scaleX(data[0].x) : axisWidth + paddingLeft
-    const stopX =
-      data.length > 1 ? scaleX(data[data.length - 1].x) : width - paddingRight
     if (
       this.animatedPathRef.current != null &&
       this.animatedFillRef.current != null
-    ) {
-      const topOfLine = height - axisHeight - paddingBottom
-      this.animatedPathRef.current.setNativeProps({ d: line })
+      ) {
+      const slicedLine = this.sliceLine(line, lineSliceIndex);
+      this.animatedPathRef.current.setNativeProps({ d: slicedLine })
       this.animatedFillRef.current.setNativeProps({
-        d: `${line} L ${stopX} ${topOfLine} L ${startX} ${topOfLine}`,
+        d: `${slicedLine} V ${scaleY(yRange[0])} L ${startX} ${scaleY(
+          yRange[0]
+        )}`,
       })
     }
   }
@@ -58,11 +63,11 @@ class AreaChart extends Component<AreaChartProps> {
       paddingRight,
       paddingTop,
       paddingBottom,
+      lineSliceIndex,
     } = this.props
 
+    const slicedLine = this.sliceLine(line, lineSliceIndex);
     const startX = data.length > 1 ? scaleX(data[0].x) : axisWidth + paddingLeft
-    const stopX =
-      data.length > 1 ? scaleX(data[data.length - 1].x) : width - paddingRight
 
     return (
       <Svg {...{ width, height }}>
@@ -97,17 +102,18 @@ class AreaChart extends Component<AreaChartProps> {
         />
         <AnimatedPath
           ref={this.animatedFillRef}
-          d={`${line} L ${stopX} ${scaleY(yRange[0])} L ${startX} ${scaleY(
+          d={`${slicedLine} V ${scaleY(yRange[0])} L ${startX} ${scaleY(
             yRange[0]
           )}`}
           fill={fillColor || 'url(#gradient)'}
         />
         <AnimatedPath
           ref={this.animatedPathRef}
-          d={line}
+          d={slicedLine}
           fill='transparent'
           stroke={chartLineColor}
           strokeWidth={chartLineWidth}
+          strokeLinecap="round"
         />
       </Svg>
     )
