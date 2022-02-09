@@ -96,7 +96,7 @@ export type SlideAreaChartProps = SharedChartProps & {
   chartLineColor?: string
   chartLineWidth?: number
   initialIndicatorPosition?: number | 'middle' | 'start' | 'end'
-  lineSliceIndex?: number
+  lineSliceEndIndex?: number
 }
 
 export type SlideAreaChartDefaultProps = SharedChartDefaultProps & {

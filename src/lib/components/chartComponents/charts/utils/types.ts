@@ -40,5 +40,5 @@ export type AreaChartProps = SharedChartProps & {
   line: string
   chartLineColor: string
   chartLineWidth: number
-  lineSliceIndex?: number
+  lineSliceEndIndex?: number
 }

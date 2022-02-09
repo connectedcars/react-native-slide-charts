@@ -9,7 +9,7 @@ class AreaChart extends Component<AreaChartProps> {
   animatedPathRef = React.createRef<any>()
   animatedFillRef = React.createRef<any>()
 
-  sliceLine(line: string, index: number | undefined) {
+  sliceLineEnd(line: string, index: number | undefined) {
     if (index !== undefined) {
       return line.split("C").slice(0, index + 1).join("C");
     }
@@ -25,14 +25,14 @@ class AreaChart extends Component<AreaChartProps> {
       yRange,
       axisWidth,
       paddingLeft,
-      lineSliceIndex,
+      lineSliceEndIndex,
     } = this.props
     const startX = data.length > 1 ? scaleX(data[0].x) : axisWidth + paddingLeft
     if (
       this.animatedPathRef.current != null &&
       this.animatedFillRef.current != null
       ) {
-      const slicedLine = this.sliceLine(line, lineSliceIndex);
+      const slicedLine = this.sliceLineEnd(line, lineSliceEndIndex);
       this.animatedPathRef.current.setNativeProps({ d: slicedLine })
       this.animatedFillRef.current.setNativeProps({
         d: `${slicedLine} V ${scaleY(yRange[0])} L ${startX} ${scaleY(
@@ -63,10 +63,10 @@ class AreaChart extends Component<AreaChartProps> {
       paddingRight,
       paddingTop,
       paddingBottom,
-      lineSliceIndex,
+      lineSliceEndIndex,
     } = this.props
 
-    const slicedLine = this.sliceLine(line, lineSliceIndex);
+    const slicedLine = this.sliceLineEnd(line, lineSliceEndIndex);
     const startX = data.length > 1 ? scaleX(data[0].x) : axisWidth + paddingLeft
 
     return (

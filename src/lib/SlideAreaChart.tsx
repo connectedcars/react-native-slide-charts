@@ -305,7 +305,7 @@ class SlideAreaChart extends Component<SlideAreaChartComponentProps, State> {
       }
     }
     const {
-      cursorProps, axisWidth, toolTipProps, callbackWithX, callbackWithY, paddingLeft, data, lineSliceIndex
+      cursorProps, axisWidth, toolTipProps, callbackWithX, callbackWithY, paddingLeft, data, lineSliceEndIndex
     } = this.props
 
     const toolTipTextRenderers = toolTipProps?.toolTipTextRenderers || []
@@ -313,7 +313,7 @@ class SlideAreaChart extends Component<SlideAreaChartComponentProps, State> {
     const cursorMarkerWidth = cursorProps?.cursorMarkerWidth ?? defaultCursorProps.cursorMarkerWidth
     const cursorLineWidth = cursorProps?.cursorWidth ?? defaultCursorProps.cursorWidth
     const yRangeCalculated = this.calculateYRange()
-    const lineSlicePosition = this.chartWidth * (lineSliceIndex / Math.max(data.length - 1, 1))
+    const lineSlicePosition = this.chartWidth * (lineSliceEndIndex / Math.max(data.length - 1, 1))
 
     if (value < 0) {
       value = 0
@@ -593,7 +593,7 @@ class SlideAreaChart extends Component<SlideAreaChartComponentProps, State> {
       paddingRight,
       chartPaddingTop,
       onPress,
-      lineSliceIndex,
+      lineSliceEndIndex,
     } = this.props
 
     this.chartWidth = width - axisWidth - paddingLeft - paddingRight
@@ -654,7 +654,7 @@ class SlideAreaChart extends Component<SlideAreaChartComponentProps, State> {
           paddingTop={paddingTop}
           xAxisProps={xAxisProps}
           yAxisProps={yAxisProps}
-          lineSliceIndex={lineSliceIndex}
+          lineSliceEndIndex={lineSliceEndIndex}
         />
         {!onPress && <Cursor
           ref={this.cursor}

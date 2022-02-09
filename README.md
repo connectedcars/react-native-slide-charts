@@ -1121,7 +1121,7 @@ The initial location of the indicator when `alwaysShowIndicator` is `true`. The 
 <tr>
 <td align="center">
   
-  ##### `lineSliceIndex`
+  ##### `lineSliceEndIndex`
 </td>
 <td align="center">
 
@@ -1137,7 +1137,7 @@ number
 </td>
 <td align="left">
 
-Optional index of the data where the line chart should be sliced.
+Optional data index where we should stop drawing the AreaChart line. Results in a discontinuous graph with a hard stop after a certain data point, given by `lineSliceEndIndex`.
 
 </td>
 </tr>
