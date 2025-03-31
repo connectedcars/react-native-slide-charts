@@ -112,9 +112,9 @@ class YAxis extends Component<YAxisComponentProps> {
       paddingTop,
     } = this.props
 
-    const lines: JSX.Element[] = []
-    const axisMarkers: JSX.Element[] = []
-    const gradients: Array<JSX.Element | undefined | null> = []
+    const lines: React.ReactNode[] = []
+    const axisMarkers: React.ReactNode[] = []
+    const gradients: Array<React.ReactNode | undefined | null> = []
     const stopX = data.length > 1 ? scaleX(data[data.length - 1].x) : width - paddingRight
     const startX = data.length > 1 ? scaleX(data[0].x) : axisWidth + paddingLeft
 
