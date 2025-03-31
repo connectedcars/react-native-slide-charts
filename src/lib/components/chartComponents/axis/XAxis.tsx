@@ -56,7 +56,7 @@ class XAxis extends Component<XAxisComponentProps> {
         key={key}
       >
         <TSpan {...labelStyle} >
-          {label}
+          {label ?? ''}
         </TSpan>
       </Text>
     )
