@@ -1,6 +1,7 @@
 import { ScaleTime, ScaleLinear } from 'd3'
-import { TSpanProps, TextAnchor, AlignmentBaseline } from 'react-native-svg'
+import { TSpanProps } from 'react-native-svg/lib/typescript/'
 import { GradientProps } from '../../charts/utils/types'
+import { AlignmentBaseline, TextAnchor } from 'react-native-svg/lib/typescript/lib/extract/types'
 
 type AxisProps = {
   data: Array<{ x: number | Date; y: number }>
@@ -34,10 +35,10 @@ export type YAxisProps = YAxisPartialProps & {
   axisLabelStyle?: TSpanProps & { color: string }
   axisMarkerStyle?: TSpanProps & { color: string }
   axisAverageMarkerStyle?: TSpanProps & { color: string }
-  renderVerticalLineGradient?: (props: GradientProps) => JSX.Element | null
+  renderVerticalLineGradient?: (props: GradientProps) => React.ReactNode | null
   renderHorizontalLineGradient?: (
     props: GradientProps & { count: number }
-  ) => JSX.Element | null
+  ) => React.ReactNode | null
   horizontalLineWidth?: number
   showBaseLine?: boolean
   labelTopPadding?: number
@@ -54,10 +55,10 @@ export type YAxisDefaultProps = {
   axisLabelStyle: TSpanProps & { color: string }
   axisMarkerStyle: TSpanProps & { color: string }
   axisAverageMarkerStyle: TSpanProps & { color: string }
-  renderVerticalLineGradient: (props: GradientProps) => JSX.Element | null
+  renderVerticalLineGradient: (props: GradientProps) => React.ReactNode | null
   renderHorizontalLineGradient: (
     props: GradientProps & { count: number }
-  ) => JSX.Element | null
+  ) => React.ReactNode | null
   averageLineColor: string
   verticalLineWidth: number
   horizontalLineWidth: number
@@ -126,7 +127,7 @@ export type XAxisMarkerProps = {
   x: number
   y: number
   fill: string
-  textAnchor: 'middle' | 'start' | 'end'
+  textAnchor: TextAnchor
   key: string
   labelStyle: TSpanProps & { color: string }
   label?: string | number | null

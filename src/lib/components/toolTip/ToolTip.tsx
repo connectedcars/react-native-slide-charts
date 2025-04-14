@@ -103,7 +103,7 @@ class ToolTip extends Component<ToolTipComponentProps, State> {
   renderTextInputs = () => {
     const { fontSize, textStyles } = this.props
     const width = this.props.width ?? null
-    const inputs: JSX.Element[] = []
+    const inputs: React.ReactNode[] = []
     for (let i = 0; i < this.numberOfLines; i++) {
 
       // Added to account for android textInput padding / late rendering
