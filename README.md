@@ -47,8 +47,8 @@ All `peerDependencies` are included with [Expo](https://expo.io/) so installatio
 
 | Package                                                                                               | Minimum Version | Maximum Version |
 | ----------------------------------------------------------------------------------------------------- | --------------- | --------------- |
-| [`react-native-svg`](https://github.com/react-native-community/react-native-svg)                      | 7.0.0           | 11.x             |
-| [`react-native-gesture-handler`](https://github.com/software-mansion/react-native-gesture-handler)    | 1.1.0           | 1.x             |
+| [`react-native-svg`](https://github.com/react-native-community/react-native-svg)                      | 15.0.0           | ?             |
+| [`react-native-gesture-handler`](https://github.com/software-mansion/react-native-gesture-handler)    | 2.0.0           | ?             |
 
 #### NOTICE:
 
