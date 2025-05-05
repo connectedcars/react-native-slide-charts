@@ -41,7 +41,7 @@ type SharedChartProps = SharedChartComponentProps & {
   height?: number
   width?: number
   alwaysShowIndicator?: boolean
-  renderFillGradient?: (props: GradientProps) => React.ReactNode | null
+  renderFillGradient?: (props: GradientProps) => JSX.Element | null
   animated?: boolean
   shouldCancelWhenOutside?: boolean
   throttleAndroid?: boolean
@@ -60,7 +60,7 @@ type SharedChartDefaultProps = {
   paddingRight: number
   alwaysShowIndicator: boolean
   xScale: 'time' | 'linear'
-  renderFillGradient: (props: GradientProps) => React.ReactNode | null
+  renderFillGradient: (props: GradientProps) => JSX.Element | null
   animated: boolean
   shouldCancelWhenOutside: boolean
   throttleAndroid: boolean
@@ -76,12 +76,12 @@ type SharedBarChartProps = {
 export type SlideBarChartProps = SharedChartProps &
   SharedBarChartProps & {
     barSpacing?: number
-    renderSelectedFillGradient?: (props: GradientProps) => React.ReactNode | null
+    renderSelectedFillGradient?: (props: GradientProps) => JSX.Element | null
   }
 
 export type SlideBarChartDefaultProps = SharedChartDefaultProps & {
   barSpacing: number
-  renderSelectedFillGradient: (props: GradientProps) => React.ReactNode | null
+  renderSelectedFillGradient: (props: GradientProps) => JSX.Element | null
 }
 
 export type SlideBarChartComponentProps = SlideBarChartDefaultProps &

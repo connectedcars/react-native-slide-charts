@@ -56,7 +56,7 @@ class XAxis extends Component<XAxisComponentProps> {
         key={key}
       >
         <TSpan {...labelStyle} >
-          {label ?? ''}
+          {label}
         </TSpan>
       </Text>
     )
@@ -171,7 +171,7 @@ class XAxis extends Component<XAxisComponentProps> {
     const stopX = data.length > 1 ? scaleX(data[data.length - 1].x) : width - paddingRight
     const chartWidth = stopX - startX
     const numberOfMarks = axisMarkerLabels.length
-    const axisMarkers: React.ReactNode[] = axisMarkerLabels.map((marker, i) => {
+    const axisMarkers: JSX.Element[] = axisMarkerLabels.map((marker, i) => {
       let markerX = startX
       let labelAndAlignment: LabelAndAlignment = {
         label: marker,
