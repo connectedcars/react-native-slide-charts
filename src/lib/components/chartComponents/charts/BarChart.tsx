@@ -69,7 +69,7 @@ class BarChart extends Component<BarChartProps, State> {
     const barSelected = barSelectedIndex === index
     return (
       <AnimatedPath
-        ref={this.barRefs[index]}
+        ref={ref => this.barRefs[index] = ref}
         key={`bar-${index}`}
         d={this.bars[index].flatBar}
         fill={barSelected && !hideSelection ?
@@ -189,7 +189,7 @@ class BarChart extends Component<BarChartProps, State> {
     const chartWidth = stopX - startX
     const horizontalLineWidth = yAxisProps?.horizontalLineWidth
     const bottomOfBar = scaleY(yRange[0]) - (horizontalLineWidth ? horizontalLineWidth / 2 : 1 / 2)
-    let paths: React.ReactNode[] = []
+    let paths: JSX.Element[] = []
 
     // Create an array of the bars with proper size and position
     if (barWidth != null && numberOfBars > 1) {

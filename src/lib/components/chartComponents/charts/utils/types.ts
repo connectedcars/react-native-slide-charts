@@ -18,14 +18,14 @@ type SharedChartProps = {
   paddingTop: number
   paddingBottom: number
   height: number
-  renderFillGradient: (props: GradientProps) => React.ReactNode | null
+  renderFillGradient: (props: GradientProps) => JSX.Element | null
   fillColor?: string
   yAxisProps?: YAxisProps
   xAxisProps?: XAxisProps
 }
 
 export type BarChartProps = SharedChartProps & {
-  renderSelectedFillGradient: (props: GradientProps) => React.ReactNode | null
+  renderSelectedFillGradient: (props: GradientProps) => JSX.Element | null
   animated: boolean
   barSpacing: number
   barWidth?: number

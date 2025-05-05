@@ -60,8 +60,8 @@ class SlideAreaChart extends Component<SlideAreaChartComponentProps, State> {
   scaleY: ScaleLinear<number, number> = scaleLinear().domain([0, 1]).range([0, 1])
   line: string = ''
   startLine: string = ''
-  properties = path.svgPathProperties('')
-  previousProperties = path.svgPathProperties('')
+  properties: path.SvgPathProperties = path.svgPathProperties('')
+  previousProperties: path.SvgPathProperties = path.svgPathProperties('')
   chartWidth: number = vw(100)
   mounted = false
   nextValue: number = vw(100) / 2

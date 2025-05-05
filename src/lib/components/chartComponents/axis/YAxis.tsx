@@ -1,13 +1,12 @@
 import React, { Component } from 'react'
-import { Line, Text, TSpan} from 'react-native-svg'
+import { Line, Text, TSpan, AlignmentBaseline, TextAnchor } from 'react-native-svg'
 import {
   verticalLineGradient, horizontalLineGradient, axisLabelColor,
   axisMarkerColor, averageLineDefaultColor, averageMarkerColor
 } from './utils/colors'
 import {
-  YAxisComponentProps, YAxisDefaultProps, YAxisMarkerProps, YAxisLabelAlignment,
+  YAxisComponentProps, YAxisDefaultProps, YAxisMarkerProps, YAxisLabelAlignment
 } from './utils/types'
-import { AlignmentBaseline, TextAnchor } from 'react-native-svg/lib/typescript/lib/extract/types'
 
 class YAxis extends Component<YAxisComponentProps> {
 
@@ -52,7 +51,7 @@ class YAxis extends Component<YAxisComponentProps> {
         transform={rotated ? `rotate(270, ${x}, ${y})` : undefined}
       >
         <TSpan {...labelStyle}>
-          {label ?? ''}
+          {label}
         </TSpan>
       </Text>
     )
@@ -112,9 +111,9 @@ class YAxis extends Component<YAxisComponentProps> {
       paddingTop,
     } = this.props
 
-    const lines: React.ReactNode[] = []
-    const axisMarkers: React.ReactNode[] = []
-    const gradients: Array<React.ReactNode | undefined | null> = []
+    const lines: JSX.Element[] = []
+    const axisMarkers: JSX.Element[] = []
+    const gradients: Array<JSX.Element | undefined | null> = []
     const stopX = data.length > 1 ? scaleX(data[data.length - 1].x) : width - paddingRight
     const startX = data.length > 1 ? scaleX(data[0].x) : axisWidth + paddingLeft
 
